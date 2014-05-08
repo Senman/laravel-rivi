@@ -11,18 +11,20 @@
 
 
             <h1>
-                Vytvořit spolecnost
+                Vytvořit rozpočet
 
 
             </h1>
 
 
 
-            {{Form::model($company, array('action' => array('FinanceCompanyController@save'))) }}
+            {{Form::model($budget, array('action' => array('FinanceBudgetController@save'))) }}
 
 
-            @include('financeCompany.form' , array('company'=>$company))
+            @include('financeBudget.form' , array('budget'=>$budget))
 
+
+            {{ Form::hidden('state' , 'new') }}
 
             <button type="submit" class="btn btn-default">Submit</button>
 

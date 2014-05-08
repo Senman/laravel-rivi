@@ -4,7 +4,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="row ">
 
@@ -14,7 +14,7 @@
 
             <h1>
 
-              Faktury
+                Platby
 
 
             </h1>
@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('FinanceInvoiceController@create', 'Nova faktura',null, $attributes = array('class'
+            {{ link_to_action('FinanceBillTypeController@create', 'Nova ',null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />
@@ -41,7 +41,7 @@
 
 
 
-            @include('financeInvoice.table' , array('invoices'=>$invoices))
+            @include('financeBillType.table' , array('billTypes'=>$billTypes))
 
 
         </div>

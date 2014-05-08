@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('AdminCompanyController@create', 'Nova spolecnost',null, $attributes = array('class'
+            {{ link_to_action('FinanceCompanyController@create', 'Nova spolecnost',null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />
@@ -52,7 +52,7 @@
                     <th>Adresa</th>
 
 
-                    <th>Země</th>
+                    <th></th>
 
 
                 </tr>
@@ -65,7 +65,7 @@
                 <tr>
                     <td>
 
-                        {{ link_to_action('AdminCompanyController@detail', $company->name, array($company->id))}}
+                      <strong>  {{$company->name}} </strong>
                     </td>
 
                     <td>
@@ -74,14 +74,17 @@
                     </td>
 
                     <td>
-                        {{$company->street}},  {{$company->zip}},  {{$company->city}}
+                        {{$company->street}},  {{$company->zip}},  {{$company->city}}  ,         {{$company->country}}
                     </td>
 
 
                     <td>
-                        {{$company->country}}
-                    </td>
 
+
+
+                    {{ link_to_action('FinanceCompanyController@detail', 'Detail', array($company->id), $attributes = array('class'
+                    => 'btn btn-default' ))  }}
+                    </td>
                 </tr>
 
                 @endforeach

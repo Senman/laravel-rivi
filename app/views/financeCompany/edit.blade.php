@@ -17,12 +17,12 @@
             </h1>
 
 
-            {{Form::model($company, array('action' => array('AdminCompanyController@update', $company->id))) }}
+            {{Form::model($company, array('action' => array('FinanceCompanyController@update', $company->id))) }}
 
 
 
 
-            @include('adminCompany.form' , array('company'=>$company))
+            @include('financeCompany.form' , array('company'=>$company))
 
 
             <button type="submit" class="btn btn-default">Submit</button>

@@ -14,10 +14,11 @@
 
             <h1>
 
-              Faktury
+              Rozpocet
 
 
             </h1>
+
 
 
         </div>
@@ -25,7 +26,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('FinanceInvoiceController@create', 'Nova faktura',null, $attributes = array('class'
+            {{ link_to_action('FinanceBudgetController@create', 'Novy rozpocet',null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />
@@ -41,7 +42,7 @@
 
 
 
-            @include('financeInvoice.table' , array('invoices'=>$invoices))
+            @include('financeBudget.table' , array('budgets'=>$budgets))
 
 
         </div>

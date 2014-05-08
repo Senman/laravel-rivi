@@ -11,17 +11,17 @@
 
 
             <h1>
-                Vytvořit spolecnost
+                Editovat
 
 
             </h1>
 
 
 
-            {{Form::model($company, array('action' => array('FinanceCompanyController@save'))) }}
+            {{Form::model($billType, array('action' => array('FinanceBillTypeController@update',  $billType->id))) }}
 
 
-            @include('financeCompany.form' , array('company'=>$company))
+            @include('financeBillType.form' , array('billType'=>$billType))
 
 
             <button type="submit" class="btn btn-default">Submit</button>

@@ -133,5 +133,24 @@
 
 </script>
 
+
+<script>
+
+    $('select.ajax').on('change', function() {
+
+       var url =  $(this).val();
+
+    $.ajax({
+        url: url,
+        cache: false
+    })
+        .done(function( html ) {
+            $( "#company" ).append( html );
+        });
+    });
+
+</script>
+
+
 </body>
 </html>

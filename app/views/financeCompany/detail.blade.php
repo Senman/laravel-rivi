@@ -25,13 +25,13 @@
 
         <div class="col-md-3">
 
-            {{ link_to_action('AdminCompanyController@index', 'Zpět', null , array('class' => 'btn
+            {{ link_to_action('FinanceCompanyController@index', 'Zpět', null , array('class' => 'btn
             btn-default btn-block')) }}
 
             <br/>
 
 
-            @include('adminCompany.buttons')
+            @include('financeCompany.buttons')
 
             <br/>
 
@@ -130,9 +130,6 @@
 
 
         <div class="col-md-12">
-
-            @include('adminProject.table' , array('projects'=>$projects))
-
 
         </div>
 

@@ -6,7 +6,7 @@ class FinanceBillTypeController extends BaseController
 
     public function index()
     {
-        $billTypes = Type::all();
+        $billTypes = BillType::all();
         return View::make('financeBillType.index')->with('billTypes', $billTypes);
     }
 
@@ -15,7 +15,7 @@ class FinanceBillTypeController extends BaseController
     public function create()
     {
 
-        $billType = new Type();
+        $billType = new BillType();
 
         return View::make('financeBillType.create')
             ->with('billType', $billType);
@@ -24,7 +24,7 @@ class FinanceBillTypeController extends BaseController
 
     public function detail($id)
     {
-        $billType = Type::find($id);
+        $billType = BillType::find($id);
 
         return View::make('financeBillType.detail')
 
@@ -34,7 +34,7 @@ class FinanceBillTypeController extends BaseController
 
     public function edit($id)
     {
-        $billType = Type::find($id);
+        $billType = BillType::find($id);
 
         return View::make('financeBillType.edit')
 
@@ -45,7 +45,7 @@ class FinanceBillTypeController extends BaseController
     public function save()
     {
 
-        $billType = new Type(Input::all());
+        $billType = new BillType(Input::all());
 
 
         if (!$billType->save()) {
@@ -62,7 +62,7 @@ class FinanceBillTypeController extends BaseController
     public function update($id)
     {
 
-        $billType = Type::find($id);
+        $billType = BillType::find($id);
 
 
         if (!$billType->update(Input::all())) {
@@ -75,4 +75,22 @@ class FinanceBillTypeController extends BaseController
 
     }
 
+
+    public function delete()
+    {
+
+        $id = Input::get('id');
+        $billType = BillType::find($id);
+
+
+        if (!$billType->delete()) {
+            Session::flash('message', 'Error!');
+            return Redirect::back();
+        }
+
+        Session::flash('message', 'Successfully deleted!');
+        return Redirect::action('FinanceBillTypeController@index');
+
+
+    }
 }

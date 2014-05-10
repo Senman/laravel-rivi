@@ -11,7 +11,7 @@
 
 
             <h1>
-                Vytvořit fakutru
+               Rekapitulace
 
 
             </h1>
@@ -27,18 +27,16 @@
 
             @include('financeInvoice.form' , array('invoice'=>$invoice))
 
+            {{ Form::hidden('company_id' , $invoice->company->id) }}
+
 
             <button type="submit" class="btn btn-default">Submit</button>
 
 
-            <select  class="ajax">
-                <option value="http://senman.cz">One</option>
-                <option value="http://Test.com">Two</option>
-            </select>
 
             <div id="company">
 
-                </div>
+            </div>
 
             {{ Form::close() }}
 

@@ -8,12 +8,12 @@
 
 
 
-        <th style="width: 20%">Název</th>
+        <th >Název</th>
+
+        <th >Učetní skupina</th>
 
 
-
-
-        <th></th>
+        <th style="width: 20%"></th>
 
     </tr>
 
@@ -29,6 +29,11 @@
         <td>
 
             {{ $billType->name}}
+        </td>
+
+        <td>
+
+            {{ $billType->group}}
         </td>
 
 

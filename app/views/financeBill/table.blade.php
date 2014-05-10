@@ -6,22 +6,24 @@
 
     <tr>
 
+        <th style="text-align: center">#</th>
 
-        <th >Vystaveno</th>
+        <th>Vystaveno</th>
 
         <th style="width: 20%">Název</th>
 
 
         <th>Splatné</th>
-        <th style="width: 10%">Příjem</th>
-        <th style="width: 10%">Výdaj</th>
-
-        <th style="width: 10%">DPH</th>
 
         <th>Způsob platby</th>
 
-        <th  style="width: 15%">Vložil</th>
+        <th style="width: 10%">Příjem</th>
+        <th style="width: 10%">Výdaj</th>
 
+
+
+
+        <th style="width: 15%">Vložil</th>
 
 
         <th></th>
@@ -36,7 +38,26 @@
 
     @foreach($bills as $bill)
 
-    <tr>
+    <tr
+        class='<?
+
+        if($bill->due_date < date('Y-m-d') && $bill->paid == false)
+        {
+            echo 'danger';
+        }
+        else if ( $bill->paid ) {
+
+            echo 'success';
+        }
+
+
+    ?>'>
+        <td style="text-align: center">
+
+            {{$bill->id}}
+
+        </td>
+
         <td>
 
             {{$bill->date_issued}}
@@ -44,8 +65,19 @@
         </td>
 
         <td>
+            <strong>
+            @if($bill->uploadName)
+
+
+
+            {{ link_to_action('FinanceBillController@download', $bill->name,  array( $bill->id)) }}
+
+            @else
 
             {{ $bill->name}}
+
+            @endif
+            </strong>
         </td>
 
 
@@ -56,24 +88,31 @@
 
 
         <td>
-            {{ $bill->income}}
-
-        </td>
-
-        <td>
-            {{ $bill->outcome}}
-
-        </td>
-
-        <td>
-            {{ $bill->vat}}
-
-        </td>
-
-        <td>
             {{ $bill->payment_type}}
 
         </td>
+
+
+        <td style="text-align: right">
+
+
+
+            {{ number_format($bill->incomeTotal , 2,',',' ') }}
+            Kč
+
+
+        </td>
+
+        <td style="text-align: right">
+
+            {{ number_format( $bill->outcomeTotal , 2,',',' ') }}
+            Kč
+
+
+
+        </td>
+
+
 
         <td>
             {{ $bill->created_by}}

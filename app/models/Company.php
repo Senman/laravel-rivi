@@ -11,6 +11,10 @@ class Company extends Eloquent
     protected $guarded = array(); // Important
 
 
+    public function invoices()
+    {
+        return $this->hasMany('Invoice');
+    }
 
 
 }

@@ -13,11 +13,14 @@
 
 
         <th>Firma</th>
-        <th style="width: 10%">částka</th>
         <th>vystaveno</th>
 
         <th>splatné</th>
 
+
+        <th style="text-align: right">částka</th>
+
+        <th style="text-align: right">stav</th>
 
         <th></th>
     </tr>
@@ -30,7 +33,26 @@
 
     @foreach($invoices as $invoice)
 
-    <tr>
+    <tr
+        class='<?
+
+        if($invoice->due_date < date('Y-m-d') && $invoice->state == 'unpaid')
+        {
+            echo 'danger';
+        }
+        else if ( $invoice->state == 'paid' ) {
+
+            echo 'success';
+        }
+
+        else if ( $invoice->state == 'storno' ) {
+
+            echo 'default';
+        }
+
+
+        ?>'>
+
         <td>
 
 
@@ -38,23 +60,22 @@
         </td>
 
         <td>
+            <strong>
             {{$invoice->name}}
 
+                </strong>
         </td>
 
 
         <td>
             @if($invoice->company)
-            {{$invoice->company->name}}
+            {{ $invoice->company->name }}
             @endif
 
         </td>
 
 
-        <td>
-            123123 {{$invoice->currency}}
 
-        </td>
 
         <td>
             {{$invoice->date_issued}}
@@ -66,6 +87,22 @@
 
         </td>
 
+
+
+
+
+        <td style="text-align: right">
+            {{ number_format($invoice->priceVatTotal , 2,',',' ') }}
+            {{$invoice->currency}}
+
+        </td>
+
+        <td style="text-align: right">
+
+        @include('layouts.invoiceState' , array('state'=>$invoice->state))
+
+
+        </td>
         <td>
 
             {{ link_to_action('FinanceInvoiceController@detail', 'Detail', array($invoice->id),

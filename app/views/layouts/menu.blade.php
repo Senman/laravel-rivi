@@ -3,17 +3,19 @@
 </li>
 
 <li>
-    {{ link_to_action('HomeController@index', 'Zaúčtované' ) }}
+    {{ link_to_action('FinanceBillController@paid', 'Zaúčtované' ) }}
 </li>
+
+<li>
+    {{ link_to_action('FinanceBudgetController@index', 'Rozpocet' ) }}
+</li>
+
 
 <li>
     {{ link_to_action('FinanceInvoiceController@index', 'Faktury' ) }}
 </li>
 
 
-<li>
-    {{ link_to_action('FinanceBillTypeController@index', 'Bill Types' ) }}
-</li>
 
 <li>
     {{ link_to_action('FinanceCompanyController@index', 'Firmy' ) }}
@@ -21,5 +23,10 @@
 
 
 <li>
-    {{ link_to_action('FinanceBudgetController@index', 'Rozpocet' ) }}
+    {{ link_to_action('FinanceBillTypeController@index', 'Učetní položky' ) }}
 </li>
+
+<li>
+    {{ link_to_action('FinanceAccountController@index', 'Učty' ) }}
+</li>
+

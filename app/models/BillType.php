@@ -1,10 +1,10 @@
 <?php
 
 
-class Type extends Eloquent
+class BillType extends Eloquent
 {
 
-    protected $table = 'types';
+    protected $table = 'bill_types';
 
     protected $softDelete = false;
 

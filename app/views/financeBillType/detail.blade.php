@@ -51,7 +51,14 @@
                     </td>
                 </tr>
 
-
+                <tr>
+                    <th style="width: 50%">
+                        Skupina
+                    </th>
+                    <td>
+                        {{ $billType->group }}
+                    </td>
+                </tr>
 
         </div>
 

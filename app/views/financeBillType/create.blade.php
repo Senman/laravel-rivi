@@ -11,7 +11,7 @@
 
 
             <h1>
-                Vložit Typ Platby
+                Nový
 
 
             </h1>

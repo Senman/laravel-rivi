@@ -14,7 +14,7 @@
 
             <h1>
 
-                Platby
+                Typy výdajů
 
 
             </h1>
@@ -40,6 +40,7 @@
         <div class="col-md-12">
 
 
+            <hr>
 
             @include('financeBillType.table' , array('billTypes'=>$billTypes))
 

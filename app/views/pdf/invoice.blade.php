@@ -40,7 +40,7 @@
 </head>
 <body>
 
-@foreach($codes as $code)
+
 
 
     Time Log Sheet
@@ -96,12 +96,9 @@
 
     </tbody>
 </table>
-{{$code['name']}}
-
-    <div style="page-break-before: always;"></div>
 
 
-@endforeach
+
 
 </body>
 </html>

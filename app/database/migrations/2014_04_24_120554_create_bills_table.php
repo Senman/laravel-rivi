@@ -29,7 +29,7 @@ class CreateBillsTable extends Migration {
             $table->string('created_by', 100);
 
 
-            $table->string('type', 100);
+            $table->string('bill_type', 100);
 
             $table->text('note');
 

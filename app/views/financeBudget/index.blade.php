@@ -14,7 +14,7 @@
 
             <h1>
 
-              Rozpocet
+              Rozpočty
 
 
             </h1>
@@ -41,7 +41,7 @@
         <div class="col-md-12">
 
 
-
+                <hr>
             @include('financeBudget.table' , array('budgets'=>$budgets))
 
 

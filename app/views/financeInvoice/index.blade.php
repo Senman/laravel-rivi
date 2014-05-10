@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('FinanceInvoiceController@create', 'Nova faktura',null, $attributes = array('class'
+            {{ link_to_action('FinanceInvoiceController@createFirst', 'Nova faktura',null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />
@@ -39,10 +39,14 @@
 
         <div class="col-md-12">
 
+            <hr>
 
 
             @include('financeInvoice.table' , array('invoices'=>$invoices))
 
+
+
+            {{ $invoices->links() }}
 
         </div>
 

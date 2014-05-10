@@ -3,18 +3,24 @@
 @section('content')
 
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="row ">
 
         <div class="col-md-9">
 
 
-            {{$budget->name}}
+         <h1>   {{$budget->name}}  </h1>
 
         </div>
 
         <div class="col-md-3">
+
+
+
+            {{ link_to_action('FinanceBudgetController@index', 'Zpět', null, array('class' => 'btn
+            btn-default btn-block')) }}
+            <br/>
 
 
             @include('financeBudget.buttons')
@@ -30,7 +36,7 @@
         <div class="col-md-12">
 
 
-
+                  <hr>
             @include('financeBudgetItem.table' , array('budgetItems'=>$budgetItems))
 
 

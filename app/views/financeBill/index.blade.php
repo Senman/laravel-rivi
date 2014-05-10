@@ -39,9 +39,13 @@
 
         <div class="col-md-12">
 
+            <hr>
 
 
             @include('financeBill.table' , array('bills'=>$bills))
+
+
+            {{ $bills->links() }}
 
 
         </div>

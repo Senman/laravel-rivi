@@ -12,7 +12,7 @@ class CreateTypesTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('types', function ($table) {
+        Schema::create('bill_types', function ($table) {
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id')->unique()->index();

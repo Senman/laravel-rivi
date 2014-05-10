@@ -50,11 +50,6 @@
     <div class="col-md-6">
         <h3>Odběratel</h3>
 
-        <div class="form-group">
-            <label for="company">Společnost</label>
-            {{ Form::select('company_id', $companies, null, array('class' => 'form-control')) }}
-        </div>
-
 
         <div class="form-group">
             <label for="company_name">company_name</label>
@@ -157,18 +152,26 @@
 
         </div>
     </div>
+
     <div class="col-md-4">
         <div class="form-group">
-            <label for="currency_transform">currency_transform</label>
-            {{ Form::text('currency_transform' , null, array( 'class' => 'form-control')) }}
+            <label for="account">Způsob uradhy</label>
+            {{ Form::select('payment_type', array('Bankovní převod' => 'Bankovní převod'), null , array( 'class' =>
+            'form-control')) }}
 
         </div>
     </div>
+
+
     <div class="col-md-4">
         <div class="form-group">
             <label for="account">Učet</label>
-            {{ Form::select('account', array('cash' => 'cash', 'account' => 'account'), null , array( 'class' =>
+
+
+            {{ Form::select('_account_id', $accounts, null , array( 'class' =>
             'form-control')) }}
+
+
 
         </div>
     </div>

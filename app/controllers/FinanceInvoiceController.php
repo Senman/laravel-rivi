@@ -7,17 +7,35 @@ class FinanceInvoiceController extends BaseController
     public function index()
     {
 
-        $invoices = Invoice::all();
+        $invoices = Invoice::orderBy('date_issued','desc')->paginate(10);
         return View::make('financeInvoice.index')->with('invoices', $invoices);
+
+
+
     }
 
 
-    public function create()
+    public function createFirst()
     {
 
-        $invoice = new Invoice();
-        $companies = Company::lists('name', 'id');
 
+        $companies = Company::all();
+
+        return View::make('financeInvoice.createFirst')
+            ->with('companies', $companies);
+
+    }
+
+
+    public function createSecond($id)
+    {
+
+
+        $company = Company::find($id);
+
+        $invoice = new Invoice();
+
+        $invoice->company =  $company;
 
         $invoice->date_issued =  date('Y-m-d');
 
@@ -26,7 +44,6 @@ class FinanceInvoiceController extends BaseController
         $invoice->due_date = $date->format('Y-m-d');
 
         $invoice->currency = 'Kč' ;
-
         $invoice->date_vat =  date('Y-m-d');
 
         $invoice->home_name  = 'Senman s.r.o.' ;
@@ -37,9 +54,85 @@ class FinanceInvoiceController extends BaseController
         $invoice->home_id  = '24243485';
         $invoice->home_vid  = 'CZ24243485';
 
-        return View::make('financeInvoice.create')
-            ->with('invoice', $invoice)->with('companies', $companies);
+        $invoice->company_name  = $company->name ;
+        $invoice->company_street  = $company->street ;
+        $invoice->company_zip  = $company->zip;
+        $invoice->company_city  = $company->city;
+        $invoice->company_country  = $company->country;
+        $invoice->company_num  = $company->cid;
+        $invoice->company_vat_num  = $company->vatid;
+
+        $accounts = Account::lists('name', 'id');
+
+
+        return View::make('financeInvoice.createSecond')
+            ->with('invoice', $invoice)->with('accounts', $accounts);
     }
+
+
+    public function createThird($id)
+    {
+        $invoice = Invoice::find($id);
+
+        return View::make('financeInvoice.createThird')
+
+            ->with('invoice', $invoice);
+    }
+
+
+
+
+    public function createFinish($id)
+    {
+
+
+        $invoice = Invoice::find($id);
+
+        return View::make('financeInvoice.detail')
+
+            ->with('invoice', $invoice);
+
+    }
+
+    public function printInvoice($id)
+    {
+        $invoice = Invoice::find($id);
+
+
+      /*  return View::make('financeInvoice.print')
+
+            ->with('invoice', $invoice);
+        */
+
+      //  return PDF::html('financeInvoice.print', array('invoice' => $invoice));
+     //   return PDF::load($html, 'A4', 'portrait')->download('my_pdf');
+
+       $pdf = PDF::loadView('financeInvoice.print', array('invoice' => $invoice));
+
+        return $pdf->stream();
+
+
+    }
+
+
+    public function add()
+    {
+
+        $item = new Item(Input::all());
+
+
+
+        if (!$item->save()) {
+            Session::flash('message', 'Error!');
+            return Redirect::back()->withInput();
+        }
+
+        Session::flash('message', 'Successfully created Invoice!');
+        return Redirect::action('FinanceInvoiceController@createThird', $item->invoice->id );
+
+
+    }
+
 
 
     public function edit($id)
@@ -47,9 +140,11 @@ class FinanceInvoiceController extends BaseController
         $invoice = Invoice::find($id);
         $companies = Company::lists('name', 'id');
 
+        $accounts = Account::lists('name', 'id');
+
         return View::make('financeInvoice.edit')
 
-            ->with('invoice', $invoice)->with('companies', $companies);
+            ->with('invoice', $invoice)->with('companies', $companies)->with('accounts', $accounts);
     }
 
 
@@ -70,6 +165,7 @@ class FinanceInvoiceController extends BaseController
     }
 
 
+
     public function save()
     {
 
@@ -79,23 +175,25 @@ class FinanceInvoiceController extends BaseController
 
         $number =  Invoice::where('year',  $year)->max('number') + 0 ;
 
+
+        $invoice->state = 'unpaid';
+
         $invoice->year = 2014 ;
         $invoice->pre_number= '';
-
-
         $invoice->pre_year= '';
-
         $invoice->number = $number + 1;
 
-        $invoice->created_by = 'David Cerny' ;
+        $invoice->symbol_variable=  $invoice->pre_year.$invoice->year.$invoice->pre_number.sprintf("%03d",$invoice->number) ;
+
+        $invoice->created_by =  Auth::user()->firstName .' '. Auth::user()->lastName ;
 
         if (!$invoice->save()) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Project!');
-        return Redirect::action('FinanceInvoiceController@index');
+        Session::flash('message', 'Successfully created Invoice!');
+        return Redirect::action('FinanceInvoiceController@createThird', $invoice->id );
 
 
     }
@@ -129,6 +227,25 @@ class FinanceInvoiceController extends BaseController
 
         Session::flash('message', 'Successfully deleted!');
         return Redirect::action('FinanceInvoiceController@index');
+
+
+    }
+
+
+    public function changeState()
+    {
+
+        $id = Input::get('id');
+        $invoice = Invoice::find($id);
+
+        $state = Input::get('state');
+
+        if (!$invoice->update( array( 'state' => $state )  )) {
+            Session::flash('message', 'Error!');
+            return Redirect::back()->withInput();
+        }
+        Session::flash('message', 'Successfully Updated!');
+        return Redirect::action('FinanceInvoiceController@detail',  $id);
 
 
     }

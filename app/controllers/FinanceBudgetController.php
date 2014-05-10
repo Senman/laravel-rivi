@@ -53,4 +53,52 @@ class FinanceBudgetController extends BaseController
     }
 
 
+
+    public function update($id)
+    {
+
+        $budget = Budget::find($id);
+
+
+        if (!$budget->update(Input::all())) {
+            Session::flash('message', 'Error!');
+            return Redirect::back()->withInput();
+        }
+        Session::flash('message', 'Successfully Updated!');
+        return Redirect::action('FinanceBudgetController@index');
+
+
+    }
+
+
+    public function edit($id)
+    {
+        $budget = Budget::find($id);
+
+        return View::make('financeBudget.edit')
+
+            ->with('budget', $budget);
+    }
+
+
+
+    public function delete()
+    {
+
+        $id = Input::get('id');
+        $budget = Budget::find($id);
+
+
+        if (!$budget->delete()) {
+            Session::flash('message', 'Error!');
+            return Redirect::back();
+        }
+
+        Session::flash('message', 'Successfully deleted!');
+        return Redirect::action('FinanceBudgetController@index');
+
+
+    }
+
+
 }

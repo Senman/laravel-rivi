@@ -155,7 +155,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="account">Způsob uradhy</label>
+            <label for="account">Způsob uhrady</label>
             {{ Form::select('payment_type', array('Bankovní převod' => 'Bankovní převod'), null , array( 'class' =>
             'form-control')) }}
 
@@ -168,7 +168,7 @@
             <label for="account">Učet</label>
 
 
-            {{ Form::select('_account_id', $accounts, null , array( 'class' =>
+            {{ Form::select('account_id', $accounts, null , array( 'class' =>
             'form-control')) }}
 
 
@@ -188,7 +188,7 @@
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            <label for="symbol_variable">Variabilni symbol</label>
+            <label for="symbol_variable">Variabilní symbol</label>
             {{ Form::text('symbol_variable' , null, array( 'class' => 'form-control')) }}
 
         </div>

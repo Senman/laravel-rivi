@@ -133,7 +133,7 @@
 
         </th>
         <td>
-            Raiffeisen
+            {{$invoice->bankName }}
 
         </td>
 
@@ -160,7 +160,7 @@
         </th>
         <td>
 
-            {{$invoice->account }}
+            {{$invoice->bankAccount }}
 
         </td>
 

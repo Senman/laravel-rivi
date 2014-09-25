@@ -33,3 +33,8 @@
 <li>
     {{ link_to_action('UserController@listOfUsers', 'Uživatelé' ) }}
 </li>
+
+
+<li>
+    {{ link_to_action('FinanceUserController@index', 'Uživatelé' ) }}
+</li>

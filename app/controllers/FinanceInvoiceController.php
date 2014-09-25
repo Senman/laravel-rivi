@@ -171,10 +171,23 @@ class FinanceInvoiceController extends BaseController
 
         $invoice = new Invoice(Input::all());
 
+        $account_id =Input::get("account_id");
+
+        $account = Account::find($account_id);
+
+
         $year = 2014;
 
         $number = Invoice::where('year', $year)->max('number') + 0;
 
+
+        $invoice->bankAccount	 = $account->number;
+        $invoice->bankName = $account->name;
+        $invoice->bankSwift = $account->swift;
+        $invoice->bankIban = $account->iban;
+
+
+        //$invoice->bankAccount
 
         $invoice->state = 'unpaid';
 

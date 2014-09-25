@@ -12,8 +12,6 @@
 
     }
 
-
-
 </style>
 
 
@@ -161,7 +159,7 @@
         </th>
         <td>
             <strong>
-            {{$invoice->account }}
+                {{$invoice->account }}
             </strong>
         </td>
 
@@ -187,8 +185,8 @@
 
         </th>
         <td>
-           <strong> {{$invoice->symbol_variable }}
-           </strong>
+            <strong> {{$invoice->symbol_variable }}
+            </strong>
         </td>
 
         <th>
@@ -197,8 +195,8 @@
 
         </th>
         <td>
-          <strong>  {{$invoice->due_date }}
-                 </strong>
+            <strong> {{$invoice->due_date }}
+            </strong>
 
         </td>
 
@@ -230,8 +228,6 @@
 
         <th style="text-align: right">Celková cena <br> [včetně DPH]</th>
     </tr>
-
-
 
 
     </thead>
@@ -290,7 +286,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <p>{{$invoice->description }}     </p>
+        <p>{{$invoice->description }} </p>
 
     </div>
     <div class="col-md-6">
@@ -309,19 +305,19 @@
             </tr>
 
 
-<!--            <tr>
-                <th>
-                    Sazba DPH
-                </th>
+            <!--            <tr>
+                            <th>
+                                Sazba DPH
+                            </th>
 
-                <td style="text-align: right">
-                    {{ $invoice->vat }}
-                    %
+                            <td style="text-align: right">
+                                {{ $invoice->vat }}
+                                %
 
-                </td>
+                            </td>
 
 
-            </tr>-->
+                        </tr>-->
 
             <tr>
                 <th>
@@ -342,8 +338,11 @@
                 </th>
 
                 <td style="text-align: right">
-                <strong>    {{ number_format($invoice->priceVatTotal, 2,',',' ') }}
-                    {{$invoice->currency}}
+                    <strong>
+
+                        {{ number_format($invoice->priceVatTotal, 2,',',' ') }}
+                        {{$invoice->currency}}
+
                     </strong>
                 </td>
 

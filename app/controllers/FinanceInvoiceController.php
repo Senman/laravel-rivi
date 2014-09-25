@@ -7,9 +7,8 @@ class FinanceInvoiceController extends BaseController
     public function index()
     {
 
-        $invoices = Invoice::orderBy('date_issued','desc')->paginate(10);
+        $invoices = Invoice::orderBy('date_issued', 'desc')->paginate(10);
         return View::make('financeInvoice.index')->with('invoices', $invoices);
-
 
 
     }
@@ -35,32 +34,32 @@ class FinanceInvoiceController extends BaseController
 
         $invoice = new Invoice();
 
-        $invoice->company =  $company;
+        $invoice->company = $company;
 
-        $invoice->date_issued =  date('Y-m-d');
+        $invoice->date_issued = date('Y-m-d');
 
         $date = new DateTime(date('Y-m-d'));
         $date->add(new DateInterval('P20D')); // P1D means a period of 1 day
         $invoice->due_date = $date->format('Y-m-d');
 
-        $invoice->currency = 'Kč' ;
-        $invoice->date_vat =  date('Y-m-d');
+        $invoice->currency = 'Kč';
+        $invoice->date_vat = date('Y-m-d');
 
-        $invoice->home_name  = 'Senman s.r.o.' ;
-        $invoice->home_street  = 'Jugoslavskych Partyzanu 1580/21' ;
-        $invoice->home_zip  = '160 00';
-        $invoice->home_city  = 'Praha';
-        $invoice->home_country  = 'Czech Republic';
-        $invoice->home_id  = '24243485';
-        $invoice->home_vid  = 'CZ24243485';
+        $invoice->home_name = 'Senman s.r.o.';
+        $invoice->home_street = 'Jugoslavskych Partyzanu 1580/21';
+        $invoice->home_zip = '160 00';
+        $invoice->home_city = 'Praha';
+        $invoice->home_country = 'Czech Republic';
+        $invoice->home_id = '24243485';
+        $invoice->home_vid = 'CZ24243485';
 
-        $invoice->company_name  = $company->name ;
-        $invoice->company_street  = $company->street ;
-        $invoice->company_zip  = $company->zip;
-        $invoice->company_city  = $company->city;
-        $invoice->company_country  = $company->country;
-        $invoice->company_num  = $company->cid;
-        $invoice->company_vat_num  = $company->vatid;
+        $invoice->company_name = $company->name;
+        $invoice->company_street = $company->street;
+        $invoice->company_zip = $company->zip;
+        $invoice->company_city = $company->city;
+        $invoice->company_country = $company->country;
+        $invoice->company_num = $company->cid;
+        $invoice->company_vat_num = $company->vatid;
 
         $accounts = Account::lists('name', 'id');
 
@@ -80,8 +79,6 @@ class FinanceInvoiceController extends BaseController
     }
 
 
-
-
     public function createFinish($id)
     {
 
@@ -99,19 +96,25 @@ class FinanceInvoiceController extends BaseController
         $invoice = Invoice::find($id);
 
 
-      /*  return View::make('financeInvoice.print')
+        /*  return View::make('financeInvoice.print')
 
-            ->with('invoice', $invoice);
-        */
+              ->with('invoice', $invoice);
+          */
 
-      //  return PDF::html('financeInvoice.print', array('invoice' => $invoice));
-     //   return PDF::load($html, 'A4', 'portrait')->download('my_pdf');
+        //  return PDF::html('financeInvoice.print', array('invoice' => $invoice));
+        //   return PDF::load($html, 'A4', 'portrait')->download('my_pdf');
 
-       $pdf = PDF::loadView('financeInvoice.print', array('invoice' => $invoice));
+        $html=View::make('financeInvoice.print')->with('invoice', $invoice)->render();
+        //$html=mb_convert_encoding($html, "iso-8859-2", "utf8");
+        //var_dump(mb_detect_encoding($html));die();
+
+
+        $pdf = PDF::loadHtml($html);
+
+        //$pdf->render();
+        //var_dump($pdf);die();
 
         return $pdf->stream();
-
-
     }
 
 
@@ -121,18 +124,16 @@ class FinanceInvoiceController extends BaseController
         $item = new Item(Input::all());
 
 
-
         if (!$item->save()) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }
 
         Session::flash('message', 'Successfully created Invoice!');
-        return Redirect::action('FinanceInvoiceController@createThird', $item->invoice->id );
+        return Redirect::action('FinanceInvoiceController@createThird', $item->invoice->id);
 
 
     }
-
 
 
     public function edit($id)
@@ -165,7 +166,6 @@ class FinanceInvoiceController extends BaseController
     }
 
 
-
     public function save()
     {
 
@@ -173,19 +173,19 @@ class FinanceInvoiceController extends BaseController
 
         $year = 2014;
 
-        $number =  Invoice::where('year',  $year)->max('number') + 0 ;
+        $number = Invoice::where('year', $year)->max('number') + 0;
 
 
         $invoice->state = 'unpaid';
 
-        $invoice->year = 2014 ;
-        $invoice->pre_number= '';
-        $invoice->pre_year= '';
+        $invoice->year = 2014;
+        $invoice->pre_number = '';
+        $invoice->pre_year = '';
         $invoice->number = $number + 1;
 
-        $invoice->symbol_variable=  $invoice->pre_year.$invoice->year.$invoice->pre_number.sprintf("%03d",$invoice->number) ;
+        $invoice->symbol_variable = $invoice->pre_year . $invoice->year . $invoice->pre_number . sprintf("%03d", $invoice->number);
 
-        $invoice->created_by =  Auth::user()->firstName .' '. Auth::user()->lastName ;
+        $invoice->created_by = Auth::user()->firstName . ' ' . Auth::user()->lastName;
 
         if (!$invoice->save()) {
             Session::flash('message', 'Error!');
@@ -193,7 +193,7 @@ class FinanceInvoiceController extends BaseController
         }
 
         Session::flash('message', 'Successfully created Invoice!');
-        return Redirect::action('FinanceInvoiceController@createThird', $invoice->id );
+        return Redirect::action('FinanceInvoiceController@createThird', $invoice->id);
 
 
     }
@@ -240,17 +240,15 @@ class FinanceInvoiceController extends BaseController
 
         $state = Input::get('state');
 
-        if (!$invoice->update( array( 'state' => $state )  )) {
+        if (!$invoice->update(array('state' => $state))) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }
         Session::flash('message', 'Successfully Updated!');
-        return Redirect::action('FinanceInvoiceController@detail',  $id);
+        return Redirect::action('FinanceInvoiceController@detail', $id);
 
 
     }
-
-
 
 
 }

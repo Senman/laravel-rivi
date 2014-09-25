@@ -1,0 +1,33 @@
+#!/bin/sh
+# Proper header for a Bash script.
+
+DEPLOY_ADDRESS="root@www.senman.cz:/var/www/rive.senman.cz/app/"
+
+
+echo "Start deploy ..."
+
+echo "copy views"
+scp -r ./app/views  ${DEPLOY_ADDRESS}
+echo "copy controllers"
+scp -r ./app/controllers  ${DEPLOY_ADDRESS}
+echo "copy database"
+scp -r ./app/database  ${DEPLOY_ADDRESS}
+echo "copy models"
+scp -r ./app/models  ${DEPLOY_ADDRESS}
+echo "copy lang"
+scp -r ./app/lang  ${DEPLOY_ADDRESS}
+echo "copy filters"
+scp ./app/filters.php  ${DEPLOY_ADDRESS}
+echo "copy routes"
+scp ./app/routes.php  ${DEPLOY_ADDRESS}
+
+
+echo "running composer"
+
+ssh root@www.senman.cz php /var/www/rive.senman.cz/php composer.phar update
+
+echo "running migration"
+
+ssh root@www.senman.cz php /var/www/rive.senman.cz/artisan migrate
+
+echo "...  deploy finished."

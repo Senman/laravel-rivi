@@ -4,19 +4,17 @@
 
 
 
-{{ link_to_action('UserController@edit', 'Osobni udaje', null,  array('class' => 'btn btn-default btn-block') )}}
+{{ link_to_action('UserController@edit', 'Osobni udaje', array($user->id), array('class' => 'btn btn-default btn-block') )}}
 
 <br>
 
-{{ link_to_action('UserContactController@edit', 'Kontaktní udaje', null,  array('class' => 'btn btn-default btn-block') )}}
-
-<br>
-
-
-{{ link_to_action('UserPasswordController@edit', 'Změnit heslo', null, array('class' => 'btn btn-default btn-block') )}}
+{{ link_to_action('UserController@editContact', 'Kontaktní udaje', array($user->id), array('class' => 'btn btn-default btn-block') )}}
 
 <br>
 
 
+{{ link_to_action('UserPasswordController@edit', 'Změnit heslo', array($user->id), array('class' => 'btn btn-default btn-block') )}}
+
+<br>
 
 @endif

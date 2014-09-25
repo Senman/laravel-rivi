@@ -26,3 +26,5 @@ scp ./composer.json  ${DEPLOY_ROOT}
 
 
 echo "...  deploy finished."
+
+php /var/www/rive.senman.com/artisan migrate

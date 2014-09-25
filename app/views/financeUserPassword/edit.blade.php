@@ -9,11 +9,12 @@
         <div class="col-md-8">
 
             <h1>
-                Editovat zaměstnance
+                Kontaktni údaje zaměstnance
             </h1>
-            {{Form::model($user, array('action' => array('UserController@update', $user->id))) }}
 
-            @include('user.form' , array('user'=>$user))
+            {{Form::model($user, array('action' => array('FinanceUserPasswordController@update', $user->id))) }}
+
+            @include('financeUserPassword.form' , array('user'=>$user))
 
             <button type="submit" class="btn btn-default">Submit</button>
 

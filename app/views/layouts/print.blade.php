@@ -26,6 +26,7 @@
 
             font: 'Open Sans';
             font-weight: 600;
+            color: #222;
         }
 
         table.table {
@@ -35,21 +36,26 @@
             border-collapse: collapse;
             border-spacing: 0;
 
+
         }
 
         .table td {
-
-            line-height: 1.42857;
-            padding: 8px;
-            vertical-align: top;
+            font: 'Open Sans';
+            line-height: 1;
+            padding:  8px;
+            vertical-align: middle;
+            font-size: 12px;
+            color: #000;
         }
 
         .table th {
             font: 'Open Sans';
-            line-height: 1.42857;
+            line-height: 1;
             padding: 8px;
             text-align: left;
-            vertical-align: top;
+            vertical-align: middle;
+            font-size: 12px;
+            color: #222;
         }
 
         .table-bordered {
@@ -87,32 +93,52 @@
             font-size: 24px;
             margin: 5px 0 3px 0;
             line-height: 1.42857;
+            color: #000;
         }
 
         h2 {
             font: 'Open Sans';
             margin: 5px 0 3px 0;
             font-size: 20px;
-            line-height: 1.22857;
+            line-height: 1;
+            color: #000;
         }
 
         h3 {
             font: 'Open Sans';
             margin: 5px 0 3px 0;
             font-size: 17px;
-            line-height: 1.12857;
+            line-height: 1;
+            color: #000;
         }
         h4 {
             font: 'Open Sans';
             margin: 5px 0 3px 0;
             font-size: 14px;
+            line-height: 1;
+            color: #000;
 
 
         }
 
+
+        p{
+
+            line-height: 0.9;
+            color: #000;
+
+        }
+
+
+        @page { margin: 80px 50px 150px;  }
+        #header { position: fixed; left: 0px; top: -180px; right: 0px; height: 50px;  text-align: right; }
+
+        #footer { position: fixed; left: 0px; bottom: -180px; right: 0px; height: 150px;  }
+
     </style>
 
 </head>
+
 
 
 <body>

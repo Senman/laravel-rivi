@@ -9,7 +9,7 @@
 
         <th style="width: 30%">Název</th>
 
-        <th style="text-align: center">Množství</th>
+        <th style="text-align: right">Množství</th>
         <th style="text-align: right">Jednotková cena <br>[bez DPH]</th>
 
         <th style="text-align: right">Celková cena <br>[bez DPH]</th>
@@ -17,6 +17,8 @@
 
 
         <th style="text-align: right">Celková cena <br> [včetně DPH]</th>
+
+        <th></th>
     </tr>
 
 
@@ -26,7 +28,7 @@
     <tbody>
 <?php
 
-
+    $total = 0;
 
 ?>
     @foreach($items as $item)
@@ -40,7 +42,7 @@
         </td>
 
 
-        <td  style="text-align: center">
+        <td  style="text-align: right">
             {{$item->count}}
 
         </td>
@@ -73,8 +75,17 @@
 
         <td>
 
-            {{ link_to_action('FinanceInvoiceController@delete', 'Delete', array($item->id),
-            array('class' => 'btn btn-danger btn-block')) }}
+            {{ Form::open(array('action' => array('FinanceInvoiceController@remove'))) }}
+
+
+            {{ Form::hidden('_method', 'POST') }}
+
+            {{ Form::hidden('id', $item->id) }}
+            {{ Form::submit('Odebrat', array('class' => 'btn btn-danger btn-block' , 'onclick' =>'return confirm("Are you sure?")' )) }}
+            {{ Form::close() }}
+
+
+
 
         </td>
 
@@ -84,25 +95,39 @@
 
     <tr>
         <td>
-             Celkem
+           <strong>  Celkem </strong>
         </td>
 
+        <td>
+
+        </td>
 
         <td>
 
         </td>
 
 
+        <td style="text-align: right">
+            {{ number_format($invoice->priceTotal , 2,',',' ') }}
+
+            Kč
+        </td>
         <td>
 
         </td>
 
+        <td style="text-align: right">
+            <strong>
+
+            {{ number_format($invoice->priceVatTotal , 2,',',' ') }}
+
+            Kč
+            </strong>
+        </td>
 
         <td>
 
         </td>
-
-
     </tr>
 
 

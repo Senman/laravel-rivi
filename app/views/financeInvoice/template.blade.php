@@ -15,12 +15,15 @@
 </style>
 
 
+<div id="content">
+
+
 <table class="table table-bordered">
 
     <tr>
 
         <td style="width: 60%" class="special-heading">
-            <h2> Faktura - danový doklad </h2>
+            <h2 style="color: #ffffff"> Faktura - daňový doklad </h2>
 
         </td>
 
@@ -98,8 +101,6 @@
 </table>
 
 
-<h2>Platební podmínky</h2>
-
 <table class="table table-bordered">
     <tr>
         <th style="width: 25%">
@@ -158,9 +159,9 @@
 
         </th>
         <td>
-            <strong>
-                {{$invoice->account }}
-            </strong>
+
+            {{$invoice->account }}
+
         </td>
 
         <th>
@@ -185,8 +186,8 @@
 
         </th>
         <td>
-            <strong> {{$invoice->symbol_variable }}
-            </strong>
+            {{$invoice->symbol_variable }}
+
         </td>
 
         <th>
@@ -195,8 +196,8 @@
 
         </th>
         <td>
-            <strong> {{$invoice->due_date }}
-            </strong>
+            {{$invoice->due_date }}
+
 
         </td>
 
@@ -207,9 +208,6 @@
 </table>
 
 
-<h2>Fakturované položky</h2>
-
-
 <table class="table table-bordered">
     <thead>
 
@@ -217,16 +215,16 @@
     <tr>
 
 
-        <th style="width: 30%">Název</th>
+        <th style="width: 50%">Název</th>
 
-        <th style="text-align: center">Množství</th>
-        <th style="text-align: right">Jednotková cena <br>[bez DPH]</th>
+        <!--        <th style="text-align: center">Množství</th>
+                <th style="text-align: right">Jednotková cena <br>[bez DPH]</th>-->
 
-        <th style="text-align: right">Celková cena <br>[bez DPH]</th>
+        <th style="text-align: right">Cena bez DPH</th>
         <th style=" text-align: right">DPH</th>
 
 
-        <th style="text-align: right">Celková cena <br> [včetně DPH]</th>
+        <th style="text-align: right">Cena včetně DPH</th>
     </tr>
 
 
@@ -244,32 +242,32 @@
         </td>
 
 
-        <td style="text-align: center">
-            {{$item->count}}
+        <!--  <td style="text-align: center">
+              {{$item->count}}
 
-        </td>
+          </td>
 
-        <td style="text-align: right">
+          <td style="text-align: right">
 
-            {{ number_format( $item->price , 2,',',' ') }}
-            Kč
+              {{ number_format( $item->price , 2,',',' ') }}
+              Kč
 
-        </td>
+          </td>-->
 
 
-        <td style="text-align: right">
+        <td style="width: 20%; text-align: right">
 
             {{ number_format($item->count * $item->price , 2,',',' ') }}
             Kč
 
         </td>
 
-        <td style="text-align: right">
+        <td style="width: 10%; text-align: right">
             {{$item->vat}} %
 
         </td>
 
-        <td style="text-align: right">
+        <td style="width: 20%; text-align: right">
             {{ number_format($item->count * $item->price * (( 100 + $item->vat) / 100 ) , 2,',',' ') }}
             Kč
 
@@ -285,65 +283,81 @@
 
 
 <div class="row">
-    <div class="col-md-6">
-        <p>{{$invoice->description }} </p>
+    <div class="col-md-12">
 
-    </div>
-    <div class="col-md-6">
-        <table class="table table-bordered">
-            <tr>
-                <th style="width: 50%">
-                    Základ pro DPH
-                </th>
 
-                <td style="text-align: right">
-                    {{ number_format( $invoice->priceTotal, 2,',',' ') }}
-                    {{$invoice->currency}}
+        <table style="width: 100%">
+            <tr >
+                <td style="width: 50%">
+                    <p>{{$invoice->description }} </p>
+
                 </td>
 
+                <td style="width: 50%">
+                    <table class="table table-bordered">
+                        <tr>
 
-            </tr>
+
+                            <th style="width: 50%">
+                                Základ pro DPH
+                            </th>
+
+                            <td style="width: 50%; text-align: right">
+                                {{ number_format( $invoice->priceTotal, 2,',',' ') }}
+                                {{$invoice->currency}}
+                            </td>
 
 
-            <!--            <tr>
+                        </tr>
+
+
+                        <!--            <tr>
+                                        <th>
+                                            Sazba DPH
+                                        </th>
+
+                                        <td style="text-align: right">
+                                            {{ $invoice->vat }}
+                                            %
+
+                                        </td>
+
+
+                                    </tr>-->
+
+                        <tr>
                             <th>
-                                Sazba DPH
+                                Částka DPH
                             </th>
 
                             <td style="text-align: right">
-                                {{ $invoice->vat }}
-                                %
+                                {{ number_format($invoice->vatTotal , 2,',',' ') }}
+                                {{$invoice->currency}}
+                            </td>
+
+
+                        </tr>
+
+                        <tr>
+                            <th>
+                                Celková cena s DPH
+                            </th>
+
+                            <td style="text-align: right">
+
+
+                                {{ number_format($invoice->priceVatTotal, 2,',',' ') }}
+                                {{$invoice->currency}}
+
 
                             </td>
 
 
-                        </tr>-->
+                        </tr>
 
-            <tr>
-                <th>
-                    Částka DPH
-                </th>
-
-                <td style="text-align: right">
-                    {{ number_format($invoice->vatTotal , 2,',',' ') }}
-                    {{$invoice->currency}}
-                </td>
+                    </table>
 
 
-            </tr>
-
-            <tr>
-                <th>
-                    Cena s DPH
-                </th>
-
-                <td style="text-align: right">
-                    <strong>
-
-                        {{ number_format($invoice->priceVatTotal, 2,',',' ') }}
-                        {{$invoice->currency}}
-
-                    </strong>
                 </td>
 
 
@@ -356,12 +370,17 @@
 
 Vystavil: {{$invoice->created_by }}
 
-<hr>
-<small>
-    SENMAN s.r.o. <br>
-    Jugoslavskych Partyzanu 1580/3 <br>
-    160 00 Prague 6
-    Czech Republic
-</small>
+</div>
 
 
+<div id="footer">
+    <hr>
+    <small>
+        SENMAN s.r.o. <br>
+        Jugoslavskych Partyzanu 1580/3 <br>
+        160 00 Prague 6
+        Czech Republic
+    </small>
+
+
+</div>

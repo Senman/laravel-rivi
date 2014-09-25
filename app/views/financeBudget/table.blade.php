@@ -51,7 +51,7 @@
     </thead>
     <tbody>
 
-    <?
+    <?php
     $incomeTotal = 0;
     $outcomeTotal = 0;
     $realIncomeTotal = 0;
@@ -61,7 +61,7 @@
 
     @foreach($budgets as $budget)
 
-    <?
+    <?php
     $incomeTotal += $budget->incomeTotal;
     $outcomeTotal += $budget->outcomeTotal;
     $realIncomeTotal += $budget->realIncomeTotal;

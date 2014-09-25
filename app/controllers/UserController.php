@@ -16,10 +16,10 @@ class UserController extends BaseController
 
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $user = Auth::user();
-
+        //$user = Auth::user();
+        $user = User::find($id);
         return View::make('user.edit')
 
             ->with('user', $user);
@@ -27,10 +27,38 @@ class UserController extends BaseController
     }
 
 
-    public function update()
+    public function update($id)
     {
 
-        $user = Auth::user();
+        //$user = Auth::user();
+        $user = User::find($id);
+
+        if (!$user->update(Input::all())) {
+            Session::flash('message', 'Error!');
+            return Redirect::back()->withInput();
+        }
+        Session::flash('message', 'Successfully Updated!');
+        return Redirect::action('UserController@index');
+
+
+    }
+
+    public function editContact($id)
+    {
+        //$user = Auth::user();
+        $user = User::find($id);
+
+        return View::make('user.contact')
+
+            ->with('user', $user);
+
+    }
+
+
+    public function updateContact($id)
+    {
+        $user = User::find($id);
+        //$user = Auth::user();
 
 
         if (!$user->update(Input::all())) {
@@ -43,5 +71,20 @@ class UserController extends BaseController
 
     }
 
+    public function listOfUsers()
+    {
+        $users = User::all();
+        return View::make('user.listOfUsers')->with('users', $users);
+    }
 
+
+    public function detail($id)
+    {
+        $user = User::find($id);
+
+        return View::make('user.index')
+            ->with('user', $user);
+
+
+    }
 }

@@ -23,6 +23,17 @@ Route::get('/logout', 'LogoutController@index')->before('auth');
 Route::get('/', 'HomeController@index')->before('auth');
 Route::get('/about', 'HomeController@about');
 Route::get('/user', 'UserController@index')->before('auth');
+Route::get('/user/password/edit/{id}', 'UserPasswordController@edit')->before('auth');
+Route::get('/user/contact/edit/{id}', 'UserController@editContact')->before('auth');
+Route::get('/user/edit/{id}', 'UserController@edit')->before('auth');
+
+Route::post('/user/password/update/{id}', 'UserPasswordController@update')->before('auth');
+Route::post('/user/contact/update/{id}', 'UserController@updateContact')->before('auth');
+Route::post('/user/update/{id}', 'UserController@update')->before('auth');
+
+Route::get('/user/list', 'UserController@listOfUsers')->before('auth');
+Route::get('/user/detail/{id}', 'UserController@detail')->before('auth');
+
 
 
 Route::get('/finance-bill', 'FinanceBillController@index')->before('auth');
@@ -46,16 +57,18 @@ Route::get('/finance-invoice-create/select-company', 'FinanceInvoiceController@c
 Route::get('/finance-invoice-create/confirm-details/{id}', 'FinanceInvoiceController@createSecond')->before('auth');
 Route::get('/finance-invoice-create/add-items/{id}', 'FinanceInvoiceController@createThird')->before('auth');
 Route::post('/finance-invoice-create/add-items/add', 'FinanceInvoiceController@add')->before('auth');
+Route::post('/finance-invoice-create/add-items/remove', 'FinanceInvoiceController@remove')->before('auth');
 Route::get('/finance-invoice-create/finish/{id}', 'FinanceInvoiceController@createFinish')->before('auth');
 Route::get('/finance-invoice/print/{id}', 'FinanceInvoiceController@printInvoice')->before('auth');
-
-
 Route::get('/finance-invoice/edit/{id}', 'FinanceInvoiceController@edit')->before('auth');
 Route::get('/finance-invoice/detail/{id}', 'FinanceInvoiceController@detail')->before('auth');
 Route::post('/finance-invoice/save', 'FinanceInvoiceController@save')->before('auth');
 Route::post('/finance-invoice/update/{id}', 'FinanceInvoiceController@update')->before('auth');
 Route::delete('/finance-invoice/delete', 'FinanceInvoiceController@delete')->before('auth');
 Route::post('/finance-invoice/change-state', 'FinanceInvoiceController@changeState')->before('auth');
+
+
+
 
 
 Route::get('/finance-company', 'FinanceCompanyController@index')->before('auth');
@@ -111,3 +124,16 @@ Route::post('/finance-budget-item/update/{id}', 'FinanceBudgetItemController@upd
 Route::get('/finance-budget-item/edit/{id}', 'FinanceBudgetItemController@edit')->before('auth');
 Route::delete('/finance-budget-item/delete', 'FinanceBudgetItemController@delete')->before('auth');
 Route::get('/finance-budget-item/detail/{id}', 'FinanceBudgetItemController@detail')->before('auth');
+
+
+
+
+Route::get('/finance-user', 'FinanceUserController@index')->before('auth');
+Route::get('/finance-user/detail/{id}', 'FinanceUserController@detail')->before('auth');
+Route::get('/finance-user/create', 'FinanceUserController@create')->before('auth');
+Route::get('/finance-user/edit/{id}', 'FinanceUserController@edit')->before('auth');
+Route::post('/finance-user/update/{id}', 'FinanceUserController@update')->before('auth');
+Route::post('/finance-user/save', 'FinanceUserController@save')->before('auth');
+Route::delete('/finance-user/delete', 'FinanceUserController@delete')->before('auth');
+Route::get('/finance-user-password/{id}', 'FinanceUserPasswordController@edit')->before('auth');
+Route::post('/finance-user-password/update/{id}', 'FinanceUserPasswordController@update')->before('auth');

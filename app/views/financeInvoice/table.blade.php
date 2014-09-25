@@ -34,7 +34,7 @@
     @foreach($invoices as $invoice)
 
     <tr
-        class='<?
+        class='<?php
 
         if($invoice->due_date < date('Y-m-d') && $invoice->state == 'unpaid')
         {

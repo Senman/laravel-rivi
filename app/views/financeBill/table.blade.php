@@ -1,7 +1,6 @@
 <table class="table table-bordered">
     <thead>
 
-    <tr>
 
 
     <tr>
@@ -31,7 +30,6 @@
     </tr>
 
 
-    </tr>
 
     </thead>
     <tbody>
@@ -39,7 +37,7 @@
     @foreach($bills as $bill)
 
     <tr
-        class='<?
+        class='<?php
 
         if($bill->due_date < date('Y-m-d') && $bill->paid == false)
         {

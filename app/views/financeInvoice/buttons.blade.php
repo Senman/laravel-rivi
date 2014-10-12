@@ -1,7 +1,7 @@
 {{ link_to_action('FinanceInvoiceController@edit', 'Editovat fakturu', array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
 
 
-{{ link_to_action('FinanceInvoiceController@edit', 'Editovat položky', array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
+{{ link_to_action('FinanceInvoiceController@createThird', 'Editovat položky', array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
 
 
 {{ link_to_action('FinanceInvoiceController@printInvoice', 'Tisk', array($invoice->id), array('class' => 'btn btn-default btn-block') )}}

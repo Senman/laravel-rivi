@@ -25,7 +25,20 @@
         <div class="col-md-9">
 
 
-            <h1>{{$invoice->name }}  <small>@include('layouts.invoiceState' , array('state'=>$invoice->state)) </small>  </h1>
+            <h1>{{$invoice->name }}
+
+                <br>
+
+                <small>
+
+                    {{ $invoice->pre_year.$invoice->year.$invoice->pre_number.sprintf("%03d",$invoice->number)
+                    }}
+                </small>
+
+            </h1>
+
+
+            @include('layouts.invoiceState' , array('state'=>$invoice->state))
 
             <hr>
 

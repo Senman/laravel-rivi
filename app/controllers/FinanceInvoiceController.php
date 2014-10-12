@@ -46,8 +46,8 @@ class FinanceInvoiceController extends BaseController
         $invoice->date_vat = date('Y-m-d');
 
         $invoice->home_name = 'Senman s.r.o.';
-        $invoice->home_street = 'Jugoslavskych Partyzanu 1580/21';
-        $invoice->home_zip = '160 00';
+        $invoice->home_street = 'Argentinská 38';
+        $invoice->home_zip = '170 00';
         $invoice->home_city = 'Praha';
         $invoice->home_country = 'Czech Republic';
         $invoice->home_id = '24243485';
@@ -120,9 +120,7 @@ class FinanceInvoiceController extends BaseController
 
     public function add()
     {
-
         $item = new Item(Input::all());
-
 
         if (!$item->save()) {
             Session::flash('message', 'Error!');
@@ -132,8 +130,30 @@ class FinanceInvoiceController extends BaseController
         Session::flash('message', 'Successfully created Invoice!');
         return Redirect::action('FinanceInvoiceController@createThird', $item->invoice->id);
 
+    }
+
+
+    public function remove()
+    {
+
+        $id = Input::get('id');
+        $item = Item::find($id);
+
+        $invoice_id = $item->invoice->id;
+
+
+        if (!$item->delete()) {
+            Session::flash('message', 'Error!');
+            return Redirect::back();
+        }
+
+
+        Session::flash('message', 'Successfully created Invoice!');
+        return Redirect::action('FinanceInvoiceController@createThird', $invoice_id);
 
     }
+
+
 
 
     public function edit($id)
@@ -153,6 +173,17 @@ class FinanceInvoiceController extends BaseController
     {
 
         $invoice = Invoice::find($id);
+
+        $account_id =Input::get("account_id");
+
+        $account = Account::find($account_id);
+
+
+        $invoice->bankAccount	 = $account->number;
+        $invoice->bankName = $account->name;
+        $invoice->bankSwift = $account->swift;
+        $invoice->bankIban = $account->iban;
+
 
 
         if (!$invoice->update(Input::all())) {
@@ -240,7 +271,6 @@ class FinanceInvoiceController extends BaseController
 
         Session::flash('message', 'Successfully deleted!');
         return Redirect::action('FinanceInvoiceController@index');
-
 
     }
 

@@ -30,9 +30,6 @@
     {{ link_to_action('FinanceAccountController@index', 'Učty' ) }}
 </li>
 
-<li>
-    {{ link_to_action('UserController@listOfUsers', 'Uživatelé' ) }}
-</li>
 
 
 <li>

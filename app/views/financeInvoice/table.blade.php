@@ -17,8 +17,8 @@
 
         <th>splatné</th>
 
-
         <th style="text-align: right">částka</th>
+        <th style="text-align: right">částka s DPH</th>
 
         <th style="text-align: right">stav</th>
 
@@ -87,9 +87,10 @@
 
         </td>
 
-
-
-
+        <td style="text-align: right">
+        {{ number_format( $invoice->priceTotal, 2,',',' ') }}
+            {{$invoice->currency}}
+        </td>
 
         <td style="text-align: right">
             {{ number_format($invoice->priceVatTotal , 2,',',' ') }}

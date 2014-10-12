@@ -71,12 +71,6 @@ class UserController extends BaseController
 
     }
 
-    public function listOfUsers()
-    {
-        $users = User::all();
-        return View::make('user.listOfUsers')->with('users', $users);
-    }
-
 
     public function detail($id)
     {

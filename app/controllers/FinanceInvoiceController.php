@@ -207,7 +207,7 @@ class FinanceInvoiceController extends BaseController
         $account = Account::find($account_id);
 
 
-        $year = 2014;
+        $year =  date("Y");;
 
         $number = Invoice::where('year', $year)->max('number') + 0;
 
@@ -222,7 +222,7 @@ class FinanceInvoiceController extends BaseController
 
         $invoice->state = 'unpaid';
 
-        $invoice->year = 2014;
+        $invoice->year = $year;
         $invoice->pre_number = '';
         $invoice->pre_year = '';
         $invoice->number = $number + 1;

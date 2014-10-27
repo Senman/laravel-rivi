@@ -22,6 +22,8 @@ Route::get('/logout', 'LogoutController@index')->before('auth');
 
 Route::get('/', 'HomeController@index')->before('auth');
 Route::get('/about', 'HomeController@about');
+
+
 Route::get('/user', 'UserController@index')->before('auth');
 Route::get('/user/password/edit/{id}', 'UserPasswordController@edit')->before('auth');
 Route::get('/user/contact/edit/{id}', 'UserController@editContact')->before('auth');

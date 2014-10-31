@@ -39,7 +39,7 @@
 
              <hr>
 
-            @include('financeBill.table', array('bills' => $budgetItem->bills ))
+            @include('financeBudgetItem.tableBill', array('budgetItem' => $budgetItem ))
         </div>
 
 

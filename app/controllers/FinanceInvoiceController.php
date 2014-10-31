@@ -7,7 +7,7 @@ class FinanceInvoiceController extends BaseController
     public function index()
     {
 
-        $invoices = Invoice::orderBy('date_issued', 'desc')->paginate(10);
+        $invoices = Invoice::orderBy('year', 'desc')->orderBy('number', 'desc')->paginate(10);
         return View::make('financeInvoice.index')->with('invoices', $invoices);
 
 

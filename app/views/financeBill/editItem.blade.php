@@ -77,8 +77,8 @@
                 <div class="form-group">
                     <label for="name">Příjem </label>
 
+                    {{ Form::text('pivot_income' , null, array( 'class' => 'form-control')) }}
 
-                    {{ Form::text('pivot_outcome' , null, array( 'class' => 'form-control')) }}
 
                 </div>
 
@@ -87,10 +87,10 @@
             <div class="col-md-2">
 
                 <div class="form-group">
-                    <label for="name">Výdaj </label>
+                    <label for="name">Výdaj  </label>
 
 
-                    {{ Form::text('pivot_income' , null, array( 'class' => 'form-control')) }}
+                    {{ Form::text('pivot_outcome' , null, array( 'class' => 'form-control')) }}
 
                 </div>
 
@@ -150,27 +150,35 @@
                     DPH
                 </th>
             </tr>
-            @foreach($bill->budgetItems as $budgetItems)
+            @foreach($bill->budgetItems as $budgetItem)
             <tr>
                 <td>
-                    {{$budgetItems->pivot->pivot_name}}
+                    {{$budgetItem->pivot->pivot_name}}
                 </td>
                 <td>
-                    {{$budgetItems->budget->name}}
+                    {{$budgetItem->budget->name}}
                 </td>
                 <td>
-                    {{$budgetItems->name}}
+                    {{$budgetItem->name}}
                 </td>
-                <td style="text-align: right">
 
-                    {{ number_format($budgetItems->pivot->pivot_income  , 2,',',' ') }}   Kč
-                </td>
-                <td style="text-align: right">
 
-                    {{ number_format($budgetItems->pivot->pivot_outcome  , 2,',',' ') }}  Kč
+                <td style="text-align: right">
+                    {{ number_format($budgetItem->pivot->pivot_income  , 2,',',' ') }}   Kč
+
                 </td>
+
+
+                <td style="text-align: right">
+                    {{ number_format($budgetItem->pivot->pivot_outcome  , 2,',',' ') }}  Kč
+
+                </td>
+
+
+
+
                 <td>
-                    {{ $budgetItems->pivot->pivot_vat }} %
+                    {{ $budgetItem->pivot->pivot_vat }} %
 
                 </td>
 
@@ -178,7 +186,9 @@
 
                     {{ Form::open(array('action' => array('FinanceBillController@removeItem'))) }}
                     {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::hidden('id', $bill->id) }}
+                    {{ Form::hidden('bill_id', $bill->id) }}
+                    {{ Form::hidden('budgetItem_id', $budgetItem->id) }}
+
                     {{ Form::submit('Smazat',
                     array('class' => 'btn btn-danger btn-block', 'onclick' =>'return confirm("Are you sure?")' )) }}
                     {{ Form::close() }}
@@ -196,23 +206,30 @@
 
                 </th>
 
+
+
+                <td style="text-align: right">
+                    <strong>
+
+                        {{ number_format($bill->incomeTotal  , 2,',',' ') }}
+                        Kč
+                    </strong>
+                </td>
+
+
                 <td style="text-align: right">
 
                     <strong>
-                    {{ number_format($bill->incomeTotal  , 2,',',' ') }}
+
+                        {{ number_format($bill->outcomeTotal , 2,',',' ') }}
+
 
 
                     Kč
                     </strong>
                 </td>
 
-                <td style="text-align: right">
-                    <strong>
-                    {{ number_format($bill->outcomeTotal , 2,',',' ') }}
 
-                    Kč
-                    </strong>
-                </td>
 
                 <td></td>
 

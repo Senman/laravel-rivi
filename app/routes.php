@@ -49,7 +49,9 @@ Route::post('/finance-bill/update/{id}', 'FinanceBillController@update')->before
 Route::get('/finance-bill/download/{id}', 'FinanceBillController@download')->before('auth');
 Route::post('/finance-bill/pay', 'FinanceBillController@pay')->before('auth');
 Route::post('/finance-bill/unpay', 'FinanceBillController@unpay')->before('auth');
+
 Route::get('/finance-bill/item/{id}', 'FinanceBillController@editItem')->before('auth');
+
 Route::post('/finance-bill/item/add', 'FinanceBillController@addItem')->before('auth');
 Route::delete('/finance-bill/item/remove', 'FinanceBillController@removeItem')->before('auth');
 

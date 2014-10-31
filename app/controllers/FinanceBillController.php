@@ -111,15 +111,18 @@ class FinanceBillController extends BaseController
     public function addItem(){
 
         $bill_id = Input::get('bill_id');
-        $budget_item_id = Input::get('bill_id');
-        $bill = Bill::find($bill_id);
+        $budget_item_id = Input::get('budget_item_id');
+        $bill = Bill::findOrFail($bill_id);
 
         $pivot_name  = Input::get('pivot_name');
         $pivot_income = Input::get('pivot_income');
         $pivot_outcome = Input::get('pivot_outcome');
         $pivot_vat    = Input::get('pivot_vat');
 
-        $budgetItem = BudgetItem::find($budget_item_id);
+        $budgetItem = BudgetItem::findOrFail($budget_item_id);
+
+
+        $bill->budgetItems()->detach($budgetItem);
 
         $bill->budgetItems()->attach($budgetItem, array('pivot_name' => $pivot_name, 'pivot_income' => $pivot_income, 'pivot_outcome' => $pivot_outcome, 'pivot_vat' => $pivot_vat));
 
@@ -128,6 +131,31 @@ class FinanceBillController extends BaseController
         return Redirect::action('FinanceBillController@editItem', $bill_id );
 
     }
+
+
+
+
+    public function removeItem(){
+
+        $bill_id = Input::get('bill_id');
+        $bill = Bill::findOrFail($bill_id);
+
+        $budgetItem_id = Input::get('budgetItem_id');
+        $budgetItem = BudgetItem::findOrFail($budgetItem_id);
+
+
+
+
+
+        $bill->budgetItems()->detach($budgetItem);
+
+
+        Session::flash('message', 'Successfully created Project!');
+        return Redirect::action('FinanceBillController@editItem', $bill->id );
+
+    }
+
+
 
 
 

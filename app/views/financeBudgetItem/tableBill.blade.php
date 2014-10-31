@@ -36,7 +36,7 @@
 
 
 
-    @foreach($bills as $bill)
+    @foreach($budgetItem->bills as $bill )
 
     <tr
         class='<?php
@@ -131,6 +131,36 @@
 
 
 
+    <tr>
+
+        <th  colspan="5">Celkem</th>
+
+
+
+
+        <td style="text-align: right">
+
+
+
+        <strong>
+        {{ number_format($budgetItem->realIncomeTotal  , 2,',',' ') }}
+
+        Kč
+        </strong>
+        </td>
+
+
+
+
+        <td style="text-align: right">
+            <strong>
+                {{ number_format($budgetItem->realOutcomeTotal   , 2,',',' ') }}
+
+                Kč
+            </strong>
+        </td>
+
+    </tr>
 
 
 

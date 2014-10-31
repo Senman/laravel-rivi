@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration {
                 'username' => 'admin',
                 'firstName' => 'David' ,
                 'lastName' => 'Cerny' ,
-                'password' => Hash::make('hamachi159')
+                'password' => Hash::make('123456')
             )
         );
 	}

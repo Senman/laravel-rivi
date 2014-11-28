@@ -143,7 +143,10 @@
 
         </th>
         <td>
-            {{$invoice->date_issued }}
+
+
+
+            {{ date("d. m. Y",strtotime($invoice->date_issued)) }}
 
 
         </td>
@@ -170,8 +173,8 @@
 
         </th>
         <td>
-            {{$invoice->date_vat }}
 
+            {{ date("d. m. Y",strtotime($invoice->date_vat)) }}
 
         </td>
 
@@ -196,7 +199,9 @@
 
         </th>
         <td>
-            {{$invoice->due_date }}
+
+            {{ date("d. m. Y",strtotime($invoice->due_date)) }}
+
 
 
         </td>

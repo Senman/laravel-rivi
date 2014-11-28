@@ -18,17 +18,22 @@
 <div id="content">
 
 
+
+
+
+
+
 <table class="table table-bordered">
 
     <tr>
 
         <td style="width: 60%" class="special-heading">
-            <h2 style="color: #ffffff"> Faktura - daňový doklad </h2>
+            <h2 style="color: #ffffff"> INVOICE </h2>
 
         </td>
 
         <td style="text-align: right">
-            <h3>Číslo: </h3>
+            <h3>Number: </h3>
 
         </td>
 
@@ -46,13 +51,13 @@
 <table class="table table-bordered">
     <tr>
         <th style="width: 50%">
-            Dodavatel
+            Supplier
 
         </th>
 
 
         <th>
-            Odběratel
+            Customer
 
         </th>
 
@@ -72,8 +77,8 @@
             </p>
 
             <p>
-                IČ: {{$invoice->home_id }} <br>
-                DIČ: {{$invoice->home_vid }}
+                ID: {{$invoice->home_id }} <br>
+                VAT ID: {{$invoice->home_vid }}
             </p>
 
         </td>
@@ -91,8 +96,13 @@
             </p>
 
             <p>
-                IČ: {{$invoice->company_num }} <br>
-                DIČ: {{$invoice->company_vat_num }}
+                @if($invoice->company_num)
+                ID: {{$invoice->company_num }} <br>
+                @endif
+
+                @if($invoice->company_vat_num)
+                VAT ID: {{$invoice->company_vat_num }}
+                @endif
             </p>
         </td>
     </tr>
@@ -105,20 +115,40 @@
     <tr>
         <th style="width: 25%">
 
-            Forma úhrady
+            Payment Details
 
         </th>
         <td style="width: 25%">
-            {{$invoice->payment_type }}
+
+            {{ trans('messages.'.$invoice->payment_type.'_en') }}
 
         </td>
+
+
+
 
 
         <th style="width: 25%">
 
 
+
+            Invoice Nr.:
+
+
+
+
+
+
         </th>
         <td style="width: 25%">
+
+
+
+
+
+            {{$invoice->symbol_variable }}
+
+
 
 
         </td>
@@ -129,17 +159,19 @@
     <tr>
         <th>
 
-            Bankovní spojení
+            Bank
 
         </th>
         <td>
             {{$invoice->bankName }}
 
+            <br />
+            {{$invoice->bankAddress }}
         </td>
 
         <th>
 
-            Datum vystavení
+         Date Issued
 
         </th>
         <td>
@@ -155,18 +187,23 @@
     <tr>
         <th>
 
-            Číslo účtu
+            Account IBAN
 
         </th>
         <td>
 
-            {{$invoice->bankAccount }}
+
+
+            {{$invoice->bankIban }}
+
+
+
 
         </td>
 
         <th>
 
-            Datum zdanitel. plnění
+            Date of issue:
 
         </th>
         <td>
@@ -182,27 +219,33 @@
     <tr>
         <th>
 
-            Variabilní symbol
+            Account SWIFT
+
+
 
         </th>
         <td>
-            {{$invoice->symbol_variable }}
+            {{$invoice->bankSwift }}
+
 
         </td>
 
         <th>
 
-            Datum splatnosti
+            Due date:
 
         </th>
         <td>
-            {{$invoice->due_date }}
+           {{$invoice->due_date }}
 
 
         </td>
 
 
     </tr>
+
+
+
 
 
 </table>
@@ -215,16 +258,16 @@
     <tr>
 
 
-        <th style="width: 50%">Název</th>
+        <th style="width: 50%">Description</th>
 
         <!--        <th style="text-align: center">Množství</th>
                 <th style="text-align: right">Jednotková cena <br>[bez DPH]</th>-->
 
-        <th style="text-align: right">Cena bez DPH</th>
-        <th style=" text-align: right">DPH</th>
+        <th style="text-align: right">Price w/o VAT</th>
+        <th style=" text-align: right">VAT</th>
 
 
-        <th style="text-align: right">Cena včetně DPH</th>
+        <th style="text-align: right">Price with VAT</th>
     </tr>
 
 
@@ -257,7 +300,7 @@
 
         <td style="width: 20%; text-align: right">
 
-            {{ number_format($item->count * $item->price , 2,',',' ') }}
+            {{ number_format($item->count * $item->price , 2 , '.'  ,  ',') }}
             {{$invoice->currency}}
 
         </td>
@@ -268,7 +311,7 @@
         </td>
 
         <td style="width: 20%; text-align: right">
-            {{ number_format($item->count * $item->price * (( 100 + $item->vat) / 100 ) , 2,',',' ') }}
+            {{ number_format($item->count * $item->price * (( 100 + $item->vat) / 100 ) , 2 , '.'  ,  ',') }}
             {{$invoice->currency}}
 
         </td>
@@ -299,11 +342,11 @@
 
 
                             <th style="width: 50%">
-                                Základ pro DPH
+                                Total Price w/o VAT
                             </th>
 
                             <td style="width: 50%; text-align: right">
-                                {{ number_format( $invoice->priceTotal, 2,',',' ') }}
+                                {{ number_format( $invoice->priceTotal, 2 , '.'  ,  ',') }}
                                 {{$invoice->currency}}
                             </td>
 
@@ -327,11 +370,11 @@
 
                         <tr>
                             <th>
-                                Částka DPH
+                              VAT TOTAL
                             </th>
 
                             <td style="text-align: right">
-                                {{ number_format($invoice->vatTotal , 2,',',' ') }}
+                                {{ number_format($invoice->vatTotal , 2 , '.'  ,  ',') }}
                                 {{$invoice->currency}}
                             </td>
 
@@ -340,13 +383,14 @@
 
                         <tr>
                             <th>
-                                Celková cena s DPH
+                                TOTAL
                             </th>
 
                             <td style="text-align: right">
 
 
-                                {{ number_format($invoice->priceVatTotal, 2,',',' ') }}
+
+                                {{ number_format($invoice->priceVatTotal  , 2 , '.'  ,  ',') }}
                                 {{$invoice->currency}}
 
 
@@ -368,7 +412,7 @@
     </div>
 </div>
 
-Vystavil: {{$invoice->created_by }}
+
 
 </div>
 

@@ -42,7 +42,8 @@
 
             <hr>
 
-            @include('financeInvoice.template')
+
+            @include('financeInvoice.template_'.$invoice->language )
 
         </div>
 

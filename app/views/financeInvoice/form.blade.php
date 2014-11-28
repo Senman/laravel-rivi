@@ -156,7 +156,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="account">Způsob uhrady</label>
-            {{ Form::select('payment_type', array('Bankovní převod' => 'Bankovní převod'), null , array( 'class' =>
+            {{ Form::select('payment_type', array('bankTransfer' => 'Bankovní převod', 'cash' => 'V hotovosti' ), null , array( 'class' =>
             'form-control')) }}
 
         </div>

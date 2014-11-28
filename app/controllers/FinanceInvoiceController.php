@@ -179,10 +179,13 @@ class FinanceInvoiceController extends BaseController
         $account = Account::find($account_id);
 
 
+
         $invoice->bankAccount	 = $account->number;
         $invoice->bankName = $account->name;
         $invoice->bankSwift = $account->swift;
         $invoice->bankIban = $account->iban;
+
+        $invoice->bankAddress = $account->address;
 
 
 
@@ -217,7 +220,7 @@ class FinanceInvoiceController extends BaseController
         $invoice->bankSwift = $account->swift;
         $invoice->bankIban = $account->iban;
 
-
+        $invoice->bankAddress = $account->address;
         //$invoice->bankAccount
 
         $invoice->state = 'unpaid';

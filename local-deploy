@@ -1,22 +1,23 @@
 #!/bin/sh
 # Proper header for a Bash script.
 
-DEPLOY_ADDRESS="/var/www/rivi.senman.cz/app/"
-DEPLOY_ROOT="/var/www/rivi.senman.cz/"
+DEPLOY_ADDRESS="/var/www/rivi.senman.cz/app"
+DEPLOY_ROOT="/var/www/rivi.senman.cz"
 
 
 echo "Start deploy ..."
 
 
 
-cd ${DEPLOY_ADDRESS} && git pull && cd -
+cd ${DEPLOY_ROOT} && sudo git pull && cd -
 
 echo "...  deploy finished."
 
+sudo composer.phar update -d ${DEPLOY_ROOT}
 
-sudo composer.phar dump-autoload -d ${DEPLOY_ADDRESS}
+sudo composer.phar dump-autoload -d ${DEPLOY_ROOT}
 
-php ${DEPLOY_ADDRESS}/artisan dump-autoload
+php ${DEPLOY_ROOT}/artisan dump-autoload
 
 
-php ${DEPLOY_ADDRESS}/artisan migrate
+php ${DEPLOY_ROOT}/artisan migrate

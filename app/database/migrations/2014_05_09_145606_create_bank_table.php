@@ -18,6 +18,10 @@ class CreateBankTable extends Migration
 
             $table->engine = 'InnoDB';
 
+
+            $table->bigIncrements('id')->unique()->index();
+
+            
             $table->string('name');
 
             $table->string('account');

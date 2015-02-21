@@ -7,7 +7,8 @@ class CompanyController extends BaseController
 
     public function index()
     {
-        $companies = Company::all();
+        $user = Auth::user();
+        $companies =  $user->account->companies()->orderBy('name', 'asc')->paginate(10);
         return View::make('company.index')->with('companies', $companies);
     }
 
@@ -28,8 +29,8 @@ class CompanyController extends BaseController
     public function edit($id)
     {
 
-
-        $company = Company::find($id);
+        $user = Auth::user();
+        $company =  $user->account->companies()->findOrFail($id);
 
 
         return View::make('company.edit')
@@ -43,8 +44,8 @@ class CompanyController extends BaseController
     public function detail($id)
     {
 
-
-        $company = Company::find($id);
+        $user = Auth::user();
+        $company =  $user->account->companies()->findOrFail($id);
 
 
         $projects = $company->projects;
@@ -61,7 +62,10 @@ class CompanyController extends BaseController
     public function update($id)
     {
 
-        $company = Company::find($id);
+
+        $user = Auth::user();
+        $company =  $user->account->companies()->findOrFail($id);
+
 
         if (!$company->update(Input::all())) {
             Session::flash('message', 'Error!');
@@ -78,9 +82,13 @@ class CompanyController extends BaseController
     public function save()
     {
 
+        $user = Auth::user();
+        $account =  $user->account;
+
         $company = new Company(Input::all());
 
-        if (!$company->save()) {
+
+        if (!$account->companies()->save($company)) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }
@@ -97,7 +105,9 @@ class CompanyController extends BaseController
     {
 
         $id = Input::get('id');
-        $company = Company::find($id);
+
+        $user = Auth::user();
+        $company =  $user->account->companies()->findOrFail($id);
 
 
 

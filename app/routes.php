@@ -85,6 +85,24 @@ Route::get('/company/detail/{id}', 'CompanyController@detail')->before('auth');
 
 
 
+Route::get('/bank-account', 'BankAccountController@index')->before('auth');
+Route::get('/bank-account/create', 'BankAccountController@create')->before('auth');
+Route::get('/bank-account/edit/{id}', 'BankAccountController@edit')->before('auth');
+Route::post('/bank-account/save', 'BankAccountController@save')->before('auth');
+Route::post('/bank-account/update/{id}', 'BankAccountController@update')->before('auth');
+Route::delete('/bank-account/delete', 'BankAccountController@delete')->before('auth');
+Route::get('/bank-account/detail/{id}', 'BankAccountController@detail')->before('auth');
+
+
+Route::get('/bank', 'BankController@index')->before('auth');
+Route::get('/bank/create', 'BankController@create')->before('auth');
+Route::get('/bank/edit/{id}', 'BankController@edit')->before('auth');
+Route::post('/bank/save', 'BankController@save')->before('auth');
+Route::post('/bank/update/{id}', 'BankController@update')->before('auth');
+Route::delete('/bank/delete', 'BankController@delete')->before('auth');
+Route::get('/bank/detail/{id}', 'BankController@detail')->before('auth');
+
+
 Route::get('api-rest-company-invoices/{company_rsi}', 'CompanyRestController@invoices' );
 
 

@@ -39,6 +39,12 @@ class CreateBankTable extends Migration
 
 
 
+            $table->string('osi', 100); //origin source identificator
+            $table->unique( array('account_id','osi') );
+            $table->integer('version', 0 );
+
+
+
 
             $table->bigInteger('account_id')->unsigned();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');

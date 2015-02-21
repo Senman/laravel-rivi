@@ -4,7 +4,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="row ">
 
@@ -14,7 +14,7 @@
 
             <h1>
 
-              Account
+              Account: {{ $account->name }}
 
 
             </h1>

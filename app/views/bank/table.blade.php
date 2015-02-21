@@ -8,9 +8,9 @@
 
 
 
-        <th >{{ trans('messages.bankAccount.name') }}</th>
+        <th >{{ trans('messages.bank.name') }}</th>
 
-        <th >{{ trans('messages.bankAccount.number') }}</th>
+        <th >{{ trans('messages.bank.number') }}</th>
 
         <th >{{ trans('messages.iban') }}</th>
         <th >{{ trans('messages.swift') }}</th>
@@ -26,37 +26,37 @@
     </thead>
     <tbody>
 
-    @foreach($bankAccounts as $bankAccount)
+    @foreach($banks as $bank)
 
     <tr>
         <td>
 
-            {{ $bankAccount->name}}
+            {{ $bank->name}}
         </td>
 
         <td>
 
-            {{ $bankAccount->number}}
+            {{ $bank->number}}
         </td>
 
         <td>
 
-            {{ $bankAccount->iban}}
+            {{ $bank->iban}}
         </td>
 
         <td>
 
-            {{ $bankAccount->swift}}
+            {{ $bank->swift}}
         </td>
 
         <td>
 
-            {{ $bankAccount->bankName}}
+            {{ $bank->bankName}}
         </td>
 
         <td>
 
-            {{ link_to_action('BankAccountController@detail', trans('messages.detail'), array($bankAccount->id), array('class' => 'btn
+            {{ link_to_action('BankController@detail', trans('messages.detail'), array($bank->id), array('class' => 'btn
             btn-default btn-block') )}}
 
         </td>

@@ -14,7 +14,7 @@
 
             <h1>
 
-                {{ trans('messages.accounts') }}
+                {{ trans('messages.bankAccounts') }}
 
 
             </h1>
@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('FinanceAccountController@create', trans('messages.new'),null, $attributes = array('class'
+            {{ link_to_action('BankAccountController@create', trans('messages.new'),null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />
@@ -42,7 +42,7 @@
 
             <hr>
 
-            @include('financeAccount.table' , array('accounts'=>$accounts))
+            @include('bankAccount.table' , array('bankAccounts'=>$bankAccounts))
 
 
         </div>

@@ -3,6 +3,7 @@
 @section('content')
 
 
+
 <div class="container">
 
     <div class="row ">
@@ -13,8 +14,7 @@
 
             <h1>
 
-
-                {{ trans('messages.company.administration') }}
+                {{ trans('messages.banks') }}
 
 
             </h1>
@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('CompanyController@create', trans('messages.new.company'),null, $attributes = array('class'
+            {{ link_to_action('BankController@create', trans('messages.new'),null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />
@@ -34,27 +34,25 @@
 
     </div>
 
-
-
-
-
     <div class="row ">
 
 
         <div class="col-md-12">
 
-            @include('company.table' , array('companies'=>$companies))
 
+            <hr>
+
+            @include('bank.table' , array('banks'=>$banks))
 
 
         </div>
 
-
-
-
     </div>
 
 </div>
+
+
+
 
 
 @stop

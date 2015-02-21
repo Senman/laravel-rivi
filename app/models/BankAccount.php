@@ -11,10 +11,12 @@ class BankAccount extends Eloquent
     protected $guarded = array(); // Important
 
 
-    public function account()
+    public function bankAccount()
     {
-        return $this->belongsTo('Account');
+        return $this->belongsTo('BankAccount');
     }
+
+
 
 
 }

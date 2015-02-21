@@ -23,8 +23,6 @@ class CreateAccount extends Migration {
 
 
             $table->string('rsi', 100); //remote source identificator
-            $table->string('rsa');     // remote source address
-            $table->string('rsp', 20); // remote source protocol
             $table->integer('version', 0 );
 
 

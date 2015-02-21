@@ -18,6 +18,13 @@ class CreateInvoicesTable extends Migration
 
             $table->bigIncrements('id')->unique()->index();
 
+
+
+            $table->string('language');
+            $table->string('type');
+
+
+
             $table->string('pre_number');
             $table->integer('number');
             $table->string('pre_year');
@@ -27,55 +34,114 @@ class CreateInvoicesTable extends Migration
 
             $table->string('name');
 
+
+
             $table->string('currency');
             $table->decimal('currency_transform', 10, 4);
 
-            $table->string('account');
+
+
+
 
 
             $table->string('symbol_constant');
             $table->string('symbol_variable');
             $table->string('symbol_specific');
 
-            $table->date('date_issued');
-            $table->date('due_date');
-            $table->date('date_vat');
 
-            $table->text('note');
-            $table->string('role');
 
-            $table->string('created_by');
+
+            $table->date('issued_at');
+            $table->date('due_at');
+            $table->date('vat_at');
+
+
+
+
+
+
+
+
 
 
             //company
 
             $table->string('company_name');
-
             $table->string('company_street');
+            $table->string('company_house_num');
             $table->string('company_zip');
             $table->string('company_city');
+            $table->string('company_state');
             $table->string('company_country');
+            $table->string('company_idn');
+            $table->string('company_vat_idn');
 
-            $table->string('company_num');
-            $table->string('company_vat_num');
+            $table->string('company_isi', 100); //internal source identificator
+
 
 
             $table->string('home_name');
-
             $table->string('home_street');
+            $table->string('home_house_num');
             $table->string('home_zip');
             $table->string('home_city');
+            $table->string('home_state');
             $table->string('home_country');
-            $table->string('home_id');
-            $table->string('home_vid');
+            $table->string('home_idn');
+            $table->string('home_vat_idn');
+
+            $table->string('home_isi', 100); //internal source identificator
+
+
+
+
 
 
             $table->string('state');
-            $table->date('paid_date');
-            $table->string('language');
+            $table->date('paid_at');
+
+
+
+
+            $table->text('note');
+            $table->string('created_by');
+
+
+
+
             $table->string('payment_type');
+
+
+
+
+            $table->string('bank_account_isi', 100); //internal source identificator
+            $table->string('bank_account_name', 100);
+            $table->string('bank_account_number');
+            $table->string('bank_account_iban');
+            $table->string('bank_account_swift');
+
+
+
+
+            $table->string('bank_isi', 100); //internal source identificator
+            $table->string('bank_name');
+            $table->string('bank_account');
+            $table->string('bank_swift');
+            $table->string('bank_iban');
+            $table->string('bank_street');
+            $table->string('bank_house_number');
+            $table->string('bank_zip');
+            $table->string('bank_city');
+            $table->string('bank_country');
+
+
+
+
+
+
+
+
             $table->text('description');
-            $table->string('bankAddress', 400);
 
 
 
@@ -83,7 +149,10 @@ class CreateInvoicesTable extends Migration
 
 
 
-            $table->string('osi', 100);
+
+
+
+            $table->string('osi', 100); //origin source identificator
             $table->unique( array('account_id','osi') );
             $table->integer('version', 0 );
 

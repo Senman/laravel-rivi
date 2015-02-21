@@ -15,7 +15,7 @@
 
 
         <li>
-            {{ link_to_action('BankAccountController@index', 'Učty' ) }}
+            {{ link_to_action('BankController@index', 'Bankovni Učty' ) }}
         </li>
 
 

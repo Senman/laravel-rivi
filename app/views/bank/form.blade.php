@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="name">{{ trans('messages.bankAccount.name') }} </label>
+    <label for="name">{{ trans('messages.bank.name') }} </label>
 
 
     {{ Form::text('name' , null, array( 'class' => 'form-control')) }}
@@ -9,7 +9,7 @@
 
 
 <div class="form-group">
-    <label for="name">{{ trans('messages.bankAccount.number') }}</label>
+    <label for="name">{{ trans('messages.bank.number') }}</label>
 
 
     {{ Form::text('number' , null, array( 'class' => 'form-control')) }}

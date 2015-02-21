@@ -1,13 +1,14 @@
 <?php
 
-class FinanceAccountController extends BaseController
+class BankAccountController extends BaseController
 {
 
 
     public function index()
     {
-        $accounts = Account::all();
-        return View::make('financeAccount.index')->with('accounts', $accounts);
+        $bankAccounts = BankAccount::all();
+        return View::make('bankAccount.index')
+            ->with('bankAccounts', $bankAccounts);
     }
 
 
@@ -15,46 +16,46 @@ class FinanceAccountController extends BaseController
     public function create()
     {
 
-        $account = new Account();
+        $bankAccount = new BankAccount();
 
-        return View::make('financeAccount.create')
-            ->with('account', $account);
+        return View::make('bankAccount.create')
+            ->with('bankAccount', $bankAccount);
     }
 
 
     public function detail($id)
     {
-        $account = Account::find($id);
+        $bankAccount = BankAccount::find($id);
 
-        return View::make('financeAccount.detail')
+        return View::make('bankAccount.detail')
 
-            ->with('account', $account);
+            ->with('bankAccount', $bankAccount);
     }
 
 
     public function edit($id)
     {
-        $account = Account::find($id);
+        $bankAccount = BankAccount::find($id);
 
-        return View::make('financeAccount.edit')
+        return View::make('bankAccount.edit')
 
-            ->with('account', $account);
+            ->with('bankAccount', $bankAccount);
     }
 
 
     public function save()
     {
 
-        $account = new Account(Input::all());
+        $bankAccount = new BankAccount(Input::all());
 
 
-        if (!$account->save()) {
+        if (!$bankAccount->save()) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }
 
         Session::flash('message', 'Successfully created Project!');
-        return Redirect::action('FinanceAccountController@index');
+        return Redirect::action('BankAccountController@index');
 
 
     }
@@ -62,15 +63,15 @@ class FinanceAccountController extends BaseController
     public function update($id)
     {
 
-        $account = Account::find($id);
+        $bankAccount = BankAccount::find($id);
 
 
-        if (!$account->update(Input::all())) {
+        if (!$bankAccount->update(Input::all())) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }
         Session::flash('message', 'Successfully Updated!');
-        return Redirect::action('FinanceAccountController@index');
+        return Redirect::action('BankAccountController@index');
 
 
     }
@@ -80,16 +81,16 @@ class FinanceAccountController extends BaseController
     {
 
         $id = Input::get('id');
-        $account = Account::find($id);
+        $bankAccount = BankAccount::find($id);
 
 
-        if (!$account->delete()) {
+        if (!$bankAccount->delete()) {
             Session::flash('message', 'Error!');
             return Redirect::back();
         }
 
         Session::flash('message', 'Successfully deleted!');
-        return Redirect::action('FinanceAccountController@index');
+        return Redirect::action('BankAccountController@index');
 
 
     }

@@ -11,6 +11,10 @@ class Account extends Eloquent
     protected $guarded = array(); // Important
 
 
+    public function companies()
+    {
+        return $this->hasMany('Company');
+    }
 
 
     public function invoices()
@@ -19,9 +23,9 @@ class Account extends Eloquent
     }
 
 
-    public function bankAccounts()
+    public function banks()
     {
-        return $this->hasMany('BankAccount');
+        return $this->hasMany('Bank');
     }
 
     public function users()

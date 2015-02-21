@@ -7,7 +7,14 @@ class AccountController extends BaseController
     {
 
 
-       return View::make('account.index');
+        $user = Auth::user();
+        $account =  $user->account;
+
+
+
+
+       return View::make('account.index')
+           ->with('account', $account);
 
 
     }

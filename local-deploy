@@ -28,7 +28,7 @@ if echo "$answer" | grep -iq "^copy" ;then
 
 else
 
-    cd ${DEPLOY_ROOT} && ${SUDO}  git fetch origin && ${SUDO} git clean -fd && ${SUDO} git pull && cd -
+    cd ${DEPLOY_ROOT} && ${SUDO}  git reset --hard HEAD && ${SUDO} git clean -f && ${SUDO} git pull && cd -
 fi
 
 

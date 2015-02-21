@@ -11,17 +11,17 @@
 
 
             <h1>
-                {{ trans('messages.new.bank.bankAccount') }}
+                {{ trans('messages.edit') }}
 
 
             </h1>
 
 
 
-            {{Form::model($bankAccount, array('action' => array('BankAccountController@save'))) }}
+            {{Form::model($bank, array('action' => array('BankController@update',  $bank->id))) }}
 
 
-            @include('bankAccount.form' , array('bankAccount'=>$bankAccount))
+            @include('bank.form' , array('bank'=>$bank))
 
 
             <button type="submit" class="btn btn-default">{{ trans('messages.submit') }}</button>

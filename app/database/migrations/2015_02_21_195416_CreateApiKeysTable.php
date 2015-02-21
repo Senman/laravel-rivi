@@ -28,7 +28,7 @@ class CreateApiKeysTable extends Migration
             $table->unique( array('account_id','key') );
 
 
-            $table->date('expire');
+            $table->date('expire_at');
 
 
             $table->bigInteger('account_id')->unsigned();

@@ -18,10 +18,10 @@
 
 
 
-            {{Form::model($account, array('action' => array('FinanceAccountController@update',  $account->id))) }}
+            {{Form::model($bankAccount, array('action' => array('BankAccountController@update',  $bankAccount->id))) }}
 
 
-            @include('financeAccount.form' , array('account'=>$account))
+            @include('bankAccount.form' , array('bankAccount'=>$bankAccount))
 
 
             <button type="submit" class="btn btn-default">{{ trans('messages.submit') }}</button>

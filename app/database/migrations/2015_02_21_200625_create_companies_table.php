@@ -20,21 +20,28 @@ class CreateCompaniesTable extends Migration {
             $table->bigIncrements('id')->unique()->index();
 
             $table->string('name', 100);
-            $table->string('street', 100);
-            $table->string('zip', 10);
-            $table->string('city', 50);
-            $table->string('bankName', 100);
-            $table->string('bankAccount', 100);
+            $table->string('type', 100);
+
+            $table->string('bank_name', 100);
+            $table->string('bank_account', 100);
+
             $table->string('telephone',50);
             $table->string('email',50);
-            $table->string('cid', 20);
-            $table->string('vatid', 20);
+
+            $table->string('idn', 20);
+            $table->string('vat_idn', 20);
+
+
+
+            $table->string('street', 100);
+            $table->string('house_num', 100);
+            $table->string('zip', 10);
+            $table->string('city', 50);
             $table->string('country', 300);
 
 
             $table->string('rsi', 100);  //remote source identificator
-            $table->string('rsa');       // remote source address
-            $table->string('rsp', 20);   // remote source protocol
+
             $table->integer('version', 0 );
 
 

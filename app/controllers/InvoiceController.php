@@ -7,7 +7,8 @@ class InvoiceController extends BaseController
     public function index()
     {
 
-        $invoices = Invoice::orderBy('year', 'desc')->orderBy('number', 'desc')->paginate(10);
+        $user = Auth::user();
+        $invoices = $user->account->invoices()->orderBy('year', 'desc')->orderBy('number', 'desc')->paginate(10);
         return View::make('invoice.index')->with('invoices', $invoices);
 
 
@@ -17,10 +18,13 @@ class InvoiceController extends BaseController
     public function createFirst()
     {
 
+        $user = Auth::user();
+        $account =  $user->account;
 
+        $companies =  $account->companies()->paginate(15);
 
-        return View::make('invoice.createFirst');
-          //  ->with('companies', $companies);
+        return View::make('invoice.createFirst')
+            ->with('companies', $companies);
 
     }
 
@@ -28,8 +32,11 @@ class InvoiceController extends BaseController
     public function createSecond($id)
     {
 
+        $user = Auth::user();
+        $company = $user->account->companies()->findOrFail($id);
 
-        $company = Company::find($id);
+
+
 
         $invoice = new Invoice();
 
@@ -78,6 +85,10 @@ class InvoiceController extends BaseController
     }
 
 
+
+
+
+
     public function createFinish($id)
     {
 
@@ -89,6 +100,10 @@ class InvoiceController extends BaseController
             ->with('invoice', $invoice);
 
     }
+
+
+
+
 
     public function printInvoice($id)
     {
@@ -202,11 +217,15 @@ class InvoiceController extends BaseController
     public function save()
     {
 
+        $user = Auth::user();
+
+
+
         $invoice = new Invoice(Input::all());
 
-        $account_id =Input::get("account_id");
+       // $account_id =Input::get("account_id");
 
-        $account = Account::find($account_id);
+       // $account = Account::find($account_id);
 
 
         $year =  date("Y");;
@@ -214,13 +233,15 @@ class InvoiceController extends BaseController
         $number = Invoice::where('year', $year)->max('number') + 0;
 
 
-        $invoice->bankAccount	 = $account->number;
+        /*$invoice->bankAccount	 = $account->number;
         $invoice->bankName = $account->name;
         $invoice->bankSwift = $account->swift;
         $invoice->bankIban = $account->iban;
-
         $invoice->bankAddress = $account->address;
         //$invoice->bankAccount
+
+        */
+
 
         $invoice->state = 'unpaid';
 
@@ -233,7 +254,9 @@ class InvoiceController extends BaseController
 
         $invoice->created_by = Auth::user()->firstName . ' ' . Auth::user()->lastName;
 
-        if (!$invoice->save()) {
+
+
+        if (!$company = $user->account->invoices()->save($invoice)) {
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }

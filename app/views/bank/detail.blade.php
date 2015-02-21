@@ -24,12 +24,12 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('BankAccountController@index', trans('messages.back'), null , array('class' => 'btn
+            {{ link_to_action('BankController@index', trans('messages.back'), null , array('class' => 'btn
             btn-default btn-block')) }}
 
             <br/>
 
-            @include('bankAccount.buttons' , array('bankAccount'=>$bankAccount))
+            @include('bank.buttons' , array('bank'=>$bank))
 
 
         </div>
@@ -44,20 +44,20 @@
             <table class="table table-bordered">
                 <tr>
                     <th style="width: 50%">
-                        {{ trans('messages.bankAccount.name') }}
+                        {{ trans('messages.bank.name') }}
                     </th>
                     <td>
-                        {{ $bankAccount->name }}
+                        {{ $bank->name }}
                     </td>
                 </tr>
 
 
                 <tr>
                     <th style="width: 50%">
-                        {{ trans('messages.bankAccount.number') }}
+                        {{ trans('messages.bank.number') }}
                     </th>
                     <td>
-                        {{ $bankAccount->number }}
+                        {{ $bank->number }}
                     </td>
                 </tr>
 
@@ -67,7 +67,7 @@
                         {{ trans('messages.iban') }}
                     </th>
                     <td>
-                        {{ $bankAccount->iban }}
+                        {{ $bank->iban }}
                     </td>
                 </tr>
 
@@ -77,7 +77,7 @@
                         {{ trans('messages.swift') }}
                     </th>
                     <td>
-                        {{ $bankAccount->swift }}
+                        {{ $bank->swift }}
                     </td>
                 </tr>
 
@@ -88,7 +88,7 @@
                         {{ trans('messages.bank.name') }}
                     </th>
                     <td>
-                        {{ $bankAccount->bankName }}
+                        {{ $bank->bankName }}
                     </td>
                 </tr>
 

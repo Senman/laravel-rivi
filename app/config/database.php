@@ -55,8 +55,8 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'rive',
-			'username'  => 'rive',
+			'database'  => 'rivi',
+			'username'  => 'rivi',
 			'password'  => '123456',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

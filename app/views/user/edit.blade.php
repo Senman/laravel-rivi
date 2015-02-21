@@ -15,6 +15,7 @@
 
             @include('user.form' , array('user'=>$user))
 
+
             <button type="submit" class="btn btn-default">Submit</button>
 
             {{ Form::close() }}

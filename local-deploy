@@ -1,8 +1,8 @@
 #!/bin/sh
 # Proper header for a Bash script.
 
-DEPLOY_ADDRESS="/var/www/rive.senman.cz/app/"
-DEPLOY_ROOT="/var/www/rive.senman.cz/"
+DEPLOY_ADDRESS="/var/www/rivi.senman.cz/app/"
+DEPLOY_ROOT="/var/www/rivi.senman.cz/"
 
 
 echo "Start deploy ..."
@@ -27,4 +27,10 @@ scp ./composer.json  ${DEPLOY_ROOT}
 
 echo "...  deploy finished."
 
-php /var/www/rive.senman.cz/artisan migrate
+
+sudo composer.phar dump-autoload -d /var/www/senman.cz/
+
+php /var/www/senman.cz/artisan dump-autoload
+
+
+php /var/www/rivi.senman.cz/artisan migrate

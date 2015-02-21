@@ -3,17 +3,18 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration {
+class CreateItemsTable extends Migration
+{
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
 
-        Schema::create('items', function ($table) {
+        Schema::create('invoice_items', function ($table) {
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id')->unique()->index();
@@ -24,18 +25,21 @@ class CreateItemsTable extends Migration {
             $table->integer('vat');
 
 
+            $table->bigInteger('invoice_id')->unsigned();
+            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
+
 
         });
-	}
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		//
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
 
 }

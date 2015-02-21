@@ -23,6 +23,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    {{ HTML::script('js/jquery-1.11.0.min.js') }}
+
 </head>
 
 
@@ -38,7 +41,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{ link_to_action('HomeController@about', 'Rive - Senman s.r.o.' ,null, array( 'class' => 'navbar-brand')) }}
+
+
+            <a href="#" class="navbar-brand" id="navbarSubMenu">
+                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                &NonBreakingSpace;
+                Rive - Senman s.r.o.
+            </a>
+
 
         </div>
         <div class="navbar-collapse collapse">
@@ -69,12 +79,32 @@
                 <li>
                     {{ link_to_action('LoginController@index', 'Přihlásit' ) }}
 
-                    @endif
+                @endif
 
             </ul>
 
         </div>
 
+
+        @if(Auth::check())
+
+        <div id="navbarSubMenuContainer" style="display:none; ">
+        </div>
+
+        <script>
+
+            $.get("http://zone.senman.com/menu/index.php", function (data) {
+                $("#navbarSubMenuContainer").html(data);
+
+            });
+
+            $("#navbarSubMenu").click(function () {
+                $("#navbarSubMenuContainer").slideToggle();
+            });
+
+
+        </script>
+        @endif
     </div>
 </div>
 
@@ -120,7 +150,6 @@
 <!-- /container -->
 
 
-{{ HTML::script('js/jquery-1.11.0.min.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/bootstrap-datepicker.js') }}
 
@@ -136,17 +165,17 @@
 
 <script>
 
-    $('select.ajax').on('change', function() {
+    $('select.ajax').on('change', function () {
 
-       var url =  $(this).val();
+        var url = $(this).val();
 
-    $.ajax({
-        url: url,
-        cache: false
-    })
-        .done(function( html ) {
-            $( "#company" ).append( html );
-        });
+        $.ajax({
+            url: url,
+            cache: false
+        })
+            .done(function (html) {
+                $("#company").append(html);
+            });
     });
 
 </script>

@@ -6,7 +6,16 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
-	/**
+
+
+    public function account()
+    {
+        return $this->belongsTo('Account');
+    }
+
+
+
+    /**
 	 * The database table used by the model.
 	 *
 	 * @var string

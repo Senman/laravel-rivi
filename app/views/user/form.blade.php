@@ -30,7 +30,10 @@
         <div class="form-group">
             <label for="email">Email</label>
             {{ Form::text('email' , null, array( 'class' => 'form-control')) }}
-            {{ Form::hidden('id' , null, array( 'class' => 'form-control')) }}
+
         </div>
     </div>
 </div>
+
+
+

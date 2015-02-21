@@ -18,7 +18,12 @@ class CreateInvoicesTable extends Migration
 
             $table->bigIncrements('id')->unique()->index();
 
-            $table->string('number')->unique();
+            $table->string('pre_number');
+            $table->integer('number');
+            $table->string('pre_year');
+            $table->integer('year');
+
+
 
             $table->string('name');
 
@@ -77,8 +82,14 @@ class CreateInvoicesTable extends Migration
 
             $table->text('description');
 
-            //items
 
+
+            $table->string('bankAddress', 400);
+
+
+
+            $table->bigInteger('account_id')->unsigned();
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
 
 
 

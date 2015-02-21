@@ -12,26 +12,33 @@ class Invoice extends Eloquent
 
 
 
-    public function company()
+
+    public function account()
     {
-        return $this->belongsTo('Company');
+        return $this->belongsTo('Account');
     }
 
 
-    public function items()
+
+
+    public function invoiceItems()
     {
-        return $this->hasMany('Item');
+        return $this->hasMany('InvoiceItem');
     }
+
+
+
+
 
 
     public function getPriceTotalAttribute()
     {
-         $items = $this->items()->get();
+        $invoiceItems = $this->invoiceItems()->get();
 
         $sum = 0;
-        foreach($items as $item){
+        foreach($invoiceItems as $invoiceItem){
 
-            $sum +=  $item->price * $item->count;
+            $sum +=  $invoiceItem->price * $invoiceItem->count;
 
         }
 
@@ -41,12 +48,12 @@ class Invoice extends Eloquent
 
     public function getPriceVatTotalAttribute()
     {
-        $items = $this->items()->get();
+        $invoiceItems = $this->invoiceItems()->get();
 
         $sum = 0;
-        foreach($items as $item){
+        foreach($invoiceItems as $invoiceItem){
 
-            $sum +=  $item->price * $item->count * (($item->vat + 100 ) / 100 );
+            $sum +=  $invoiceItem->price * $invoiceItem->count * (($invoiceItem->vat + 100 ) / 100 );
 
         }
 
@@ -56,12 +63,12 @@ class Invoice extends Eloquent
 
     public function getVatTotalAttribute()
     {
-        $items = $this->items()->get();
+        $invoiceItems = $this->invoiceItems()->get();
 
         $sum = 0;
-        foreach($items as $item){
+        foreach($invoiceItems as $invoiceItem){
 
-            $sum +=  ($item->price * $item->count * (($item->vat + 100 ) / 100 )) -  ($item->price * $item->count);
+            $sum +=  ($invoiceItem->price * $invoiceItem->count * (($invoiceItem->vat + 100 ) / 100 )) -  ($invoiceItem->price * $invoiceItem->count);
 
 
         }

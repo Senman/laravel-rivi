@@ -24,15 +24,20 @@ Route::get('/', 'HomeController@index')->before('auth');
 Route::get('/about', 'HomeController@about');
 
 
+Route::get('/account', 'AccountController@index')->before('auth');
+
+
 Route::get('/user', 'UserController@index')->before('auth');
-Route::get('/user/password/edit/{id}', 'UserPasswordController@edit')->before('auth');
 Route::get('/user/contact/edit/{id}', 'UserController@editContact')->before('auth');
 Route::get('/user/edit/{id}', 'UserController@edit')->before('auth');
-Route::post('/user/password/update/{id}', 'UserPasswordController@update')->before('auth');
 Route::post('/user/contact/update/{id}', 'UserController@updateContact')->before('auth');
 Route::post('/user/update/{id}', 'UserController@update')->before('auth');
 Route::get('/user/list', 'UserController@listOfUsers')->before('auth');
 Route::get('/user/detail/{id}', 'UserController@detail')->before('auth');
+
+Route::get('/user/password/edit/{id}', 'UserPasswordController@edit')->before('auth');
+Route::post('/user/password/update/{id}', 'UserPasswordController@update')->before('auth');
+
 
 
 
@@ -57,15 +62,15 @@ Route::post('/invoice/change-state', 'InvoiceController@changeState')->before('a
 
 
 
-Route::get('/admin-user', 'FinanceUserController@index')->before('auth');
-Route::get('/admin-user/detail/{id}', 'FinanceUserController@detail')->before('auth');
-Route::get('/admin-user/create', 'FinanceUserController@create')->before('auth');
-Route::get('/admin-user/edit/{id}', 'FinanceUserController@edit')->before('auth');
-Route::post('/admin-user/update/{id}', 'FinanceUserController@update')->before('auth');
-Route::post('/admin-user/save', 'FinanceUserController@save')->before('auth');
-Route::delete('/admin-user/delete', 'FinanceUserController@delete')->before('auth');
-Route::get('/admin-user-password/{id}', 'FinanceUserPasswordController@edit')->before('auth');
-Route::post('/admin-user-password/update/{id}', 'FinanceUserPasswordController@update')->before('auth');
+Route::get('/admin-user', 'AdminUserController@index')->before('auth');
+Route::get('/admin-user/detail/{id}', 'AdminUserController@detail')->before('auth');
+Route::get('/admin-user/create', 'AdminUserController@create')->before('auth');
+Route::get('/admin-user/edit/{id}', 'AdminUserController@edit')->before('auth');
+Route::post('/admin-user/update/{id}', 'AdminUserController@update')->before('auth');
+Route::post('/admin-user/save', 'AdminUserController@save')->before('auth');
+Route::delete('/admin-user/delete', 'AdminUserController@delete')->before('auth');
+Route::get('/admin-user-password/{id}', 'AdminUserPasswordController@edit')->before('auth');
+Route::post('/admin-user-password/update/{id}', 'AdminUserPasswordController@update')->before('auth');
 
 
 
@@ -74,6 +79,8 @@ Route::get('api-rest-company-invoices/{company_rsi}', 'CompanyRestController@inv
 
 
 
+Route::get('/company', 'CompanyController@index')->before('auth');
 
 
 
+Route::get('/bank-account', 'BankAccountController@index')->before('auth');

@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
 
-    <title> Rive - Senman s.r.o. </title>
+    <title> Rivi - Senman s.r.o. </title>
 
     <link type="image/png" rel="shortcut icon" href="favicon.png">
 
@@ -46,7 +46,7 @@
             <a href="#" class="navbar-brand" id="navbarSubMenu">
                 <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
                 &NonBreakingSpace;
-                Rive - Senman s.r.o.
+                Rivi - Senman s.r.o.
             </a>
 
 

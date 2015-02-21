@@ -7,30 +7,16 @@ DEPLOY_ROOT="/var/www/rivi.senman.cz/"
 
 echo "Start deploy ..."
 
-echo "copy views"
-scp -r ./app/views  ${DEPLOY_ADDRESS}
-echo "copy controllers"
-scp -r ./app/controllers  ${DEPLOY_ADDRESS}
-echo "copy database"
-scp -r ./app/database  ${DEPLOY_ADDRESS}
-echo "copy models"
-scp -r ./app/models  ${DEPLOY_ADDRESS}
-echo "copy lang"
-scp -r ./app/lang  ${DEPLOY_ADDRESS}
-echo "copy filters"
-scp ./app/filters.php  ${DEPLOY_ADDRESS}
-echo "copy routes"
-scp ./app/routes.php  ${DEPLOY_ADDRESS}
-echo "copy composer.json"
-scp ./composer.json  ${DEPLOY_ROOT}
 
+
+cd ${DEPLOY_ADDRESS} && git pull && cd -
 
 echo "...  deploy finished."
 
 
-sudo composer.phar dump-autoload -d /var/www/senman.cz/
+sudo composer.phar dump-autoload -d ${DEPLOY_ADDRESS}
 
-php /var/www/senman.cz/artisan dump-autoload
+php ${DEPLOY_ADDRESS}/artisan dump-autoload
 
 
-php /var/www/rivi.senman.cz/artisan migrate
+php ${DEPLOY_ADDRESS}/artisan migrate

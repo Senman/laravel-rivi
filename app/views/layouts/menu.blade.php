@@ -4,18 +4,21 @@
     <ul class="dropdown-menu" role="menu">
 
         <li>
-            {{ link_to_action('FinanceInvoiceController@index', 'Faktury' ) }}
+            {{ link_to_action('InvoiceController@index', 'Faktury' ) }}
         </li>
 
 
         <li>
-            {{ link_to_action('FinanceCompanyController@index', 'Společnosti' ) }}
+            {{ link_to_action('CompanyController@index', 'Společnosti' ) }}
         </li>
+
 
 
         <li>
-            {{ link_to_action('FinanceAccountController@index', 'Učty' ) }}
+            {{ link_to_action('BankAccountController@index', 'Učty' ) }}
         </li>
+
+
 
 
     </ul>

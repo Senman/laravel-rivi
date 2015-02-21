@@ -1,14 +1,14 @@
-{{ link_to_action('FinanceInvoiceController@edit', trans('messages.edit.invoice'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
+{{ link_to_action('InvoiceController@edit', trans('messages.edit.invoice'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
 
 
-{{ link_to_action('FinanceInvoiceController@createThird', trans('messages.edit.items'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
+{{ link_to_action('InvoiceController@createThird', trans('messages.edit.items'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
 
 
-{{ link_to_action('FinanceInvoiceController@printInvoice', trans('messages.print'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
+{{ link_to_action('InvoiceController@printInvoice', trans('messages.print'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
 <br>
 
 
-{{ Form::open(array('action' => array('FinanceInvoiceController@delete'))) }}
+{{ Form::open(array('action' => array('InvoiceController@delete'))) }}
 
 
 {{ Form::hidden('_method', 'DELETE') }}
@@ -19,7 +19,7 @@
 <br>
 
 
-{{ Form::open(array('action' => array('FinanceInvoiceController@changeState'))) }}
+{{ Form::open(array('action' => array('InvoiceController@changeState'))) }}
 
 
 <hr>

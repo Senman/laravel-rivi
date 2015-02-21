@@ -7,71 +7,66 @@ DEPLOY_ROOT="/var/www/rivi.senman.cz"
 SUDO="sudo"
 
 
-promptyn () {
-    while true; do
-        read -p "$1 " ${yn:-$2}
-        case $yn in
-            [Yy]* ) return 0;;
-            [Nn]* ) return 1;;
-            * ) echo "Please answer yes or no.";;
-        esac
-    done
-}
-
 
 echo "Start deploy ..."
 
 
-if promptyn "You wanna git pull?"; then
-    cd ${DEPLOY_ROOT} && ${SUDO} git pull && cd -
+echo -n "You wanna git pull? ([y]/n) "
+read answer
+if echo "$answer" | grep -iq "^n" ;then
+    echo "."
 else
-    echo "no"
+    cd ${DEPLOY_ROOT} && ${SUDO} git pull && cd -
 fi
 
 
 
-if promptyn "You wanna composer self-update?"; then
+
+echo -n "You wanna composer self-update? (y/[n]) "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
     ${SUDO} /usr/local/bin/composer.phar self-update
 else
-    echo "no"
+    echo "."
 fi
 
 
 
-
-if promptyn "You wanna composer update?"; then
+echo -n "You wanna composer update? (y/[n]) "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
     ${SUDO} composer.phar update -d ${DEPLOY_ROOT}
 else
-    echo "no"
+    echo "."
 fi
 
 
-
-if promptyn "You wanna composer dump-autoload?"; then
+echo -n "You wanna composer dump-autoload? (y/[n]) "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
     ${SUDO}  composer.phar dump-autoload -d ${DEPLOY_ROOT}
 else
-    echo "no"
+    echo "."
 fi
 
 
-
-if promptyn "You wanna artisan dump-autoload?"; then
+echo -n "You wanna artisan dump-autoload? (y/[n]) "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
     php ${DEPLOY_ROOT}/artisan dump-autoload
-
 else
-    echo "no"
+    echo "."
 fi
 
 
-if promptyn "You wanna artisan migrate?"; then
+
+echo -n "You wanna artisan migrate? ([y]/n) "
+read answer
+if echo "$answer" | grep -iq "^n" ;then
+    echo "no"
+else
     php ${DEPLOY_ROOT}/artisan migrate
-
-else
-    echo "no"
 fi
-
-
-
 
 
 

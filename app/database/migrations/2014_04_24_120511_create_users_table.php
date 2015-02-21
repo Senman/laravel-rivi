@@ -17,13 +17,17 @@ class CreateUsersTable extends Migration {
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id')->unique()->index();
+
             $table->string('username')->unique();
             $table->string('email');
             $table->string('password', 300);
             $table->string('firstName');
             $table->string('lastName');
 
+
             $table->string('role');
+
+
 
             $table->string('remember_token', 100);
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBankTable extends Migration
+class CreateApiKeysTable extends Migration
 {
 
     /**
@@ -14,30 +14,21 @@ class CreateBankTable extends Migration
     public function up()
     {
 
-        Schema::create('banks', function ($table) {
-
+        Schema::create('api_keys', function ($table) {
             $table->engine = 'InnoDB';
-
 
             $table->bigIncrements('id')->unique()->index();
 
+            $table->string('name', 100);
 
-            $table->string('name');
+            $table->string('type', 100);
 
-            $table->string('account');
-            $table->string('swift');
-            $table->string('iban');
+            $table->string('key', 100);
 
-
-            $table->string('street');
-            $table->string('house_number');
-            $table->string('zip');
-            $table->string('city');
-            $table->string('country');
-
-            $table->string('note');
+            $table->unique( array('account_id','key') );
 
 
+            $table->date('expire');
 
 
             $table->bigInteger('account_id')->unsigned();

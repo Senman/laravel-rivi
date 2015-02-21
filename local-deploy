@@ -11,12 +11,24 @@ SUDO="sudo"
 echo "Start deploy ..."
 
 
-echo -n "You wanna git pull? ([y]/n) "
+echo -n "You wanna git pull? ([pull]/copy) "
 read answer
-if echo "$answer" | grep -iq "^n" ;then
-    echo "."
+if echo "$answer" | grep -iq "^copy" ;then
+
+
+    ${SUDO} cp -r ./app/views  ${DEPLOY_ADDRESS}
+    ${SUDO} cp  -r ./app/controllers  ${DEPLOY_ADDRESS}
+    ${SUDO} cp  -r ./app/database  ${DEPLOY_ADDRESS}
+    ${SUDO} cp  -r ./app/models  ${DEPLOY_ADDRESS}
+    ${SUDO} cp  -r ./app/lang  ${DEPLOY_ADDRESS}
+
+    ${SUDO} cp  ./app/filters.php  ${DEPLOY_ADDRESS}
+    ${SUDO} cp  ./app/routes.php  ${DEPLOY_ADDRESS}
+
+
 else
-    cd ${DEPLOY_ROOT} && ${SUDO} git pull && cd -
+
+    cd ${DEPLOY_ROOT} && ${SUDO} git clean -fd && ${SUDO} git pull && cd -
 fi
 
 

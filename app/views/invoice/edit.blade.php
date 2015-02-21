@@ -25,12 +25,12 @@
 
             <hr>
 
-            {{Form::model($invoice, array('action' => array('FinanceInvoiceController@update', $invoice->id))) }}
+            {{Form::model($invoice, array('action' => array('InvoiceController@update', $invoice->id))) }}
 
 
 
 
-            @include('financeInvoice.form' , array('invoice'=>$invoice))
+            @include('invoice.form' , array('invoice'=>$invoice))
 
 
             <button type="submit" class="btn btn-default">trans('messages.submit')</button>

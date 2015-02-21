@@ -14,7 +14,7 @@
             <h1>
 
 
-                {{ trans('messages.choose.company.for.invoice') }}
+                {{ trans('messages.company.administration') }}
 
 
             </h1>
@@ -25,6 +25,11 @@
         <div class="col-md-3">
 
 
+            {{ link_to_action('CompanyController@create', trans('messages.new.company'),null, $attributes = array('class'
+            => 'btn btn-success btn-block' ) )}}
+
+            <br />
+
         </div>
 
     </div>
@@ -34,7 +39,7 @@
 
         <div class="col-md-12">
 
-            @include('invoice.companyTable' , array('companies'=>$companies))
+            @include('company.table' , array('companies'=>$companies))
 
 
 

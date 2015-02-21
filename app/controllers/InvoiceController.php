@@ -18,10 +18,9 @@ class InvoiceController extends BaseController
     {
 
 
-        $companies = Company::all();
 
-        return View::make('invoice.createFirst')
-            ->with('companies', $companies);
+        return View::make('invoice.createFirst');
+          //  ->with('companies', $companies);
 
     }
 

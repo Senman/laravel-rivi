@@ -74,6 +74,16 @@ Route::post('/admin-user-password/update/{id}', 'AdminUserPasswordController@upd
 
 
 
+Route::get('/company', 'CompanyController@index')->before('auth');
+Route::get('/company/create', 'CompanyController@create')->before('auth');
+Route::get('/company/edit/{id}', 'CompanyController@edit')->before('auth');
+Route::post('/company/save', 'CompanyController@save')->before('auth');
+Route::post('/company/update/{id}', 'CompanyController@update')->before('auth');
+Route::delete('/company/delete', 'CompanyController@delete')->before('auth');
+Route::get('/company/detail/{id}', 'CompanyController@detail')->before('auth');
+
+
+
 
 Route::get('api-rest-company-invoices/{company_rsi}', 'CompanyRestController@invoices' );
 

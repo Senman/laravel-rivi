@@ -22,6 +22,13 @@ class CreateAccount extends Migration {
             $table->boolean('isPublic',true);
 
 
+            $table->string('rsi', 100); //remote source identificator
+            $table->string('rsa');     // remote source address
+            $table->string('rsp', 20); // remote source protocol
+            $table->integer('version', 0 );
+
+
+
             $table->timestamps();
 
         });
@@ -30,7 +37,8 @@ class CreateAccount extends Migration {
         DB::table('accounts')->insert(
             array(
                 'name' => 'admin',
-                'isPublic' => false
+                'isPublic' => false,
+                'rsi' => md5(uniqid(mt_rand(), true))
 
             )
         );

@@ -4,7 +4,7 @@
     <tr>
 
 
-        <th>{{ trans('messages.name') }}</th>
+        <th>{{ trans('messages.company.name') }}</th>
 
         <th>{{ trans('messages.cid') }}</th>
 
@@ -39,10 +39,10 @@
 
         <td>
 
-            {{ link_to_action('InvoiceController@createSecond', trans('messages.do.invoice'), array($company->id),
-            array('class' => 'btn btn-default btn-block')) }}
 
 
+            {{ link_to_action('CompanyController@detail', 'Detail', array($company->id), $attributes = array('class'
+            => 'btn btn-default' ))  }}
         </td>
     </tr>
 

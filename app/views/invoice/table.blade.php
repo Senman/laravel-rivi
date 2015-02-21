@@ -131,7 +131,7 @@
         </td>
         <td>
 
-            {{ link_to_action('FinanceInvoiceController@detail', 'Detail', array($invoice->id),
+            {{ link_to_action('InvoiceController@detail', 'Detail', array($invoice->id),
             array('class' => 'btn btn-default btn-block')) }}
 
         </td>

@@ -42,7 +42,6 @@ class CreateInvoicesTable extends Migration
             $table->date('date_vat');
 
             $table->text('note');
-
             $table->string('role');
 
             $table->string('created_by');
@@ -73,18 +72,22 @@ class CreateInvoicesTable extends Migration
 
             $table->string('state');
             $table->date('paid_date');
-
-
             $table->string('language');
-
             $table->string('payment_type');
-
-
             $table->text('description');
-
-
-
             $table->string('bankAddress', 400);
+
+
+
+
+
+
+
+            $table->string('osi', 100);
+            $table->unique( array('account_id','osi') );
+            $table->integer('version', 0 );
+
+
 
 
 

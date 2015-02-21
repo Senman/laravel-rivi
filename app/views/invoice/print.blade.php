@@ -3,6 +3,6 @@
 @section('content')
 
 
-@include('financeInvoice.template_'.$invoice->language )
+@include('invoice.template_'.$invoice->language )
 
 @stop

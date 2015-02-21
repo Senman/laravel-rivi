@@ -21,10 +21,10 @@
     </div>
     <div class="row ">
         <div class="col-md-9">
-            {{Form::model($invoice, array('action' => array('FinanceInvoiceController@save'))) }}
+            {{Form::model($invoice, array('action' => array('InvoiceController@save'))) }}
 
 
-            @include('financeInvoice.form' , array('invoice'=>$invoice))
+            @include('invoice.form' , array('invoice'=>$invoice))
 
             {{ Form::hidden('company_id' , $invoice->company->id) }}
 

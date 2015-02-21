@@ -43,19 +43,19 @@
             <hr>
 
 
-            @include('financeInvoice.template_'.$invoice->language )
+            @include('invoice.template_'.$invoice->language )
 
         </div>
 
 
         <div class="col-md-3">
 
-            {{ link_to_action('FinanceInvoiceController@index', trans('messages.back'), null , array('class' => 'btn
+            {{ link_to_action('InvoiceController@index', trans('messages.back'), null , array('class' => 'btn
             btn-default btn-block')) }}
 
             <br/>
 
-            @include('financeInvoice.buttons')
+            @include('invoice.buttons')
 
 
             <table class="table-bordered table">

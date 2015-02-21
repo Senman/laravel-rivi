@@ -21,7 +21,7 @@ class CreateBankTable extends Migration
 
             $table->bigIncrements('id')->unique()->index();
 
-            
+
             $table->string('name');
 
             $table->string('account');

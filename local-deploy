@@ -4,20 +4,77 @@
 DEPLOY_ADDRESS="/var/www/rivi.senman.cz/app"
 DEPLOY_ROOT="/var/www/rivi.senman.cz"
 
+SUDO="sudo"
+
+
+promptyn () {
+    while true; do
+        read -p "$1 " ${yn:-$2}
+        case $yn in
+            [Yy]* ) return 0;;
+            [Nn]* ) return 1;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+}
+
 
 echo "Start deploy ..."
 
 
-
-cd ${DEPLOY_ROOT} && sudo git pull && cd -
-
-echo "...  deploy finished."
-
-sudo composer.phar update -d ${DEPLOY_ROOT}
-
-sudo composer.phar dump-autoload -d ${DEPLOY_ROOT}
-
-php ${DEPLOY_ROOT}/artisan dump-autoload
+if promptyn "You wanna git pull?"; then
+    cd ${DEPLOY_ROOT} && ${SUDO} git pull && cd -
+else
+    echo "no"
+fi
 
 
-php ${DEPLOY_ROOT}/artisan migrate
+
+if promptyn "You wanna composer self-update?"; then
+    ${SUDO} /usr/local/bin/composer.phar self-update
+else
+    echo "no"
+fi
+
+
+
+
+if promptyn "You wanna composer update?"; then
+    ${SUDO} composer.phar update -d ${DEPLOY_ROOT}
+else
+    echo "no"
+fi
+
+
+
+if promptyn "You wanna composer dump-autoload?"; then
+    ${SUDO}  composer.phar dump-autoload -d ${DEPLOY_ROOT}
+else
+    echo "no"
+fi
+
+
+
+if promptyn "You wanna artisan dump-autoload?"; then
+    php ${DEPLOY_ROOT}/artisan dump-autoload
+
+else
+    echo "no"
+fi
+
+
+if promptyn "You wanna artisan migrate?"; then
+    php ${DEPLOY_ROOT}/artisan migrate
+
+else
+    echo "no"
+fi
+
+
+
+
+
+
+
+
+# chmod -R o+w storage #maybee this ?

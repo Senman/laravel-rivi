@@ -18,6 +18,10 @@
     {{ HTML::style('css/datepicker3.css') }}
 
 
+    {{ HTML::style('css/fuelux.min.css') }}
+
+
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -26,10 +30,12 @@
 
     {{ HTML::script('js/jquery-1.11.0.min.js') }}
 
+
+
 </head>
 
 
-<body>
+<body class="fuelux">
 
 
 <div class="navbar navbar-inverse " role="navigation">
@@ -151,14 +157,15 @@
 
 
 {{ HTML::script('js/bootstrap.min.js') }}
-{{ HTML::script('js/bootstrap-datepicker.js') }}
+
+{{ HTML::script('js/fuelux.min.js') }}
+
 
 <script>
 
-    $('.datepicker').datepicker({
 
-        format: "yyyy-mm-dd"
-    });
+
+    $('.datepicker').datepicker();
 
 </script>
 

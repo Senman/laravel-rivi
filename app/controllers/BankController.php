@@ -51,10 +51,14 @@ class BankController extends BaseController
     public function save()
     {
 
+        $user = Auth::user();
         $bank = new Bank(Input::all());
 
+        $bank->osi = md5(uniqid(mt_rand(), true));
 
-        if (!$bank->save()) {
+        if (!$user->account->banks()->save($bank)) {
+
+
             Session::flash('message', 'Error!');
             return Redirect::back()->withInput();
         }

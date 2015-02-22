@@ -1,18 +1,10 @@
 <?php
 
-class InvoiceController extends BaseController
+class InvoiceChainController extends BaseController
 {
 
 
-    public function index()
-    {
 
-        $user = Auth::user();
-        $invoices = $user->account->invoices()->orderBy('year', 'desc')->orderBy('number', 'desc')->paginate(10);
-        return View::make('invoice.index')->with('invoices', $invoices);
-
-
-    }
 
 
     public function chooseSupplier()
@@ -120,33 +112,6 @@ class InvoiceController extends BaseController
 
 
 
-    public function printInvoice($id)
-    {
-        $invoice = Invoice::find($id);
-
-
-        /*  return View::make('invoice.print')
-
-              ->with('invoice', $invoice);
-          */
-
-        //  return PDF::html('invoice.print', array('invoice' => $invoice));
-        //   return PDF::load($html, 'A4', 'portrait')->download('my_pdf');
-
-        $html=View::make('invoice.print')->with('invoice', $invoice)->render();
-        //$html=mb_convert_encoding($html, "iso-8859-2", "utf8");
-        //var_dump(mb_detect_encoding($html));die();
-
-
-        $pdf = PDF::loadHtml($html);
-
-        //$pdf->render();
-        //var_dump($pdf);die();
-
-        return $pdf->stream();
-    }
-
-
     public function add()
     {
         $item = new Item(Input::all());
@@ -183,50 +148,6 @@ class InvoiceController extends BaseController
     }
 
 
-
-
-    public function edit($id)
-    {
-        $invoice = Invoice::find($id);
-        $companies = Company::lists('name', 'id');
-
-        $accounts = Account::lists('name', 'id');
-
-        return View::make('invoice.edit')
-
-            ->with('invoice', $invoice)->with('companies', $companies)->with('accounts', $accounts);
-    }
-
-
-    public function update($id)
-    {
-
-        $invoice = Invoice::find($id);
-
-        $account_id =Input::get("account_id");
-
-        $account = Account::find($account_id);
-
-
-
-        $invoice->bankAccount	 = $account->number;
-        $invoice->bankName = $account->name;
-        $invoice->bankSwift = $account->swift;
-        $invoice->bankIban = $account->iban;
-
-        $invoice->bankAddress = $account->address;
-
-
-
-        if (!$invoice->update(Input::all())) {
-            Session::flash('message', 'Error!');
-            return Redirect::back()->withInput();
-        }
-        Session::flash('message', 'Successfully Updated!');
-        return Redirect::action('InvoiceController@index');
-
-
-    }
 
 
     public function save()
@@ -312,23 +233,6 @@ class InvoiceController extends BaseController
     }
 
 
-    public function changeState()
-    {
-
-        $id = Input::get('id');
-        $invoice = Invoice::find($id);
-
-        $state = Input::get('state');
-
-        if (!$invoice->update(array('state' => $state))) {
-            Session::flash('message', 'Error!');
-            return Redirect::back()->withInput();
-        }
-        Session::flash('message', 'Successfully Updated!');
-        return Redirect::action('InvoiceController@detail', $id);
-
-
-    }
 
 
 }

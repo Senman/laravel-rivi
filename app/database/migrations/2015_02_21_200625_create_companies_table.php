@@ -40,6 +40,9 @@ class CreateCompaniesTable extends Migration {
             $table->string('country', 300);
 
 
+            $table->boolean('is_contractor', true);
+            $table->boolean('is_supplier', false);
+
             $table->string('rsi', 100);  //remote source identificator
 
             $table->integer('version', 0 );

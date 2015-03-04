@@ -1,7 +1,6 @@
 #!/bin/sh
 # Proper header for a Bash script.
 
-DEPLOY_ADDRESS="/var/www/rivi.senman.cz/app"
 DEPLOY_ROOT="/var/www/rivi.senman.cz"
 
 SUDO="sudo"
@@ -11,30 +10,49 @@ SUDO="sudo"
 echo "Start deploy ..."
 
 
-echo -n "You wanna git pull? ([pull]/copy) "
+echo -n "You wanna drop everything and start over? ([y]/[n]), [default: no]  "
 read answer
-if echo "$answer" | grep -iq "^copy" ;then
+if echo "$answer" | grep -iq "^y" ;then
 
-
-    ${SUDO} cp -r ./app/views  ${DEPLOY_ADDRESS}
-    ${SUDO} cp  -r ./app/controllers  ${DEPLOY_ADDRESS}
-    ${SUDO} cp  -r ./app/database  ${DEPLOY_ADDRESS}
-    ${SUDO} cp  -r ./app/models  ${DEPLOY_ADDRESS}
-    ${SUDO} cp  -r ./app/lang  ${DEPLOY_ADDRESS}
-
-    ${SUDO} cp  ./app/filters.php  ${DEPLOY_ADDRESS}
-    ${SUDO} cp  ./app/routes.php  ${DEPLOY_ADDRESS}
-
+cd ${DEPLOY_ROOT}
+${SUDO} rm -r ./*
+${SUDO} git clone git@gitlab.senman.cz:senman/rive.git .
+${SUDO} chmod -R o+w app/storage
+cd -
 
 else
+    echo "."
 
+fi
+
+
+
+echo -n "You wanna git pull? ([p]ull/[c]opy/[n]othing), [default: nothing] "
+read answer
+if echo "$answer" | grep -iq "^c" ;then
+
+
+    ${SUDO} cp -r ./app/views  ${DEPLOY_ROOT}/app
+    ${SUDO} cp  -r ./app/controllers  ${DEPLOY_ROOT}/app
+    ${SUDO} cp  -r ./app/database  ${DEPLOY_ROOT}/app
+    ${SUDO} cp  -r ./app/models  ${DEPLOY_ROOT}/app
+    ${SUDO} cp  -r ./app/lang  ${DEPLOY_ROOT}/app
+
+    ${SUDO} cp  ./app/filters.php  ${DEPLOY_ROOT}/app
+    ${SUDO} cp  ./app/routes.php  ${DEPLOY_ROOT}/app
+
+elif echo "$answer" | grep -iq "^p" ;then
     cd ${DEPLOY_ROOT} && ${SUDO}  git reset --hard HEAD && ${SUDO} git clean -f && ${SUDO} git pull && cd -
+
+else
+    echo "."
+
 fi
 
 
 
 
-echo -n "You wanna composer self-update? (y/[n]) "
+echo -n "You wanna composer self-update? ([y]/[n]) , [default: no] "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     ${SUDO} /usr/local/bin/composer.phar self-update
@@ -44,7 +62,7 @@ fi
 
 
 
-echo -n "You wanna composer update? (y/[n]) "
+echo -n "You wanna composer update? ([y]/[n]) , [default: no] "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     ${SUDO} composer.phar update -d ${DEPLOY_ROOT}
@@ -53,7 +71,7 @@ else
 fi
 
 
-echo -n "You wanna composer dump-autoload? (y/[n]) "
+echo -n "You wanna composer dump-autoload? ([y]/[n]) , [default: no] "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     ${SUDO}  composer.phar dump-autoload -d ${DEPLOY_ROOT}
@@ -62,7 +80,7 @@ else
 fi
 
 
-echo -n "You wanna artisan dump-autoload? (y/[n]) "
+echo -n "You wanna artisan dump-autoload? ([y]/[n]) , [default: no] "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     php ${DEPLOY_ROOT}/artisan dump-autoload
@@ -72,7 +90,23 @@ fi
 
 
 
-echo -n "You wanna artisan migrate? ([y]/n) "
+
+
+
+echo -n "You wanna drop database ? ([y]/[n]) , [default: no] "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    php ${DEPLOY_ROOT}/artisan migrate:reset
+
+else
+    echo "."
+fi
+
+
+
+
+
+echo -n "You wanna artisan migrate? ([y]/[n]) , [default: yes] "
 read answer
 if echo "$answer" | grep -iq "^n" ;then
     echo "no"

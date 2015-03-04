@@ -14,11 +14,10 @@
 
 
     {{ HTML::style('css/bootstrap.min.css') }}
-
-    {{ HTML::style('css/datepicker3.css') }}
-
-
     {{ HTML::style('css/fuelux.min.css') }}
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
 
 
@@ -30,6 +29,10 @@
 
     {{ HTML::script('js/jquery-1.11.0.min.js') }}
 
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 
 </head>
@@ -165,7 +168,7 @@
 
 
 
-    $('.datepicker').datepicker();
+   // $('.datepicker').datepicker();
 
 </script>
 

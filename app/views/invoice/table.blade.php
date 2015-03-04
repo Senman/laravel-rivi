@@ -71,6 +71,15 @@
 
 
         <td>
+
+                {{$invoice->language}}
+
+        </td>
+
+
+
+
+        <td>
             @if($invoice->company)
             {{ $invoice->company->name }}
             @endif

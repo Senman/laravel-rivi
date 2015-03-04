@@ -24,8 +24,15 @@
         <div class="col-md-3">
 
 
+
             {{ link_to_action('BankController@index', trans('messages.back'), null , array('class' => 'btn
             btn-default btn-block')) }}
+
+            <br/>
+
+            {{ link_to_action('BankAccountController@create', trans('messages.new'), $bank->id  , $attributes = array('class'
+            => 'btn btn-success btn-block' ) )}}
+
 
             <br/>
 

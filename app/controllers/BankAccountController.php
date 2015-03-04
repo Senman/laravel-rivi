@@ -4,16 +4,8 @@ class BankAccountController extends BaseController
 {
 
 
-    public function index()
-    {
-        $bankAccounts = BankAccount::all();
-        return View::make('bankAccount.index')
-            ->with('bankAccounts', $bankAccounts);
-    }
 
-
-
-    public function create()
+    public function create($bank_id)
     {
 
         $bankAccount = new BankAccount();
@@ -23,7 +15,7 @@ class BankAccountController extends BaseController
     }
 
 
-    public function detail($id)
+    public function detail($bank_id, $id)
     {
         $bankAccount = BankAccount::find($id);
 
@@ -33,7 +25,7 @@ class BankAccountController extends BaseController
     }
 
 
-    public function edit($id)
+    public function edit($bank_id, $id)
     {
         $bankAccount = BankAccount::find($id);
 
@@ -50,17 +42,21 @@ class BankAccountController extends BaseController
 
 
         if (!$bankAccount->save()) {
+
             Session::flash('message', 'Error!');
+
             return Redirect::back()->withInput();
         }
 
         Session::flash('message', 'Successfully created Project!');
+
+
         return Redirect::action('BankAccountController@index');
 
 
     }
 
-    public function update($id)
+    public function update($bank_id, $id)
     {
 
         $bankAccount = BankAccount::find($id);

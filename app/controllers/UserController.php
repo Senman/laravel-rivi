@@ -34,10 +34,10 @@ class UserController extends BaseController
         $user = User::find($id);
 
         if (!$user->update(Input::all())) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.user.update.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.user.update.success'));
         return Redirect::action('UserController@index');
 
 
@@ -62,10 +62,10 @@ class UserController extends BaseController
 
 
         if (!$user->update(Input::all())) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.user.updateContact.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.user.updateContact.success'));
         return Redirect::action('UserController@index');
 
 

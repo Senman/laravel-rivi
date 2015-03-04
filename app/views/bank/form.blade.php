@@ -1,45 +1,111 @@
-<div class="form-group">
-    <label for="name">{{ trans('messages.bank.name') }} </label>
-    {{ Form::text('name' , null, array( 'class' => 'form-control')) }}
-</div>
 
-<div class="form-group">
-    <label for="name">{{ trans('messages.bank.account') }}</label>
-    {{ Form::text('account' , null, array( 'class' => 'form-control')) }}
-</div>
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.iban') }}</label>
-    {{ Form::text('iban' , null, array( 'class' => 'form-control')) }}
-</div>
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.swift') }}</label>
-    {{ Form::text('swift' , null, array( 'class' => 'form-control')) }}
-</div>
-
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.street') }}</label>
-    {{ Form::text('street' , null, array( 'class' => 'form-control')) }}
-</div>
-<div class="form-group">
-    <label for="name">{{ trans('messages.house_number') }}</label>
-    {{ Form::text('house_number' , null, array( 'class' => 'form-control')) }}
-</div>
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.zip') }}</label>
-    {{ Form::text('zip' , null, array( 'class' => 'form-control')) }}
-</div>
-<div class="form-group">
-    <label for="name">{{ trans('messages.city') }}</label>
-    {{ Form::text('city' , null, array( 'class' => 'form-control')) }}
-</div>
-<div class="form-group">
-    <label for="name">{{ trans('messages.country') }}</label>
-    {{ Form::text('country' , null, array( 'class' => 'form-control')) }}
-</div>
+<?php
+$template_form_data = [
+    'name' => 'name',
+    'value' => null,
+    'label' => trans('message.bank.name'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
 
+<?php
+$template_form_data = [
+    'name' => 'account',
+    'value' => null,
+    'label' => trans('message.bank.account'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'iban',
+    'value' => null,
+    'label' => trans('message.iban'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'swift',
+    'value' => null,
+    'label' => trans('message.swift'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'street',
+    'value' => null,
+    'label' => trans('message.street'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'house_number',
+    'value' => null,
+    'label' => trans('message.house_number'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'zip',
+    'value' => null,
+    'label' => trans('message.zip'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'city',
+    'value' => null,
+    'label' => trans('message.city'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'country',
+    'value' => null,
+    'label' => trans('message.country'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )

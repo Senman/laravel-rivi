@@ -117,11 +117,11 @@ class InvoiceChainController extends BaseController
         $item = new Item(Input::all());
 
         if (!$item->save()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChain.add.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Invoice!');
+        Session::flash('message', trans('messages.invoiceChain.add.success'));
         return Redirect::action('InvoiceController@createThird', $item->invoice->id);
 
     }
@@ -137,12 +137,11 @@ class InvoiceChainController extends BaseController
 
 
         if (!$item->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChain.remove.error') );
             return Redirect::back();
         }
 
-
-        Session::flash('message', 'Successfully created Invoice!');
+        Session::flash('message', trans('messages.invoiceChain.remove.success'));
         return Redirect::action('InvoiceController@createThird', $invoice_id);
 
     }
@@ -190,11 +189,11 @@ class InvoiceChainController extends BaseController
 
 
         if (!$company = $user->account->invoices()->save($invoice)) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChain.save.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Invoice!');
+        Session::flash('message', trans('messages.invoiceChain.save.success'));
         return Redirect::action('InvoiceController@createThird', $invoice->id);
 
 
@@ -223,11 +222,11 @@ class InvoiceChainController extends BaseController
 
 
         if (!$invoice->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChain.delete.error') );
             return Redirect::back();
         }
 
-        Session::flash('message', 'Successfully deleted!');
+        Session::flash('message', trans('messages.invoiceChain.delete.success'));
         return Redirect::action('InvoiceController@index');
 
     }

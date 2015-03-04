@@ -21,8 +21,7 @@ class LoginController extends BaseController
         );
 
         if (!Auth::attempt($user)) {
-
-            Session::flash('message', 'Spatne heslo');
+            Session::flash('error', trans('message.login.auth.password.wrong') );
             return Redirect::action('LoginController@index')->withInput();
         }
 

@@ -1,19 +1,29 @@
 <div class="row">
     <div class="col-md-8">
-        <div class="form-group">
-            <label for="name">{{ trans('messages.name') }}</label>
-            {{ Form::text('name' , null, array( 'class' => 'form-control')) }}
 
-        </div>
-
+        <?php
+        $template_form_data = [
+            'name' => 'name',
+            'value' => null,
+            'label' => trans('message.name'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
     </div>
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="language">{{ trans('messages.language') }}</label>
-            {{ Form::select('language', array('cz' => 'cz', 'en' => 'en'), null, array('class' => 'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'language',
+            'items' => array('cz' => 'cz', 'en' => 'en'),
+            'selected' => null,
+            'label' => trans('message.language'),
+            'class' => ''];
+        ?>
+        @include('layoutForms.select', $template_form_data )
+
     </div>
 </div>
 
@@ -27,6 +37,7 @@
 
         </div>
 
+
     </div>
     <div class="col-md-4">
         <div class="form-group">
@@ -35,6 +46,7 @@
 
         </div>
 
+
     </div>
     <div class="col-md-4">
         <div class="form-group">
@@ -42,6 +54,8 @@
             {{ Form::text('vat_at' , null, array( 'class' => 'form-control datepicker')) }}
 
         </div>
+
+
     </div>
 </div>
 
@@ -50,94 +64,150 @@
     <div class="col-md-6">
         <h3>Odběratel</h3>
 
+        <?php
+        $template_form_data = [
+            'name' => 'company_name',
+            'value' => null,
+            'label' => trans('message.company.name'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        <div class="form-group">
-            <label for="company_name">{{ trans('messages.company.name') }}</label>
-            {{ Form::text('company_name' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'street',
+            'value' => null,
+            'label' => trans('message.street'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
-        <div class="form-group">
-            <label for="company_street">{{ trans('messages.street') }}</label>
-            {{ Form::text('company_street' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'company_zip',
+            'value' => null,
+            'label' => trans('message.zip'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
-        <div class="form-group">
-            <label for="company_zip">{{ trans('messages.zip') }}</label>
-            {{ Form::text('company_zip' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'company_city',
+            'value' => null,
+            'label' => trans('message.city'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
-        <div class="form-group">
-            <label for="company_city">{{ trans('messages.city') }}</label>
-            {{ Form::text('company_city' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'company_country',
+            'value' => null,
+            'label' => trans('message.country'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'company_idn',
+            'value' => null,
+            'label' => trans('message.company.num'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        <div class="form-group">
-            <label for="company_country">{{ trans('messages.country') }}</label>
-            {{ Form::text('company_country' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-        <div class="form-group">
-            <label for="company_num">{{ trans('messages.company.num') }}</label>
-            {{ Form::text('company_idn' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-        <div class="form-group">
-            <label for="company_vat_num">{{ trans('messages.company.vat.num') }}</label>
-            {{ Form::text('company_vat_idn' , null, array( 'class' => 'form-control')) }}
-
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'company_vat_idn',
+            'value' => null,
+            'label' => trans('message.company.vat.num'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
     </div>
 
     <div class="col-md-6">
         <h3>{{ trans('messages.provider') }}</h3>
 
-        <div class="form-group">
-            <label for="home_name">{{ trans('messages.home.name') }}</label>
-            {{ Form::text('home_name' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'home_name',
+            'value' => null,
+            'label' => trans('message.home.name'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
-        <div class="form-group">
-            <label for="home_street">{{ trans('messages.street') }}</label>
-            {{ Form::text('home_street' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'home_street',
+            'value' => null,
+            'label' => trans('message.street'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'home_zip',
+            'value' => null,
+            'label' => trans('message.zip'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
+        <?php
+        $template_form_data = [
+            'name' => 'home_city',
+            'value' => null,
+            'label' => trans('message.city'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        <div class="form-group">
-            <label for="home_zip">{{ trans('messages.zip') }}</label>
-            {{ Form::text('home_zip' , null, array( 'class' => 'form-control')) }}
+        <?php
+        $template_form_data = [
+            'name' => 'home_country',
+            'value' => null,
+            'label' => trans('message.country'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'home_idn',
+            'value' => null,
+            'label' => trans('message.home.id'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-
-        <div class="form-group">
-            <label for="home_city">{{ trans('messages.city') }}</label>
-            {{ Form::text('home_city' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-
-
-        <div class="form-group">
-            <label for="home_country">{{ trans('messages.country') }}</label>
-            {{ Form::text('home_country' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-
-
-        <div class="form-group">
-            <label for="home_id">{{ trans('messages.home.id') }}</label>
-            {{ Form::text('home_idn' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-
-        <div class="form-group">
-            <label for="home_vid">{{ trans('messages.home.vat.id') }}</label>
-            {{ Form::text('home_vat_idn' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-
+        <?php
+        $template_form_data = [
+            'name' => 'home_vat_idn',
+            'value' => null,
+            'label' => trans('message.home.vat.id'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
     </div>
 </div>
@@ -145,61 +215,87 @@
 <div class="row">
     <div class="col-md-4">
 
+        <?php
+        $template_form_data = [
+            'name' => 'currency',
+            'value' => null,
+            'label' => trans('message.currency'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        <div class="form-group">
-            <label for="currency">{{ trans('messages.currency') }}</label>
-            {{ Form::text('currency' , null, array( 'class' => 'form-control')) }}
-
-        </div>
     </div>
 
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="account">{{ trans('messages.payment.type') }}</label>
-            {{ Form::select('payment_type', array('bankTransfer' => 'Bankovní převod', 'cash' => 'V hotovosti' ), null , array( 'class' =>
-            'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'payment_type',
+            'items' => array('bankTransfer' => 'Bankovní převod', 'cash' => 'V hotovosti' ),
+            'selected' => null,
+            'label' => trans('message.payment.type'),
+            'class' => ''];
+        ?>
+        @include('layoutForms.select', $template_form_data )
+
     </div>
 
 
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="account">{{ trans('messages.account') }}</label>
 
+        <?php
+        $template_form_data = [
+            'name' => 'account_id',
+            'items' => $accounts,
+            'selected' => null,
+            'label' => trans('message.account'),
+            'class' => ''];
+        ?>
+        @include('layoutForms.select', $template_form_data )
 
-            {{ Form::select('account_id', $accounts, null , array( 'class' =>
-            'form-control')) }}
-
-
-
-        </div>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
 
-        <div class="form-group">
-            <label for="symbol_constant">{{ trans('messages.constant.symbol') }}</label>
-            {{ Form::text('symbol_constant' , null, array( 'class' => 'form-control')) }}
-
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label for="symbol_variable">{{ trans('messages.variable.symbol') }}</label>
-            {{ Form::text('symbol_variable' , null, array( 'class' => 'form-control')) }}
-
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'symbol_constant',
+            'value' => null,
+            'label' => trans('message.constant.symbol'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
     </div>
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="symbol_specific">{{ trans('messages.specific.symbol') }}</label>
-            {{ Form::text('symbol_specific' , null, array( 'class' => 'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'symbol_variable',
+            'value' => null,
+            'label' => trans('message.variable.symbol'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
+
+    </div>
+    <div class="col-md-4">
+
+        <?php
+        $template_form_data = [
+            'name' => 'symbol_specific',
+            'value' => null,
+            'label' => trans('message.specific.symbol'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
+
     </div>
 </div>
 
@@ -215,6 +311,16 @@
     {{ Form::textarea('description' , null, array( 'class' => 'form-control', 'rows' => '3')) }}
 
 </div>
+
+<?php
+$template_form_data = [
+    'name' => 'description',
+    'value' => null,
+    'label' => trans('message.description'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.textarea', $template_form_data )
 
 
 

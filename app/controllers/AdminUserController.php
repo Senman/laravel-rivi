@@ -38,10 +38,10 @@ class AdminUserController extends BaseController
         $user->username = Input::get('username');
 
         if (!$user->update(Input::all())) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.adminUser.update.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.adminUser.update.success'));
         return Redirect::action('AdminUserController@index');
 
 
@@ -73,17 +73,17 @@ class AdminUserController extends BaseController
         }                                */
 
         if (User::where('username', '=', $user->username)->count() > 0) {
-            Session::flash('message', 'Uživatelksé jméno je již použito');
+            Session::flash('error', trans('messages.adminUser.save.name.used'));
             return Redirect::back()->withInput();
         }
 
 
         if (!$user->save()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.adminUser.save.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Uživatel vytvořen');
+        Session::flash('message', trans('messages.adminUser.save.success'));
         return Redirect::action('AdminUserController@index');
 
 
@@ -98,11 +98,11 @@ class AdminUserController extends BaseController
 
 
         if (!$user->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.adminUser.delete.error') );
             return Redirect::back();
         }
 
-        Session::flash('message', 'Successfully deleted!');
+        Session::flash('message', trans('messages.adminUser.delete.success'));
         return Redirect::action('AdminUserController@index');
 
 

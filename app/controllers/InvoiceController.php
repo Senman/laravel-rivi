@@ -152,11 +152,11 @@ class InvoiceController extends BaseController
         $item = new Item(Input::all());
 
         if (!$item->save()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoice.add.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Invoice!');
+        Session::flash('message', trans('messages.invoice.add.success'));
         return Redirect::action('InvoiceController@createThird', $item->invoice->id);
 
     }
@@ -172,12 +172,11 @@ class InvoiceController extends BaseController
 
 
         if (!$item->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoice.remove.error') );
             return Redirect::back();
         }
 
-
-        Session::flash('message', 'Successfully created Invoice!');
+        Session::flash('message', trans('messages.invoice.remove.success'));
         return Redirect::action('InvoiceController@createThird', $invoice_id);
 
     }
@@ -219,10 +218,10 @@ class InvoiceController extends BaseController
 
 
         if (!$invoice->update(Input::all())) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoice.update.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.invoice.update.success'));
         return Redirect::action('InvoiceController@index');
 
 
@@ -269,11 +268,11 @@ class InvoiceController extends BaseController
 
 
         if (!$company = $user->account->invoices()->save($invoice)) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoice.save.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Invoice!');
+        Session::flash('message', trans('messages.invoice.save.success'));
         return Redirect::action('InvoiceController@createThird', $invoice->id);
 
 
@@ -302,11 +301,11 @@ class InvoiceController extends BaseController
 
 
         if (!$invoice->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoice.delete.error') );
             return Redirect::back();
         }
 
-        Session::flash('message', 'Successfully deleted!');
+        Session::flash('message', trans('messages.invoice.delete.success'));
         return Redirect::action('InvoiceController@index');
 
     }
@@ -321,10 +320,10 @@ class InvoiceController extends BaseController
         $state = Input::get('state');
 
         if (!$invoice->update(array('state' => $state))) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoice.changeState.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.invoice.changeState.success'));
         return Redirect::action('InvoiceController@detail', $id);
 
 

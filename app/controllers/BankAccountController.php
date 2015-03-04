@@ -50,11 +50,11 @@ class BankAccountController extends BaseController
 
 
         if (!$bankAccount->save()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.bankAccount.save.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Project!');
+        Session::flash('message', trans('messages.bankAccount.save.success'));
         return Redirect::action('BankAccountController@index');
 
 
@@ -67,10 +67,10 @@ class BankAccountController extends BaseController
 
 
         if (!$bankAccount->update(Input::all())) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.bankAccount.update.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.bankAccount.update.success'));
         return Redirect::action('BankAccountController@index');
 
 
@@ -85,11 +85,11 @@ class BankAccountController extends BaseController
 
 
         if (!$bankAccount->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.bankAccount.delete.error') );
             return Redirect::back();
         }
 
-        Session::flash('message', 'Successfully deleted!');
+        Session::flash('message', trans('messages.bankAccount.delete.success'));
         return Redirect::action('BankAccountController@index');
 
 

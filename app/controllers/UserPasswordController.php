@@ -24,12 +24,12 @@ class UserPasswordController extends BaseController
 
 
         if ($password != $passwordConfirm) {
-            Session::flash('message', 'Hesla nesouhlasí');
+            Session::flash('error', trans('message.userPassword.update.password.different') );
             return Redirect::back()->withInput();
         }
 
         if (strlen($password) < 6) {
-            Session::flash('message', 'Hesla je prilis kratke ');
+            Session::flash('error', trans('message.userPassword.update.password.short') );
             return Redirect::back()->withInput();
 
         }
@@ -40,10 +40,10 @@ class UserPasswordController extends BaseController
 
 
         if (!$user->update()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.userPassword.update.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.userPassword.update.success'));
         return Redirect::action('UserController@index');
 
 

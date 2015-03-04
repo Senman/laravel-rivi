@@ -1,54 +1,61 @@
-<div class="form-group">
-    <label for="firstName">{{ trans('messages.first.name') }}</label>
-
-
-    {{ Form::text('firstName' , null, array( 'class' => 'form-control')) }}
-
-</div>
-
-
-
-
-<div class="form-group">
-    <label for="lastName">{{ trans('messages.last.name') }}</label>
-
-
-    {{ Form::text('lastName' , null, array( 'class' => 'form-control')) }}
-
-</div>
+<?php
+$template_form_data = [
+    'name' => 'firstName',
+    'value' => null,
+    'label' => trans('message.first.name'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
 
 
-
-
-<div class="form-group">
-    <label for="username">{{ trans('messages.username') }}</label>
-
-
-    {{ Form::text('username' , null, array( 'class' => 'form-control')) }}
-
-</div>
-
-
+<?php
+$template_form_data = [
+    'name' => 'lastName',
+    'value' => null,
+    'label' => trans('message.last.name'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
 
-<div class="form-group">
-    <label for="email">{{ trans('messages.email') }}</label>
+<?php
+$template_form_data = [
+    'name' => 'username',
+    'value' => null,
+    'label' => trans('message.username'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
-    {{ Form::text('email' , null, array( 'class' => 'form-control')) }}
-
-</div>
-
-<div class="form-group">
-    <label for="email">{{ trans('messages.role') }}</label>
 
 
-    {{ Form::select('role' , $roles ,null, array( 'class' => 'form-control')) }}
 
-</div>
+<?php
+$template_form_data = [
+    'name' => 'email',
+    'value' => null,
+    'label' => trans('message.email'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
+
+<?php
+$template_form_data = [
+    'name' => 'role',
+    'items' => $roles,
+    'selected' => null,
+    'label' => trans('message.role'),
+    'class' => ''];
+?>
+@include('layoutForms.select', $template_form_data )
 

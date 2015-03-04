@@ -1,55 +1,72 @@
-<div class="form-group">
-    <label for="name">{{ trans('messages.bankAccount.name') }} </label>
-
-
-    {{ Form::text('name' , null, array( 'class' => 'form-control')) }}
-
-</div>
-
-
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.bankAccount.number') }}</label>
-
-
-    {{ Form::text('number' , null, array( 'class' => 'form-control')) }}
-
-</div>
-
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.iban') }}</label>
-
-
-    {{ Form::text('iban' , null, array( 'class' => 'form-control')) }}
-
-</div>
-
-
-<div class="form-group">
-    <label for="name">{{ trans('messages.swift') }}</label>
-
-
-    {{ Form::text('swift' , null, array( 'class' => 'form-control')) }}
-
-</div>
+<?php
+$template_form_data = [
+    'name' => 'name',
+    'value' => null,
+    'label' => trans('message.bankAccount.name'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
 
-<div class="form-group">
-    <label for="name">{{ trans('messages.bank.name') }}</label>
+<?php
+$template_form_data = [
+    'name' => 'number',
+    'value' => null,
+    'label' => trans('message.bankAccount.number'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
-    {{ Form::text('bankName' , null, array( 'class' => 'form-control')) }}
-
-</div>
 
 
+<?php
+$template_form_data = [
+    'name' => 'iban',
+    'value' => null,
+    'label' => trans('message.iban'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
-<div class="form-group">
-    <label for="name">{{ trans('messages.address') }}</label>
 
 
-    {{ Form::text('address' , null, array( 'class' => 'form-control')) }}
 
-</div>
+<?php
+$template_form_data = [
+    'name' => 'swift',
+    'value' => null,
+    'label' => trans('message.swift'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'bankName',
+    'value' => null,
+    'label' => trans('message.bank.name'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+
+
+<?php
+$template_form_data = [
+    'name' => 'address',
+    'value' => null,
+    'label' => trans('message.address'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )

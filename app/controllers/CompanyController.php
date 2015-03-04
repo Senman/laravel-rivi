@@ -68,10 +68,10 @@ class CompanyController extends BaseController
 
 
         if (!$company->update(Input::all())) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.company.update.error') );
             return Redirect::back()->withInput();
         }
-        Session::flash('message', 'Successfully Updated!');
+        Session::flash('message', trans('messages.company.update.success'));
         return Redirect::action('CompanyController@index');
 
 
@@ -89,11 +89,11 @@ class CompanyController extends BaseController
 
 
         if (!$account->companies()->save($company)) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.company.save.error') );
             return Redirect::back()->withInput();
         }
 
-        Session::flash('message', 'Successfully created Project!');
+        Session::flash('message', trans('messages.company.save.success'));
         return Redirect::action('CompanyController@index');
 
 
@@ -112,11 +112,11 @@ class CompanyController extends BaseController
 
 
         if (!$company->delete()) {
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.company.delete.error') );
             return Redirect::back();
         }
 
-        Session::flash('message', 'Successfully deleted!');
+        Session::flash('message', trans('messages.company.delete.success'));
         return Redirect::action('CompanyController@index');
 
 

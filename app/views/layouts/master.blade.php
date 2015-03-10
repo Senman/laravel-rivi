@@ -8,13 +8,13 @@
     <meta name="author" content="">
 
 
-    <title> Rivi - Senman s.r.o. </title>
+    <title> {{ trans("messages.site.title") }} </title>
 
     <link type="image/png" rel="shortcut icon" href="favicon.png">
 
 
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/fuelux.min.css') }}
+
 
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -38,7 +38,7 @@
 </head>
 
 
-<body class="fuelux">
+<body>
 
 
 <div class="navbar navbar-inverse " role="navigation">
@@ -55,7 +55,7 @@
             <a href="#" class="navbar-brand" id="navbarSubMenu">
                 <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
                 &NonBreakingSpace;
-                Rivi - Senman s.r.o.
+                {{ trans("messages.site.title") }}
             </a>
 
 
@@ -95,25 +95,7 @@
         </div>
 
 
-        @if(Auth::check())
 
-        <div id="navbarSubMenuContainer" style="display:none; ">
-        </div>
-
-        <script>
-
-            $.get("http://zone.senman.com/menu/index.php", function (data) {
-                $("#navbarSubMenuContainer").html(data);
-
-            });
-
-            $("#navbarSubMenu").click(function () {
-                $("#navbarSubMenuContainer").slideToggle();
-            });
-
-
-        </script>
-        @endif
     </div>
 </div>
 
@@ -123,7 +105,7 @@
 <div class="container">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Info!</strong> {{ Session::get('message') }}
+        <strong> {{ trans("messages.info.message") }}</strong> {{ Session::get('message') }}
     </div>
 </div>
 
@@ -135,7 +117,7 @@
 
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Chyba</strong> {{ Session::get('message') }}
+        <strong> {{ trans("messages.error.message") }}</strong> {{ Session::get('message') }}
     </div>
 
 </div>

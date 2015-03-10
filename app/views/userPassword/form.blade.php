@@ -2,6 +2,7 @@
     <div class="col-md-6">
 
         <?php
+
         $template_form_data = [
             'name' => 'password',
             'value' => null,

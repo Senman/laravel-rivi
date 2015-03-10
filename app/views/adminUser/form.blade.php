@@ -52,7 +52,7 @@ $template_form_data = [
 <?php
 $template_form_data = [
     'name' => 'role',
-    'items' => $roles,
+    'items' => 'admin',
     'selected' => null,
     'label' => trans('message.role'),
     'class' => ''];

@@ -30,7 +30,13 @@ return array(
     'role' => 'Oprávnění',
     'action' => 'Akce',
 
+    'employee.detail' => 'Informace o zaměstnanci',
 
+    'edit.employee' => 'Oprav údaje zaměstnance',
+    'edit.password' => 'Změň přístupové údaje',
+
+    'password' => 'Zadejte heslo',
+    'password.again' => 'Znovu pro kontrolu',
 
     'password.reset' => 'Změna hesla',
     'password.reset.complete.form' => 'Pro změnu hesla vyplňte tento formulář: ',

@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('InvoiceController@createFirst', 'Nova faktura',null, $attributes = array('class'
+            {{ link_to_action('InvoiceChainController@create', 'Nova faktura',null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />

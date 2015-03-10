@@ -1,8 +1,3 @@
-{{ link_to_action('InvoiceController@edit', trans('messages.edit.invoice'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
-
-
-{{ link_to_action('InvoiceController@createThird', trans('messages.edit.items'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
-
 
 {{ link_to_action('InvoiceController@printInvoice', trans('messages.print'), array($invoice->id), array('class' => 'btn btn-default btn-block') )}}
 <br>

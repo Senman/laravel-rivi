@@ -11,6 +11,10 @@ class Invoice extends Eloquent
     protected $guarded = array(); // Important
 
 
+    protected $hidden = ['password'];
+
+
+
 
 
     public function account()
@@ -26,6 +30,30 @@ class Invoice extends Eloquent
         return $this->hasMany('InvoiceItem');
     }
 
+
+
+
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model)
+        {
+           // $model->created_by = Auth::user()->id;
+           // $model->updated_by = Auth::user()->id;
+
+            $model->osi = md5(uniqid(mt_rand(), true));
+            $model->state = "new";
+
+        });
+
+        static::updating(function($model)
+        {
+           // $model->updated_by = Auth::user()->id;
+        });
+    }
 
 
 

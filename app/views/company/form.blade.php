@@ -199,6 +199,22 @@
 
 
 
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="is_supplier">{{ trans('messages.is_supplier') }}</label>
+        {{ Form::checkbox('is_supplier' , null, array( 'class' => 'form-control')) }}
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="is_contractor">{{ trans('messages.is_contractor') }}</label>
+        {{ Form::checkbox('is_contractor' , null, array( 'class' => 'form-control')) }}
+    </div>
+</div>
+
+
+
 
 
 <div class="row">

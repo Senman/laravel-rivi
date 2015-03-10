@@ -44,7 +44,6 @@ class CreateCompaniesTable extends Migration {
             $table->boolean('is_supplier', false);
 
             $table->string('rsi', 100);  //remote source identificator
-
             $table->integer('version', 0 );
 
 

@@ -66,31 +66,31 @@ class CreateInvoicesTable extends Migration
 
             //company
 
-            $table->string('company_name');
-            $table->string('company_street');
-            $table->string('company_house_num');
-            $table->string('company_zip');
-            $table->string('company_city');
-            $table->string('company_state');
-            $table->string('company_country');
-            $table->string('company_idn');
-            $table->string('company_vat_idn');
+            $table->string('contractor_name');
+            $table->string('contractor_street');
+            $table->string('contractor_house_num');
+            $table->string('contractor_zip');
+            $table->string('contractor_city');
+            $table->string('contractor_state');
+            $table->string('contractor_country');
+            $table->string('contractor_idn');
+            $table->string('contractor_vat_idn');
 
-            $table->string('company_isi', 100); //internal source identificator
+            $table->string('contractor_rsi', 100);  //remote source identificator
 
 
 
-            $table->string('home_name');
-            $table->string('home_street');
-            $table->string('home_house_num');
-            $table->string('home_zip');
-            $table->string('home_city');
-            $table->string('home_state');
-            $table->string('home_country');
-            $table->string('home_idn');
-            $table->string('home_vat_idn');
+            $table->string('supplier_name');
+            $table->string('supplier_street');
+            $table->string('supplier_house_num');
+            $table->string('supplier_zip');
+            $table->string('supplier_city');
+            $table->string('supplier_state');
+            $table->string('supplier_country');
+            $table->string('supplier_idn');
+            $table->string('supplier_vat_idn');
 
-            $table->string('home_isi', 100); //internal source identificator
+            $table->string('supplier_rsi', 100);  //remote source identificator
 
 
 
@@ -141,10 +141,10 @@ class CreateInvoicesTable extends Migration
 
 
 
-            $table->text('description');
+            $table->text('description',1000);
 
 
-
+            $table->text('description_foreign',1000);
 
 
 

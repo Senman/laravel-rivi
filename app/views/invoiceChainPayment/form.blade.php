@@ -2,34 +2,43 @@
 <div class="row">
     <div class="col-md-4">
 
+        <?php
+        $template_form_data = [
+            'name' => 'currency',
+            'value' => null,
+            'label' => trans('message.currency'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-        <div class="form-group">
-            <label for="currency">{{ trans('messages.currency') }}</label>
-            {{ Form::text('currency' , null, array( 'class' => 'form-control')) }}
 
-        </div>
     </div>
 
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="account">{{ trans('messages.payment.type') }}</label>
-            {{ Form::select('payment_type', array('bankTransfer' => 'Bankovní převod', 'cash' => 'V hotovosti' ), null , array( 'class' =>
-            'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'payment_type',
+            'items' => array('bankTransfer' => 'Bankovní převod', 'cash' => 'V hotovosti' ),
+            'selected' => null,
+            'label' => trans('message.payment.type'),
+            'class' => ''];
+        ?>
+        @include('layoutForms.select', $template_form_data )
     </div>
 
 
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="account">{{ trans('messages.account') }}</label>
 
-
-            {{ Form::select('account_id', $accounts, null , array( 'class' =>
-            'form-control')) }}
-
-
-
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'account_id',
+            'items' => $accounts,
+            'selected' => null,
+            'label' => trans('message.account'),
+            'class' => ''];
+        ?>
+        @include('layoutForms.select', $template_form_data )
     </div>
 </div>

@@ -1,32 +1,60 @@
 
    <div class="col-md-5">
-        <div class="form-group">
-            <label for="currency">Popis</label>
-            {{ Form::text('description' , null, array( 'class' => 'form-control')) }}
 
-        </div>
-    </div>
+       <?php
+       $template_form_data = [
+           'name' => 'description',
+           'value' => null,
+           'label' => trans('message.description'),
+           'placeholder' => '',
+           'class' => ''];
+       ?>
+       @include('layoutForms.text', $template_form_data )
+
+
+   </div>
     <div class="col-md-1">
-        <div class="form-group">
-            <label for="currency_transform">Počet</label>
-            {{ Form::text('count' , null, array( 'class' => 'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'count',
+            'value' => null,
+            'label' => trans('message.count'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
+
+
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
-            <label for="currency_transform">Cena</label>
-            {{ Form::text('price' , null, array( 'class' => 'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'price',
+            'value' => null,
+            'label' => trans('message.price'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
+
+
     </div>
     <div class="col-md-2">
-        <div class="form-group">
-            <label for="account">DPH</label>
-            {{ Form::text('vat' , null, array( 'class' => 'form-control')) }}
 
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'vat',
+            'value' => null,
+            'label' => trans('message.vat'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
+
+
     </div>
 
 

@@ -1,0 +1,101 @@
+<?php
+
+class BankAccountController extends BaseController
+{
+
+
+
+    public function create($bank_id)
+    {
+
+        $bankAccount = new BankAccount();
+
+        return View::make('bankAccount.create')
+            ->with('bankAccount', $bankAccount);
+    }
+
+
+    public function detail($bank_id, $id)
+    {
+        $bankAccount = BankAccount::find($id);
+
+        return View::make('bankAccount.detail')
+
+            ->with('bankAccount', $bankAccount);
+    }
+
+
+    public function edit($bank_id, $id)
+    {
+        $bankAccount = BankAccount::find($id);
+
+        return View::make('bankAccount.edit')
+
+            ->with('bankAccount', $bankAccount);
+    }
+
+
+    public function save()
+    {
+
+        $bankAccount = new BankAccount(Input::all());
+
+
+        if (!$bankAccount->save()) {
+<<<<<<< HEAD
+            Session::flash('error', trans('message.bankAccount.save.error') );
+            return Redirect::back()->withInput();
+        }
+
+        Session::flash('message', trans('messages.bankAccount.save.success'));
+=======
+
+            Session::flash('message', 'Error!');
+
+            return Redirect::back()->withInput();
+        }
+
+        Session::flash('message', 'Successfully created Project!');
+
+
+>>>>>>> de09f94b61488fa2e60fede80283b9b3fb0f6041
+        return Redirect::action('BankAccountController@index');
+
+
+    }
+
+    public function update($bank_id, $id)
+    {
+
+        $bankAccount = BankAccount::find($id);
+
+
+        if (!$bankAccount->update(Input::all())) {
+            Session::flash('error', trans('message.bankAccount.update.error') );
+            return Redirect::back()->withInput();
+        }
+        Session::flash('message', trans('messages.bankAccount.update.success'));
+        return Redirect::action('BankAccountController@index');
+
+
+    }
+
+
+    public function delete()
+    {
+
+        $id = Input::get('id');
+        $bankAccount = BankAccount::find($id);
+
+
+        if (!$bankAccount->delete()) {
+            Session::flash('error', trans('message.bankAccount.delete.error') );
+            return Redirect::back();
+        }
+
+        Session::flash('message', trans('messages.bankAccount.delete.success'));
+        return Redirect::action('BankAccountController@index');
+
+
+    }
+}

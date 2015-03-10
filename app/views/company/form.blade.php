@@ -200,17 +200,31 @@
 
 
 <div class="col-md-6">
-    <div class="form-group">
-        <label for="is_supplier">{{ trans('messages.is_supplier') }}</label>
-        {{ Form::checkbox('is_supplier' , null, array( 'class' => 'form-control')) }}
-    </div>
+
+    <?php
+    $template_form_data = [
+        'name' => 'is_supplier',
+        'value' => null,
+        'label' => trans('message.is_supplier'),
+        'placeholder' => '',
+        'class' => ''];
+    ?>
+    @include('layoutForms.checkbox', $template_form_data )
+
 </div>
 
 <div class="col-md-6">
-    <div class="form-group">
-        <label for="is_contractor">{{ trans('messages.is_contractor') }}</label>
-        {{ Form::checkbox('is_contractor' , null, array( 'class' => 'form-control')) }}
-    </div>
+
+    <?php
+    $template_form_data = [
+        'name' => 'is_contractor',
+        'value' => null,
+        'label' => trans('message.is_contractor'),
+        'placeholder' => '',
+        'class' => ''];
+    ?>
+    @include('layoutForms.checkbox', $template_form_data )
+
 </div>
 
 

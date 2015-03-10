@@ -1,15 +1,29 @@
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group">
-            <label for="password">{{ trans('messages.password') }}</label>
-            {{ Form::password('password' , array( 'class' => 'form-control')) }}
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'password',
+            'value' => null,
+            'label' => trans('message.password'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.password', $template_form_data )
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="passwordConfirm">{{ trans('messages.password.again') }}</label>
-            {{ Form::password('passwordConfirm' , array( 'class' => 'form-control')) }}
 
-        </div>
+
+
+    <div class="col-md-6">
+
+        <?php
+        $template_form_data = [
+            'name' => 'passwordConfirm',
+            'value' => null,
+            'label' => trans('message.password.again'),
+            'placeholder' => '',
+            'class' => ''];
+        ?>
+        @include('layoutForms.password', $template_form_data )
+
     </div>
 </div>

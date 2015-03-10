@@ -56,8 +56,7 @@ class InvoiceChainContractorController extends BaseController
         $invoice =  $user->account->invoices()->findOrFail($id);
 
         if (!$invoice->update(Input::all())) {
-
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChainContractor.save.error') );
             return Redirect::back()->withInput();
         }
 

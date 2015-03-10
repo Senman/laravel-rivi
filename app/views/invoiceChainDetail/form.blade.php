@@ -8,27 +8,43 @@
 
     <div class="row">
         <div class="col-md-4">
-            <div class="form-group">
-                <label for="date_issued">{{ trans('messages.date.issued') }}</label>
-                {{ Form::text('issued_at' , null, array( 'class' => 'form-control datepicker')) }}
 
-            </div>
-
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="due_date">{{ trans('messages.due.date') }}</label>
-                {{ Form::text('due_at' , null, array( 'class' => 'form-control datepicker')) }}
-
-            </div>
+            <?php
+            $template_form_data = [
+                'name' => 'issued_at',
+                'value' => null,
+                'label' => trans('message.date.issued'),
+                'placeholder' => '',
+                'class' => ''];
+            ?>
+            @include('layoutForms.datepicker', $template_form_data )
 
         </div>
         <div class="col-md-4">
-            <div class="form-group">
-                <label for="date_vat">{{ trans('messages.date.vat') }}</label>
-                {{ Form::text('vat_at' , null, array( 'class' => 'form-control datepicker')) }}
 
-            </div>
+            <?php
+            $template_form_data = [
+                'name' => 'due_at',
+                'value' => null,
+                'label' => trans('message.due.date'),
+                'placeholder' => '',
+                'class' => ''];
+            ?>
+            @include('layoutForms.datepicker', $template_form_data )
+
+        </div>
+        <div class="col-md-4">
+
+            <?php
+            $template_form_data = [
+                'name' => 'vat_at',
+                'value' => null,
+                'label' => trans('message.date.vat'),
+                'placeholder' => '',
+                'class' => ''];
+            ?>
+            @include('layoutForms.datepicker', $template_form_data )
+
         </div>
     </div>
 
@@ -59,26 +75,42 @@
     <div class="row">
         <div class="col-md-4">
 
-            <div class="form-group">
-                <label for="symbol_constant">{{ trans('messages.constant.symbol') }}</label>
-                {{ Form::text('symbol_constant' , null, array( 'class' => 'form-control')) }}
-
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="symbol_variable">{{ trans('messages.variable.symbol') }}</label>
-                {{ Form::text('symbol_variable' , null, array( 'class' => 'form-control')) }}
-
-            </div>
+            <?php
+            $template_form_data = [
+                'name' => 'symbol_constant',
+                'value' => null,
+                'label' => trans('message.constant.symbol'),
+                'placeholder' => '',
+                'class' => ''];
+            ?>
+            @include('layoutForms.text', $template_form_data )
 
         </div>
         <div class="col-md-4">
-            <div class="form-group">
-                <label for="symbol_specific">{{ trans('messages.specific.symbol') }}</label>
-                {{ Form::text('symbol_specific' , null, array( 'class' => 'form-control')) }}
 
-            </div>
+            <?php
+            $template_form_data = [
+                'name' => 'symbol_variable',
+                'value' => null,
+                'label' => trans('message.variable.symbol'),
+                'placeholder' => '',
+                'class' => ''];
+            ?>
+            @include('layoutForms.text', $template_form_data )
+
+        </div>
+        <div class="col-md-4">
+
+            <?php
+            $template_form_data = [
+                'name' => 'symbol_specific',
+                'value' => null,
+                'label' => trans('message.specific.symbol'),
+                'placeholder' => '',
+                'class' => ''];
+            ?>
+            @include('layoutForms.text', $template_form_data )
+
         </div>
     </div>
 
@@ -89,11 +121,16 @@
 
 
 
-    <div class="form-group">
-        <label for="description">{{ trans('messages.description') }}</label>
-        {{ Form::textarea('description' , null, array( 'class' => 'form-control', 'rows' => '3')) }}
 
-    </div>
+    <?php
+    $template_form_data = [
+        'name' => 'description',
+        'value' => null,
+        'label' => trans('message.description'),
+        'placeholder' => '',
+        'class' => ''];
+    ?>
+    @include('layoutForms.textarea', $template_form_data )
 
 
 

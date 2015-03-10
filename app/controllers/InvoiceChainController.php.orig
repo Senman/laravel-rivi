@@ -1,0 +1,127 @@
+<?php
+
+class InvoiceChainController extends BaseController
+{
+
+
+    public function create()
+    {
+<<<<<<< HEAD
+        $item = new Item(Input::all());
+
+        if (!$item->save()) {
+            Session::flash('error', trans('message.invoiceChain.add.error') );
+            return Redirect::back()->withInput();
+        }
+
+        Session::flash('message', trans('messages.invoiceChain.add.success'));
+        return Redirect::action('InvoiceController@createThird', $item->invoice->id);
+=======
+
+>>>>>>> de09f94b61488fa2e60fede80283b9b3fb0f6041
+
+        $currentYear = date("Y");
+        $prevYear = $currentYear - 1;
+        $nextYear = $currentYear + 1 ;
+
+        $years = array($nextYear =>  $nextYear,  $currentYear => $currentYear,  $prevYear =>  $prevYear   );
+
+
+        $currency = array('czk' =>  'Kč'   );
+
+
+
+<<<<<<< HEAD
+        if (!$item->delete()) {
+            Session::flash('error', trans('message.invoiceChain.remove.error') );
+            return Redirect::back();
+        }
+
+        Session::flash('message', trans('messages.invoiceChain.remove.success'));
+        return Redirect::action('InvoiceController@createThird', $invoice_id);
+=======
+        return View::make('invoiceChain.create')
+            ->with('years', $years)
+        ->with('currentYear', $currentYear)
+            ->with('currency', $currency);
+
+
+>>>>>>> de09f94b61488fa2e60fede80283b9b3fb0f6041
+
+    }
+
+    public function save()
+    {
+
+        $user = Auth::user();
+        $invoice = new Invoice(Input::all());
+
+        $year = Input::get('year');
+
+        $number = Invoice::where('year', $year)->max('number') + 0;
+        $invoice->year = $year;
+        $invoice->pre_number = '';
+        $invoice->pre_year = '';
+        $invoice->number = $number + 1;
+        $invoice->symbol_variable = $invoice->pre_year . $invoice->year . $invoice->pre_number . sprintf("%03d", $invoice->number);
+
+
+<<<<<<< HEAD
+
+
+        if (!$company = $user->account->invoices()->save($invoice)) {
+            Session::flash('error', trans('message.invoiceChain.save.error') );
+=======
+        if (!$user->account->invoices()->save($invoice)) {
+            Session::flash('message', 'Error!');
+>>>>>>> de09f94b61488fa2e60fede80283b9b3fb0f6041
+            return Redirect::back()->withInput();
+        }
+        return Redirect::action('InvoiceChainContractorController@index', $invoice->id);
+
+<<<<<<< HEAD
+        Session::flash('message', trans('messages.invoiceChain.save.success'));
+        return Redirect::action('InvoiceController@createThird', $invoice->id);
+=======
+>>>>>>> de09f94b61488fa2e60fede80283b9b3fb0f6041
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public function confirm()
+    {
+
+
+    }
+
+
+<<<<<<< HEAD
+        if (!$invoice->delete()) {
+            Session::flash('error', trans('message.invoiceChain.delete.error') );
+            return Redirect::back();
+        }
+
+        Session::flash('message', trans('messages.invoiceChain.delete.success'));
+        return Redirect::action('InvoiceController@index');
+=======
+
+    public function cancel()
+    {
+>>>>>>> de09f94b61488fa2e60fede80283b9b3fb0f6041
+
+
+    }
+
+
+
+}

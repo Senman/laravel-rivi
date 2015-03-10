@@ -14,7 +14,7 @@
 
             <h1>
 
-              Faktury
+                {{ trans('messages.invoices') }}
 
 
             </h1>
@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('InvoiceChainController@create', 'Nova faktura',null, $attributes = array('class'
+            {{ link_to_action('InvoiceChainController@create', trans('messages.new.invoice') ,null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />

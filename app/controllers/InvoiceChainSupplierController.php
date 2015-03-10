@@ -59,8 +59,7 @@ class InvoiceChainSupplierController extends BaseController
 
 
         if (!$invoice->update(Input::all())) {
-
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChainSupplier.save.error') );
             return Redirect::back()->withInput();
         }
 

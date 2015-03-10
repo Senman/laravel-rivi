@@ -22,16 +22,17 @@
 
 <div class="row">
     <div class="col-md-8">
-        <div class="form-group">
-            <label for="payment_type">{{ trans('messages.state.of.payment') }} </label>
 
-            {{ Form::hidden('_method', 'Post') }}
-            {{ Form::hidden('id', $invoice->id) }}
+        <?php
+        $template_form_data = [
+            'name' => 'state',
+            'value' => array('unpaid' => 'unpaid', 'paid' => 'paid', 'storno' => 'storno' ),
+            'label' => trans('message.state.of.payment'),
+            'placeholder' => Input::old('payment_type'),
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-            {{ Form::select('state', array('unpaid' => 'unpaid', 'paid' => 'paid', 'storno' => 'storno' ) ,
-            Input::old('payment_type') , array( 'class' =>
-            'form-control')) }}
-        </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">

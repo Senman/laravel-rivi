@@ -9,7 +9,7 @@
 
         <th>Číslo</th>
 
-        <th style="width: 20%">Název</th>
+        <th style="width: 20%">{{ trans('messages.name') }}</th>
 
 
         <th>Firma</th>

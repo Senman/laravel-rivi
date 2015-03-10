@@ -6,34 +6,44 @@
 
     <div class="col-md-2">
 
-        <div class="form-group">
-
-
-
-            {{ Form::text('type' , $type , array( 'class' => 'form-control', 'placeholder' => 'typ' )) }}
-
-        </div>
+        <?php
+        $template_form_data = [
+            'name' => 'type',
+            'value' => $type,
+            'label' => '',
+            'placeholder' => 'typ',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
     </div>
 
 
     <div class="col-md-2">
 
-        <div class="form-group">
+        <?php
+        $template_form_data = [
+            'name' => 'name',
+            'value' => $name,
+            'label' => '',
+            'placeholder' => 'nazev',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-
-
-            {{ Form::text('name' , $name , array( 'class' => 'form-control', 'placeholder' => 'nazev' )) }}
-
-        </div>
     </div>
 
     <div class="col-md-2">
-        <div class="form-group">
 
-            {{ Form::text('idn' , $idn, array( 'class' => 'form-control', 'placeholder' => 'IC' )) }}
+        <?php
+        $template_form_data = [
+            'name' => 'idn',
+            'value' => $idn,
+            'label' => '',
+            'placeholder' => 'IC',
+            'class' => ''];
+        ?>
+        @include('layoutForms.text', $template_form_data )
 
-
-        </div>
     </div>
 
 

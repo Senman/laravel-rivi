@@ -28,8 +28,7 @@ class InvoiceChainLanguageController extends BaseController
 
 
         if (!$invoice->update(Input::all())) {
-
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChainLanguage.save.error') );
             return Redirect::back()->withInput();
         }
 

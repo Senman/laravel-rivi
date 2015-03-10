@@ -30,8 +30,7 @@ class InvoiceChainCheckController extends BaseController
         $invoice->state = 'active';
         
         if (!$invoice->save()) {
-
-            Session::flash('message', 'Error!');
+            Session::flash('error', trans('message.invoiceChainCheck.save.error') );
             return Redirect::back()->withInput();
         }
 

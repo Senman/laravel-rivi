@@ -1,16 +1,20 @@
-<div class="form-group">
-
-    {{ Form::label('username', 'Username') }}
-    {{ Form::text('username', Input::old('username'), array('class'=>'form-control', 'placeholder'=>'username')) }}
-
-
-</div>
-
-
-<div class="form-group">
-
-    {{ Form::label('password', 'Password') }}
-    {{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) }}
+<?php
+$template_form_data = [
+    'name' => 'username',
+    'value' => Input::old('username'),
+    'label' => trans('message.username'),
+    'placeholder' => trans('message.username'),
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
 
 
-</div>
+<?php
+$template_form_data = [
+    'name' => 'password',
+    'value' => null,
+    'label' => trans('message.password'),
+    'placeholder' => trans('message.password'),
+    'class' => ''];
+?>
+@include('layoutForms.password', $template_form_data )

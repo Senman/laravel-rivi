@@ -17,7 +17,18 @@ return array(
     'bankTransfer_en' => 'Bank Transfer',
     'cash_en' => 'In Cash',
 
+    'site.title' => 'RIVI - SENMAN s.r.o.',
 
+    'password.reset' => 'Změna hesla',
+    'password.reset.complete.form' => 'Pro změnu hesla vyplňte tento formulář: ',
+    'employee.contact.detail' => 'Kontaktní údaje zaměstnance',
+
+    'new.employee' => 'Založ nového zaměstnance',
+    'users' => 'Přehled zaměstnanců',
+    'first.name.and.last.name' => 'Jméno a příjmení',
+    'username' => 'Uživatelské jméno',
+    'role' => 'Oprávnění',
+    'action' => 'Akce',
 
 
 

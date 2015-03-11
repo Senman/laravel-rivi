@@ -21,7 +21,7 @@ class AdminUserController extends BaseController
     public function edit($id)
     {
         $user = User::where('id', $id)->firstOrFail();
-
+		
         return View::make('adminUser.edit')
 
             ->with('user', $user);

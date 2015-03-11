@@ -2,8 +2,8 @@
 $template_form_data = [
     'name' => 'username',
     'value' => Input::old('username'),
-    'label' => trans('message.username'),
-    'placeholder' => trans('message.username'),
+    'label' => trans('messages.user.username'),
+    'placeholder' => trans('messages.users.username'),
     'class' => ''];
 ?>
 @include('layoutForms.text', $template_form_data )
@@ -13,8 +13,9 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'password',
     'value' => null,
-    'label' => trans('message.password'),
-    'placeholder' => trans('message.password'),
+    'label' => trans('messages.user.password'),
+    'placeholder' => trans('messages.user.password'),
     'class' => ''];
+
 ?>
 @include('layoutForms.password', $template_form_data )

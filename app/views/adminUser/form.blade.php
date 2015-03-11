@@ -15,7 +15,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'lastName',
     'value' => null,
-    'label' => trans('message.last.name'),
+    'label' => trans('messages.last.name'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -27,7 +27,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'username',
     'value' => null,
-    'label' => trans('message.username'),
+    'label' => trans('messages.username'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -41,7 +41,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'email',
     'value' => null,
-    'label' => trans('message.email'),
+    'label' => trans('messages.email'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -52,9 +52,9 @@ $template_form_data = [
 <?php
 $template_form_data = [
     'name' => 'role',
-    'items' => 'admin',
+ 	'items' => array('A' => 'admin', 'U' => 'uživatel'),
     'selected' => null,
-    'label' => trans('message.role'),
+    'label' => trans('messages.role'),
     'class' => ''];
 ?>
 @include('layoutForms.select', $template_form_data )

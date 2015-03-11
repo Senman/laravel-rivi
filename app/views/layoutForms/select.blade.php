@@ -9,12 +9,22 @@
  * array (req.)
  *
  * class (opt.)
+ 
+ 
+chybně uvedeno:
+{{ Form::select($name , $items , $selected, array( 'class' => 'form-control '.$class )) }} 
+ 
+ 
+funkční
+{{ Form::select($name , array('A' => 'admin')) }}
  */
 
-
+  
 ?>
 
 <div class="form-group">
     <label for="{{$name}}">{{ $label }}</label>
-    {{ Form::select($name , $items , $selected, array( 'class' => 'form-control '.$class )) }}
+	
+	{{ Form::select($name , $items , $selected, array( 'class' => 'form-control '.$class )) }}
+	
 </div>

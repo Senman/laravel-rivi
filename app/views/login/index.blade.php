@@ -11,7 +11,7 @@
         <div class="col-md-6 col-md-offset-3">
 
 
-            <h1>Login</h1>
+            <h1>{{ trans('messages.user.login') }}</h1>
 
 
             {{ Form::open(array('action'=>array('LoginController@auth'))) }}

@@ -29,7 +29,9 @@ return array(
     'username' => 'Uživatelské jméno',
     'role' => 'Oprávnění',
     'action' => 'Akce',
-
+	'user.login' => 'Přihlášení uživatele',
+	'user.username' => 'Uživatelské jméno',
+	'user.password' => 'Uživatelské heslo',
     'employee.detail' => 'Informace o zaměstnanci',
 
     'edit.employee' => 'Oprav údaje zaměstnance',
@@ -216,7 +218,7 @@ return array(
     'invoice.delete.success' => 'Úspěšně smazáno!',
     'invoice.changeState.error' => 'Chyba!',
     'invoice.changeState.success' => 'Úspěšně změněno!',
-    'login.auth.password.wrong' => 'Špatné heslo',
+    'login.auth.password.wrong' => 'Došlo k selhání autentizace',
     'user.update.error' => 'Chyba!',
     'user.update.success' => 'Úspěšně změněno!',
     'user.updateContact.error' => 'Chyba!',

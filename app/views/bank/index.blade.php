@@ -25,7 +25,7 @@
         <div class="col-md-3">
 
 
-            {{ link_to_action('BankController@create', trans('messages.new'),null, $attributes = array('class'
+            {{ link_to_action('BankController@create', trans('messages.bank.new'),null, $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
             <br />

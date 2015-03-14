@@ -9,12 +9,12 @@
 
 
         <th >{{ trans('messages.bank.name') }}</th>
-
+		<th >{{ trans('messages.bank.branch') }}</th>
         <th >{{ trans('messages.bank.number') }}</th>
 
         <th >{{ trans('messages.iban') }}</th>
         <th >{{ trans('messages.swift') }}</th>
-        <th >{{ trans('messages.bank.name') }}</th>
+        
 
         <th style="width: 20%"></th>
 
@@ -33,10 +33,16 @@
 
             {{ $bank->name}}
         </td>
+	
+		<td>
 
+            {{ $bank->street}} {{ $bank->house_number}}<br>
+            {{ $bank->city}}
+        </td>
+        
         <td>
 
-            {{ $bank->number}}
+            {{ $bank->account}}
         </td>
 
         <td>
@@ -47,11 +53,6 @@
         <td>
 
             {{ $bank->swift}}
-        </td>
-
-        <td>
-
-            {{ $bank->bankName}}
         </td>
 
         <td>

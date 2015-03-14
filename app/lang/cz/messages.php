@@ -9,7 +9,8 @@
 
 
 return array(
-
+	
+	'info.message' => 'Informace:',
     'bankTransfer' => 'Bankovním převodem',
     'cash' => 'V hotovosti',
 
@@ -53,10 +54,15 @@ return array(
     'account.number' => 'Číslo účtu',
     'iban' => 'IBAN',
     'swift' => 'SWIFT',
+    'banks' => 'Seznam bankovních účtů',
+    'bank.detail' => 'Detail bankovního účtu',
     'bank.name' => 'Název banky',
+    'bank.branch' => 'Adresa pobočky',
+    'bank.number' => 'Číslo bankovního účtu',
+    'bank.note' => 'Poznámka',
     'address' => 'Adresa',
     'accounts' => 'Účty',
-    'new' => 'Nový',
+    'bank.new' => 'Nový bankovní účet',
     'detail' => 'Detail',
 
 
@@ -125,7 +131,7 @@ return array(
 
     'company.create' => 'Vytvořit společnost',
     'company.detail' => 'Detail společnosti',
-    'bank.information' => 'Bankoní spojení',
+    'bank.information' => 'Bankovní spojení',
     'contact' => 'Kontakt',
     'cid' => 'IČ',
     'vatid' => 'DIČ',
@@ -138,6 +144,7 @@ return array(
     'bank.account' => 'Bankovní účet',
     'telephone' => 'Telefon',
     'email' => 'E-mail',
+    'house_number' => 'Číslo popisné',
     'rsi' => 'rsi',
     'company.administration' => 'Administrace společností',
     'new.company' => 'Nová společnost',

@@ -3,7 +3,7 @@
 $template_form_data = [
     'name' => 'name',
     'value' => null,
-    'label' => trans('message.bank.name'),
+    'label' => trans('messages.bank.name'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -15,7 +15,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'account',
     'value' => null,
-    'label' => trans('message.bank.account'),
+    'label' => trans('messages.bank.account'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -27,7 +27,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'iban',
     'value' => null,
-    'label' => trans('message.iban'),
+    'label' => trans('messages.iban'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -39,7 +39,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'swift',
     'value' => null,
-    'label' => trans('message.swift'),
+    'label' => trans('messages.swift'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -51,7 +51,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'street',
     'value' => null,
-    'label' => trans('message.street'),
+    'label' => trans('messages.street'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -64,7 +64,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'house_number',
     'value' => null,
-    'label' => trans('message.house_number'),
+    'label' => trans('messages.house_number'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -77,7 +77,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'zip',
     'value' => null,
-    'label' => trans('message.zip'),
+    'label' => trans('messages.zip'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -90,7 +90,7 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'city',
     'value' => null,
-    'label' => trans('message.city'),
+    'label' => trans('messages.city'),
     'placeholder' => '',
     'class' => ''];
 ?>
@@ -104,7 +104,18 @@ $template_form_data = [
 $template_form_data = [
     'name' => 'country',
     'value' => null,
-    'label' => trans('message.country'),
+    'label' => trans('messages.country'),
+    'placeholder' => '',
+    'class' => ''];
+?>
+@include('layoutForms.text', $template_form_data )
+
+
+<?php
+$template_form_data = [
+    'name' => 'note',
+    'value' => null,
+    'label' => trans('messages.bank.note'),
     'placeholder' => '',
     'class' => ''];
 ?>

@@ -13,7 +13,7 @@
 
             <h1>
 
-                {{ trans('messages.payments') }}
+                {{ trans('messages.bank.detail') }}
 
 
             </h1>
@@ -30,7 +30,7 @@
 
             <br/>
 
-            {{ link_to_action('BankAccountController@create', trans('messages.new'), $bank->id  , $attributes = array('class'
+            {{ link_to_action('BankAccountController@create', trans('messages.bank.new'), $bank->id  , $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
 
@@ -64,7 +64,7 @@
                         {{ trans('messages.bank.number') }}
                     </th>
                     <td>
-                        {{ $bank->number }}
+                        {{ $bank->account }}
                     </td>
                 </tr>
 
@@ -92,13 +92,21 @@
 
                 <tr>
                     <th style="width: 50%">
-                        {{ trans('messages.bank.name') }}
+                        {{ trans('messages.bank.branch') }}
                     </th>
                     <td>
-                        {{ $bank->bankName }}
+                        {{ $bank->street }} {{ $bank->house_number }}, {{ $bank->zip}} {{ $bank->city}}<br>{{ $bank->country}}
                     </td>
                 </tr>
-
+                
+                <tr>
+                    <th style="width: 50%">
+                        {{ trans('messages.bank.note') }}
+                    </th>
+                    <td>
+                        {{ $bank->note }}
+                    </td>
+                </tr>
 
         </div>
 

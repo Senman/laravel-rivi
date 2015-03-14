@@ -11,7 +11,7 @@
 
 
             <h1>
-                {{ trans('messages.new.bank.bank') }}
+                {{ trans('messages.new.bank.account') }}
 
 
             </h1>

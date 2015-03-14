@@ -1,9 +1,9 @@
 <div class="row ">
     <div class="col-md-6">
 
-
+	
         {{ link_to_action('BankController@edit', trans('messages.edit'),
-        array($bank->id), array('class' => 'btn btn-default  btn-block') )}}
+        array($bank->id), array('class' => 'btn btn-info  btn-block') )}}
 
     </div>
 

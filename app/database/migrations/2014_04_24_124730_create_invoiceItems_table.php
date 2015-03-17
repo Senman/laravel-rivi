@@ -44,7 +44,7 @@ class CreateInvoiceItemsTable extends Migration
      */
     public function down()
     {
-        //
+               Schema::drop('invoice_items');
     }
 
 }

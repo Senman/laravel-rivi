@@ -18,7 +18,7 @@ class Bank extends Eloquent
 
     public function bankAccounts()
     {
-        return $this->hasMany('BankAccounts');
+        return $this->hasMany('BankAccount');
     }
 
 

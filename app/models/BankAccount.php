@@ -11,9 +11,9 @@ class BankAccount extends Eloquent
     protected $guarded = array(); // Important
 
 
-    public function bankAccount()
+    public function bank()
     {
-        return $this->belongsTo('BankAccount');
+        return $this->belongsTo('Bank');
     }
 
 

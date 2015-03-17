@@ -43,7 +43,7 @@ class CreateApiKeysTable extends Migration
      */
     public function down()
     {
-        //
+             Schema::drop('api_keys');
     }
 
 }

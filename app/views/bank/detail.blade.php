@@ -30,7 +30,7 @@
 
             <br/>
 
-            {{ link_to_action('BankAccountController@create', trans('messages.bank.new'), $bank->id  , $attributes = array('class'
+            {{ link_to_action('BankAccountController@addBankAccount', trans('messages.bank.new'), $bank->id  , $attributes = array('class'
             => 'btn btn-success btn-block' ) )}}
 
 
@@ -110,7 +110,13 @@
 
         </div>
 
-    </div>
+
+    @foreach($bank->bankAccounts as $bankAccount)
+
+    {{$bankAccount->name}} <br>
+
+
+@endforeach
 
 </div>
 

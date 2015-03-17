@@ -126,12 +126,19 @@ Route::get('/company/detail/{id}', 'CompanyController@detail')->before('auth');
 
 Route::get('/bank', 'BankController@index')->before('auth');
 Route::get('/bank/create', 'BankController@create')->before('auth');
+
+
+
+
 Route::get('/bank/edit/{id}', 'BankController@edit')->before('auth');
 Route::post('/bank/save', 'BankController@save')->before('auth');
 Route::post('/bank/update/{id}', 'BankController@update')->before('auth');
 Route::delete('/bank/delete', 'BankController@delete')->before('auth');
 Route::get('/bank/detail/{id}', 'BankController@detail')->before('auth');
 
+
+Route::get('/bank-account/addBankAccount/{bank_id}', 'BankAccountController@addBankAccount')->before('auth');
+Route::post('/bank-account/saveBankAccount', 'BankAccountController@saveBankAccount')->before('auth');
 
 Route::get('/bank-account/create/{bank_id}', 'BankAccountController@create')->before('auth');
 Route::get('/bank-account/edit/{bank_id}/{id}', 'BankAccountController@edit')->before('auth');

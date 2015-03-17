@@ -4,19 +4,16 @@
 
 <div class="container">
 
-    <div class="row ">
 
 
-        <div class="col-md-8">
+
+<h1>
+<p class="text-center">{{ trans('messages.edit') }}</p>
+</h1>            
 
 
-            <h1>
-                {{ trans('messages.edit') }}
-
-
-            </h1>
-
-
+			<div class="row">
+  			<div class="col-md-6 col-md-offset-3">
 
             {{Form::model($bank, array('action' => array('BankController@update',  $bank->id))) }}
 
@@ -26,13 +23,12 @@
 
             <button type="submit" class="btn btn-default">{{ trans('messages.submit') }}</button>
 
-
+			</div>
             {{ Form::close() }}
 
+			</div>
+    
 
-        </div>
-
-    </div>
 
 </div>
 

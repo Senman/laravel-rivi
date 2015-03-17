@@ -30,6 +30,7 @@ class BankController extends BaseController
 
     public function detail($id)
     {
+
         $bank = Bank::find($id);
 
         return View::make('bank.detail')
@@ -67,6 +68,11 @@ class BankController extends BaseController
 
 
     }
+
+
+
+	
+
 
     public function update($id)
     {

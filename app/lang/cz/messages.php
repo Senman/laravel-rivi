@@ -55,7 +55,7 @@ return array(
     'iban' => 'IBAN',
     'swift' => 'SWIFT',
     'banks' => 'Seznam bankovních účtů',
-    'bank.detail' => 'Detail bankovního účtu',
+    'bank.detail' => 'Detail pobočky banky',
     'bank.name' => 'Název banky',
     'bank.branch' => 'Adresa pobočky',
     'bank.number' => 'Číslo bankovního účtu',

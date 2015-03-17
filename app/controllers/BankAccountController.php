@@ -86,4 +86,49 @@ class BankAccountController extends BaseController
 
 
     }
+    
+public function addBankAccount($bank_id){
+//ukaze formular kde clolvek bude moci zadat jmeno account
+//name
+//id dane banky
+// ze stranky http://rivi.laravel.com/bank/detail/2
+// kliknes na tlacitkopridat ucet banky - form - save	
+
+
+
+        return View::make('bankAccount.add')
+            ->with('bank_id', $bank_id);
+
+	 }
+
+
+public function saveBankAccount(){
+	//na post se vola tahle funkce
+	// ulozi ten bamkovni ucet pod ucet dane banky 
+
+        $user = Auth::user();
+        
+		        $bank_id = Input::get("_bank_id");
+
+		        $bank = Bank::findOrFail($bank_id);
+
+        $bankAccount = new BankAccount(Input::all());
+		//$bankAccount->osi = md5(uniqid(mt_rand(), true));
+
+
+
+       
+      if (! $bank->bankAccounts()->save($bankAccount)) {
+
+      Session::flash('error', trans('message.bank.save.error') );
+    		 return Redirect::back()->withInput();
+	}
+	 
+    Session::flash('message', trans('messages.bank.save.success'));
+  return Redirect::action('BankController@detail',array('id'=> $bank_id));
+	 
+	// if (!$user->account->banks()->save($bank)) {
+	 }    
+    
+    
 }

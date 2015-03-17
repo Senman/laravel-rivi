@@ -31,7 +31,8 @@ class CreateBankAccountsTable extends Migration {
 
 
             $table->string('osi', 100); //origin source identificator
-            $table->unique( array('bank_id','osi') );
+
+
             $table->integer('version', 0 );
 
 
@@ -54,7 +55,7 @@ class CreateBankAccountsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		        Schema::drop('bank_accounts');
 	}
 
 }
